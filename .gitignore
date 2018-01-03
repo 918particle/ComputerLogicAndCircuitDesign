@@ -1,0 +1,8 @@
+*.root
+*.aux
+*.log
+*.out
+*.toc
+*.nav
+*.synctex.gz
+
