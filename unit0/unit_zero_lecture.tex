@@ -1,0 +1,329 @@
+\documentclass{beamer}
+\usetheme{metropolis}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{tcolorbox}
+\title{Computer Logic and Digital Circuit Design (PHYS306/COSC330): Unit 0}
+\author{Jordan Hanson}
+\institute{Whittier College Department of Physics and Astronomy}
+
+\begin{document}
+\maketitle
+
+\section{Summary}
+
+\begin{frame}{Unit 0 Summary - Introduction to Digital Concepts}
+\textbf{Reading: Digital Fundamentals (DF) Ch. 1 (see Moodle)}
+\begin{enumerate}
+\item Analog and Digital - RC filters and LC resonators
+\item Introduction to digital concepts
+\item Transistor radio...go!
+\end{enumerate}
+\textbf{Homework: exercises 1-20 Ch. 1 (DF)}
+\end{frame}
+
+\begin{frame}{Bonus Essay}
+\small
+\textbf{\alert{Bonus Essay assignment}}: If you submit a 10-page paper on the history of computer science, including references from both online and library sources by the end of the semester, I will replace your lowest midterm score with the grade of the paper.  Example topics:
+\begin{itemize}
+\item George Boole and the development of Boolean logic.  What prompted this study?
+\item Bell Labs and the development of the transistor
+\item The first companies of silicon valley, the nobel prize, and the integrated circuit
+\end{itemize}
+Before beginning the essay, please make an appointment with me in office hours so that we may agree upon a topic.
+\end{frame}
+
+\section{Analog and Digital}
+
+\begin{frame}{Introduction to Digital Concepts}
+The main topic of thise course is \alert{\textit{digital}} electronics.  What is the distinction between \alert{\textit{digital}} and \alert{\textit{analog}}?  It is helpful to have a lesson in analog circuits, and then a lesson in digital circuits, for comparison.
+\end{frame}
+
+\begin{frame}{Analog and Digital}
+One set of examples of analog circuits is RC/LC filters.  We must apply \textit{Ohm's Law} (Eq. \ref{eq:ohm}) and \textit{Kirchhoff's Rules} (Eqs. \ref{eq:kirchhoff1}-\ref{eq:kirchhoff2}) to understand these circuits, so let's review those.
+\begin{align}
+V &= IR \label{eq:ohm} \\
+\sum_{i,node}^N j_i &= 0 \label{eq:kirchhoff1} \\
+\sum_{i,loop}^N v_{i} &= 0 \label{eq:kirchhoff2}
+\end{align}
+\textbf{A node:} a point in a circuit where conductors meet.\\
+\textbf{A loop:} a path in a circuit that returns to the same node.
+\end{frame}
+
+\begin{frame}{Analog and Digital}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{AnalogExample/VoltageDivider.pdf}
+\caption{\label{fig:example1} A two-resistor voltage divider.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Analog and Digital}
+\begin{itemize}
+\item Using Ohm's Law, find expressions for $v_{\rm in}(t)$ and $v_{\rm out}(t)$ in terms of the resistances and the current.
+\item Take the ratio of the output voltage to the input voltage to find the \textbf{transfer function}, $H(t)$.
+\item Volunteer to board?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Analog and Digital}
+Answer:
+\begin{equation}
+H(t) = \frac{R_2}{R_1+R_2}
+\end{equation} \\
+\vspace{0.5cm}
+In other words, the circuit does not change the time-domain properties of the signal, just the \textit{amplitude}. \\ \vspace{0.5cm}
+Can we replace a resistor with another component to \textit{filter} signals based on time-domain properties?
+\end{frame}
+
+\begin{frame}{Analog and Digital}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{AnalogExample/LowPass.pdf}
+\caption{\label{fig:example2} A single-pole low-pass RC filter.  What is the resistance or impedance of a capacitor?}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Analog and Digital}
+We need a math tool, the Fourier transform:
+\begin{align}
+\mathcal{F}(f(t)) = \tilde{F}(\omega) &= \int_{-\infty}^{\infty} f(t) e^{-j\omega t} dt \label{eq:eq1} \\
+f(t) &= g'(t) \label{eq:eq2} \\
+\tilde{F}(\omega) = g(t) e^{-j\omega t} |_{-\infty}^{\infty} + &j\omega \int_{\infty}^{-\infty} g(t)  e^{-j\omega t} dt \label{eq:eq3} \\
+\mathcal{F}(g'(t)) &= j\omega\mathcal{F}(g(t)) \label{eq:eq4}
+\end{align}
+After integrating by parts we find that the Fourier transform of a derivative of a function is the imaginary unit times the angular frequency times the Fourier transform of the function.  \textbf{Note that throughout this course $j$ is the imaginary unit.  This is common in engineering texts.}
+\end{frame}
+
+\begin{frame}{Analog and Digital}
+Impedance of a capacitor:
+\begin{align}
+C &= \frac{q}{V} \\
+VC &= q \\
+C \frac{dV}{dt} &= \frac{dq}{dt} = i(t) \\
+\tilde{i}(\omega) &= j\omega C \tilde{V}(\omega) \\
+\frac{\tilde{V}(\omega)}{\tilde{i}(\omega)} &= \frac{1}{j\omega C}
+\end{align}
+Using Ohm's Law, we identify the impedance as
+\begin{equation}
+\boxed{
+Z_C = \frac{1}{j\omega C}
+}
+\label{eq:eq5}
+\end{equation}
+\end{frame}
+
+\begin{frame}{Analog and Digital}
+Repeat the earlier exercise, but with the new circuit:
+\begin{itemize}
+\item Using Ohm's Law, find expressions for $v_{\rm in}(t)$ and $v_{\rm out}(t)$ in terms of the impedances and the current.
+\item Take the ratio of the output voltage to the input voltage to find the \textbf{transfer function}, $H(t)$.
+\item Volunteer to board?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Analog and Digital}
+Answer:
+\begin{equation}
+\boxed{
+M_{LP}(\omega) = \sqrt{\frac{\omega_0^2}{\omega^2+\omega_0^2}}
+}
+\label{eq:eq6}
+\end{equation}
+
+\begin{equation}
+\boxed{
+\phi_{LP}(\omega) = -\tan^{-1}\left(\frac{\omega}{\omega_0}\right)
+}
+\label{eq:eq7}
+\end{equation} \\
+\vspace{0.5cm}
+The transfer function of this circuit depends on frequency in the following way:
+\begin{enumerate}
+\item $\omega \ll \omega_{\rm 0}$, $M_{\rm LP} \approx 1$, $\phi_{\rm LP} \approx 0$
+\item $\omega \gg \omega_{\rm 0}$, $M_{\rm LP} \approx 0$, $\phi_{\rm LP} \approx -90^{\circ}$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Analog and Digital}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{AnalogExample/HighPass.pdf}
+\caption{\label{fig:example3} A single-pole high-pass RC filter.  Can we repeat this process, only with the capacitor and resistor exchanged?}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Analog and Digital}
+Answer:
+\begin{equation}
+\boxed{
+M_{HP}(\omega) = \sqrt{\frac{\omega^2}{\omega^2+\omega_0^2}}
+}
+\label{eq:eq8}
+\end{equation}
+
+\begin{equation}
+\boxed{
+\phi_{HP}(\omega) = \tan^{-1}\left(\frac{\omega_0}{\omega}\right)
+}
+\label{eq:eq9}
+\end{equation} \\
+\vspace{0.5cm}
+The transfer function of this circuit depends on frequency in the following way:
+\begin{enumerate}
+\item $\omega \ll \omega_{\rm 0}$, $M_{\rm HP} \approx 0$, $\phi_{\rm HP} \approx 90^{\circ}$
+\item $\omega \gg \omega_{\rm 0}$, $M_{\rm HP} \approx 1$, $\phi_{\rm HP} \approx 0$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Analog and Digital}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{AnalogExample/LowPassLC.pdf}
+\caption{\label{fig:example4} A simple LC-resonator (two-pole).  What is the impedance of an inductor?}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Analog and Digital}
+Impedance of an inductor:
+\begin{align}
+L &= \frac{d\phi}{di} \\
+L &= \frac{d\phi}{dt}\frac{dt}{di} = v/i(t) \\
+\tilde{v}(\omega) &= j\omega L\tilde{i}(\omega)
+\end{align}
+So we can read off the impedance of the inductor:
+\begin{equation}
+\boxed{
+Z_{\rm L} = j\omega L}
+\end{equation}
+\end{frame}
+
+\begin{frame}{Analog and Digital}
+Following the same model, but with new impedances, we find Eq. \ref{eq:eq8} below by defining a \textit{resonance frequency} $\omega_R^{-2} = LC$. 
+\begin{equation}
+\boxed{
+M_{\rm LC}(\omega) = \frac{\omega_R^2}{\omega_R^2-\omega^2} = \frac{\omega_R^2}{(\omega_R-\omega)(\omega_R + \omega)}
+}
+\label{eq:eq10}
+\end{equation}
+\end{frame}
+
+\begin{frame}{Analog and Digital}
+\tiny
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\centering
+\textbf{Analog circuits}
+\begin{itemize}
+\item Continuous functions of voltage and current representing continuous data
+\item Application of complex analysis
+\end{itemize}
+\hrulefill
+\begin{itemize}
+\item Cannot be stored, copied or transmitted quickly and efficiently
+\item Requires knowledge of every frequency (bandwidth issues)
+\item Cannot be transmitted easily (noise issues)
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\textbf{Digital circuits}
+\begin{itemize}
+\item Discrete functions of voltage and current representing coded data
+\item Application of Boolean logic
+\end{itemize}
+\hrulefill
+\begin{itemize}
+\item Must sample enough information to reproduce analog signals
+\end{itemize}
+\end{column}
+\end{columns}
+Music is an obvious example: storiing music on a vinyl record creates a groove in the material of the record that follows the pressure wave pattern of the sound.  At no point are any frequencies lost, unless the record is scratched.  When music is stored digitally, the sample rate affects quality, but with a large sample rate, the music is indistinguishable from the record player.  Plus, the music can be perfectly copied or transmitted.
+\end{frame}
+
+\section{Introduction to Digital Concepts}
+
+\begin{frame}{Introduction to Digital Concepts}
+Recall from the low and high pass filter examples:
+\begin{enumerate}
+\item $\omega \ll \omega_{\rm 0}$, $M_{\rm HP} \approx 0$, $\phi_{\rm HP} \approx 90^{\circ}$
+\item $\omega \gg \omega_{\rm 0}$, $M_{\rm HP} \approx 1$, $\phi_{\rm HP} \approx 0$
+\end{enumerate}
+\hrulefill
+\begin{enumerate}
+\item $\omega \ll \omega_{\rm 0}$, $M_{\rm LP} \approx 1$, $\phi_{\rm LP} \approx 0$
+\item $\omega \gg \omega_{\rm 0}$, $M_{\rm LP} \approx 0$, $\phi_{\rm LP} \approx -90^{\circ}$
+\end{enumerate}
+What if instead of a frequency-based filter, we had an amplitude-based filter? (Also known as transistors...stay tuned).
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{figures/TTL.png} \hspace{0.1cm}
+\includegraphics[width=0.7\textwidth]{figures/CMOS.png}
+\caption{\label{fig:levels} TTL and CMOS logic levels in integrated circuits today.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth,trim=1cm 7cm 0cm 9cm,clip=true]{figures/pulse.jpg}
+\caption{\label{fig:pulse} Properties of the logic pulse: rise and fall times, amplitude and non-linearities.}
+\end{figure}
+From where do the non-linearities arise? Turns out the Fourier transform of a square wave $s(t)$ with period $T$ is a ``sync'' function $(2\pi\nu = \omega)$:
+\begin{equation}
+\mathcal{F}(s(t)) = \tilde{S}(\nu) = \frac{\sin(\pi\nu T)}{\pi\nu}
+\end{equation}
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+From where do the non-linearities arise? Turns out the Fourier transform of a square wave $s(t)$ with period $T$ is a ``sync'' function $(2\pi\nu = \omega)$:
+\begin{equation}
+\mathcal{F}(s(t)) = \tilde{S}(\nu) = \frac{\sin(\pi\nu T)}{\pi\nu}
+\end{equation}
+The \textbf{convolution theorem} states that if a signal is being filtered, the transfer function of that filter is being multiplied with the Fourier transform of the signal in the Fourier domain.  Let's \textit{low-pass filter} the sync function:
+\begin{equation}
+\tilde{S}(\nu)H_{\rm LP}(\omega) = \frac{\sin(\pi\nu T)}{\pi\nu}\sqrt{\frac{\omega_0^2}{\omega^2+\omega_0^2}}
+\end{equation}
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth,trim=1cm 6cm 1cm 7cm,clip=true]{codes/January8_plot1.pdf}
+\caption{\label{fig:pulse2} CMOS logic pulse filtered to remove frequencies above 0.01 MHz and below 2 MHz for a 1 MHz clock frequency.}
+\end{figure}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}{Unit 0 Summary - Introduction to Digital Concepts}
+\textbf{Reading: Digital Fundamentals (DF) Ch. 1 (see Moodle)}
+\begin{enumerate}
+\item Analog and Digital - RC filters and LC resonators
+\item Introduction to digital concepts
+\item Transistor radio...go!
+\end{enumerate}
+\textbf{Homework: exercises 1-20 Ch. 1 (DF)}
+\end{frame}
+
+\section{Answers}
+
+\begin{frame}{Answers}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item 
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item 
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\end{document}
