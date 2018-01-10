@@ -19,7 +19,8 @@
 \item Introduction to digital concepts
 \item Transistor radio...go!
 \end{enumerate}
-\textbf{Homework: exercises 1-20 Ch. 1 (DF)}
+\textbf{Homework: exercises 1-20 Ch. 1 (DF)} \\
+\textbf{Note}: in each lecture I will have a \textit{final battle} problem, which is meant to be harder.  I will try to end the class on these types of problems, and if we do not solve it together, we can think about it for next time, or finish it on the homework.
 \end{frame}
 
 \begin{frame}{Bonus Essay}
@@ -284,9 +285,10 @@ From where do the non-linearities arise? Turns out the Fourier transform of a sq
 \mathcal{F}(s(t)) = \tilde{S}(\nu) = \frac{\sin(\pi\nu T)}{\pi\nu}
 \end{equation}
 The \textbf{convolution theorem} states that if a signal is being filtered, the transfer function of that filter is being multiplied with the Fourier transform of the signal in the Fourier domain.  Let's \textit{low-pass filter} the sync function:
-\begin{equation}
-\tilde{S}(\nu)H_{\rm LP}(\omega) = \frac{\sin(\pi\nu T)}{\pi\nu}\sqrt{\frac{\omega_0^2}{\omega^2+\omega_0^2}}
-\end{equation}
+\begin{align}
+\tilde{S}(\nu)H_{\rm LP}(\omega) &= \frac{\sin(\pi\nu T)}{\pi\nu}\sqrt{\frac{\omega_0^2}{\omega^2+\omega_0^2}} \\
+\tilde{S}(\nu)H_{\rm LP}(\omega) &= \frac{\sin(\pi\nu T)}{\pi\nu(1+(2\pi\nu\tau)^2)^{1/2}}, \tau = \omega_{\rm 0}^{-1}
+\end{align}
 \end{frame}
 
 \begin{frame}{Introduction to Digital Concepts}
@@ -295,6 +297,277 @@ The \textbf{convolution theorem} states that if a signal is being filtered, the 
 \includegraphics[width=0.75\textwidth,trim=1cm 6cm 1cm 7cm,clip=true]{codes/January8_plot1.pdf}
 \caption{\label{fig:pulse2} CMOS logic pulse filtered to remove frequencies above 0.01 MHz and below 2 MHz for a 1 MHz clock frequency.}
 \end{figure}
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\alert{\textbf{Fourier transform}}:
+\begin{equation}
+\mathcal{F}(f(t)) = \int_{-\infty}^{\infty} f(t) \exp(-2\pi j\nu t) dt
+\end{equation}
+\textbf{In-class exercises}.  Evaluate the Fourier transform of each of the following functions/distributions:
+\begin{enumerate}
+\item $f(t) = \delta(t-t_{\rm 0})$
+\item $f(t) = \exp(-at)$, for $t>=0$, $0$ for $t<0$
+\end{enumerate}
+Now compute the modulus-squared for each result: $z^{*}z = |z|^2$.  What is the frequency-dependence of each?
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\small
+Pulse-waveform vocabulary:
+\begin{enumerate}
+\item \textbf{Period} - Time required for a repeating signal to return to original state.
+\item \textbf{Frequency} - Inverse of the period.
+\item \textbf{Pulse width} - Width of time between identical signal values
+\item \textbf{Rise time} - Time required for the signal to rise from 10\% to 90\% of the amplitude
+\item \textbf{Fall time} - Similar to fall time but for amplitude decrease
+\item \textbf{Duty cycle} - Pulse width divided by period
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\textbf{Major feature of digital circuit components}: \textit{any} voltage between HIGHMAX and HIGHMIN is HIGH, and \textit{any} voltage between LOWMAX and LOWMIN is LOW.  Issues of bandwidth and filtering are nullified because the circuit will perform the correct action \textit{regardless of these effects.} \\
+\begin{table}
+\centering
+\begin{tabular}{c | c}
+HIGH & 1 \\ \hline
+LOW & 0 \\
+\end{tabular}
+\caption{\label{tab:highlow} Digital circuits strategically neglect the analog nature of the voltage inputs.}
+\end{table}
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{figures/BitSequence.pdf}
+\caption{\label{fig:bitsequence} The clock simply switches between HIGH and LOW periodically.  Normal data sequences are strings of \textit{bits}.  In this case, we have 11010110.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{figures/BitSequence2.pdf}
+\caption{\label{fig:bitsequence2} A timing diagram.  A display of the synchronized bit sequences of multiple data channels.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{figures/Operators.pdf}
+\caption{\label{fig:operators} Bit sequences can be inputs to \textbf{logic operations}, performed by \textit{gates} (more later).}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{table}
+\centering
+\begin{tabular}{c | c}
+Input & Output \\ \hline
+1 & 0 \\ \hline
+0 & 1 \\
+\end{tabular}
+\caption{\label{tab:not} NOT truth table.}
+\end{table}
+\begin{table}
+\centering
+\begin{tabular}{c | c | c}
+Input1 & Input2 & Output \\ \hline
+1 & 1 & 1 \\ \hline
+1 & 0 & 0 \\ \hline
+0 & 1 & 0 \\ \hline
+0 & 0 & 0 \\ \hline
+\end{tabular}
+\caption{\label{tab:and} AND truth table.}
+\end{table}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{table}
+\centering
+\begin{tabular}{c | c | c}
+Input1 & Input2 & Output \\ \hline
+1 & 1 & 1 \\ \hline
+1 & 0 & 1 \\ \hline
+0 & 1 & 1 \\ \hline
+0 & 0 & 0 \\ \hline
+\end{tabular}
+\caption{\label{tab:or} OR truth table.}
+\end{table}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\small
+\begin{figure}
+\centering
+\includegraphics[width=0.4\textwidth]{figures/BitSequence2.pdf}
+\caption{\label{fig:bitsequence3} Bit sequences $\rightarrow$ logic operations $\rightarrow$ new bit sequences.}
+\end{figure}
+Write down the following bit sequences:
+\begin{enumerate}
+\item NOT A
+\item A OR Clock
+\item A AND B
+\item A AND (B OR C)
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\small
+Volunteers to board?
+\begin{enumerate}
+\item NOT A
+\item A OR Clock
+\item A AND B
+\item A AND (B OR C)
+\end{enumerate}
+How would you express the final exercise in terms of gates representing logic operations and bit sequences as inputs?
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\small
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{figures/Operators2.pdf}
+\caption{\label{fig:bitsequence4} Solution: do the grouping symbol first, as in order of operations.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+Compose a circuit of gates that produces the following bit sequences:
+\begin{enumerate}
+\item (NOT (A AND B)) OR C
+\item NOT A AND B
+\item A AND B AND C AND D
+\item (A OR B) AND (A OR B)
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+A few more logic operators:
+\begin{enumerate}
+\item \textbf{\alert{Comparator}}
+\item Adder
+\item Encoder
+\item Decoder
+\item Shift register
+\item Flip-flop
+\item Multiplexer
+\item Demultiplexer
+\item Counter
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{figures/Comparator.pdf}
+\caption{\label{fig:comparator} A comparator compares bit sequences A and B, and raises G to HIGH if A represents a number greater than B, E if they are equal, and L if A is less than B.}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+A few more logic operators:
+\begin{enumerate}
+\item Comparator
+\item \textbf{\alert{Adder}}
+\item Encoder
+\item Decoder
+\item Shift register
+\item Flip-flop
+\item Multiplexer
+\item Demultiplexer
+\item Counter
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/Adder.pdf}
+\caption{\label{fig:adder} An adder adds two binary numbers (bit sequences A and B here) in the same way we add numbers on paper.  We \textit{carry} powers of 10 (2) on paper (in binary).}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\textbf{Group board exercise}:
+Compose a circuit that records adds two inputs, compares the result to a third input, and has an output of HIGH if the sum of the first two inputs is greater than the third input.  \textit{Use more than one adder, but assume that the numbers are small enough to not need the last $C_{\rm out}$}.
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+But wait, how can the adder physically know how to add if it receives the digits one by one?  Don't all these elements operate on clock cycles? \\ \vspace{0.5cm}
+Good question.  We need the concept of \textit{serial data} versus \textit{parallel data}. \\ \vspace{0.5cm}
+\begin{itemize}
+\item \textbf{Serial data}: one connection, many clock cycles per bit sequence.
+\item \textbf{Parallel data}: many connections, one clock cycle per bit sequence.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+A few more logic operators:
+\begin{enumerate}
+\item Comparator
+\item Adder
+\item \textbf{\alert{Encoder}}
+\item Decoder
+\item Shift register
+\item Flip-flop
+\item Multiplexer
+\item Demultiplexer
+\item Counter
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/Encoder.pdf}
+\caption{\label{fig:encoder} The encoder has preset pins corresponding to (for example) digits 0-9, and the output bit sequence is a binary representation of the input that is raised HIGH.}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Introduction to Digital Concepts}
+\textbf{Group board exercise - final battle}:
+Compose a circuit that takes as inputs two numbers 0-9, and adds them.  The output of the circuit is HIGH if and only if the result is between 8 and 12, inclusive.
+\end{frame}
+
+\section{Lab Tour, and Introduction to Lab Project 1}
+
+\begin{frame}{Lab Tour, and Introduction to Lab Project 1}
+\small
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+Our first project is an AM transistor radio (pictured at right). Goals:
+\begin{itemize}
+\item Share the experience of \alert{diving into an electronics project} blind
+\item Understand why transistors revolutionized this device
+\item Learn how a transistor works
+\item Learn how to use test equipment like DVMs
+\item Learn how to solder
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{figures/Tecsun.jpeg}
+\caption{\label{fig:tec} The TecSun 2P3 transitor radio.}
+\end{figure}
+\end{column}
+\end{columns}
 \end{frame}
 
 \section{Conclusion}
@@ -307,23 +580,6 @@ The \textbf{convolution theorem} states that if a signal is being filtered, the 
 \item Transistor radio...go!
 \end{enumerate}
 \textbf{Homework: exercises 1-20 Ch. 1 (DF)}
-\end{frame}
-
-\section{Answers}
-
-\begin{frame}{Answers}
-\begin{columns}[T]
-\begin{column}{0.5\textwidth}
-\begin{itemize}
-\item 
-\end{itemize}
-\end{column}
-\begin{column}{0.5\textwidth}
-\begin{itemize}
-\item 
-\end{itemize}
-\end{column}
-\end{columns}
 \end{frame}
 
 \end{document}
