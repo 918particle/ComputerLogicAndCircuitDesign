@@ -1,0 +1,241 @@
+\documentclass{beamer}
+\usetheme{metropolis}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{tcolorbox}
+\title{Computer Logic and Digital Circuit Design (PHYS306/COSC330): Unit 1.3}
+\author{Jordan Hanson}
+\institute{Whittier College Department of Physics and Astronomy}
+
+\begin{document}
+\maketitle
+
+\section{Summary}
+
+\begin{frame}{Unit 1.3 Summary - Working with Binary}
+\textbf{Reading: Digital Fundamentals (DF) Ch. 2 (see Moodle)}
+\begin{enumerate}
+\item Number representation
+\item Binary conversions
+\item Binary arithmetic
+\item The floating-point system
+\item Hexidecimals, Binary-Coded Decimals (BCD), Gray codes, and ASCII
+\end{enumerate}
+\textbf{Homework: exercises 1-40 Ch. 2 (DF) (two weeks)}
+\end{frame}
+
+\section{Number representation}
+
+\begin{frame}{Number representation}
+Questions:
+\begin{itemize}
+\item A simple question: how many students do we have in this class? \\
+\item Una simple pregunta: ?`Cu\'{a}ntos estudiantes tenemos en esta clase? \\
+\item Une question simple: Combien d'\'{e}tudiants est-ce que nous avons dans cette classe?
+\end{itemize}
+What languages do computers speak?  How can we store and transmit numbers through circuits?  (We cannot use voltage magnitudes).
+\end{frame}
+
+\begin{frame}{Number representation}
+\textbf{Consider the number \alert{37}} \\ \vspace{1cm}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\centering
+Numbers \\
+\hrulefill
+\begin{itemize}
+\item 0d37
+\item 0b100101
+\item 0x25
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+Expanded notation \\
+\hrulefill
+\begin{itemize}
+\item $3\times 10^1 + 7 \times 10^0$
+\item $1\times 2^5 + 1 \times 2^2 + 1 \times 2^0$
+\item $2\times 16^1 + 5 \times 16^0$
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Number representation}
+\textbf{Consider the number \alert{412}} \\ \vspace{1cm}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\centering
+Numbers \\
+\hrulefill
+\begin{itemize}
+\item 0d412
+\item 0b110011100
+\item 0x100
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+Expanded notation \\
+\hrulefill
+\begin{itemize}
+\item $4\times 10^2 + 1\times 10^1 + 2\times 10^0$
+\item $1\times 2^8 + 1\times 2^7 + 1\times 2^4 + 1\times 2^3 + 1\times 2^2$
+\item $1\times 16^2$
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Number representation}
+\textbf{Number representations} - Digits, weights, and a common base \\ \vspace{1cm}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\centering
+\begin{itemize}
+\small
+\item A number is written with \textbf{digits} that have \textbf{weights}.
+\item A \textbf{weight} is a power of a \textbf{base}.
+\item At right, the \textbf{base} is ten, and the \textbf{weights} are $10^2$, $10^1$, and $10^0$.
+\item The \textbf{digits} are four, one, and two.
+\item The digits cannot represent numbers larger than the base.
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+Expanded notation \\
+\hrulefill
+\begin{itemize}
+\item $412 = 4\times 10^2 + 1\times 10^1 + 2\times 10^0$
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Number representation}
+\textbf{Number representations} - (Aside) please use scientific notation, and here is why: \alert{digit minimization!} \\ \vspace{1cm}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\centering
+\begin{itemize}
+\small
+\item Scientific notation \textbf{factors the largest weight}.
+\item Results in weights that are less than one.
+\item Weights that are less than one go to the right of the \textbf{decimal point}.
+\item Return here with \textit{floating-point} representation.
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+Expanded notation \\
+\hrulefill
+\begin{itemize}
+\item $412,000,000 = 4\times 10^8 + 1\times 10^7 + 2\times 10^6 + 0\times 10^5 + 0\times 10^4 + 0\times 10^3 + 0\times 10^2 + 0\times 10^1 + 0\times 10^0$
+\item $412,000,000 = 4.12 \times 10^8 = (4\times 10^0 + 1\times 10^{-1} + 2\times 10^{-2}) \times 10^8$
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Number representation}
+\textbf{Number representations} - (Aside) please use scientific notation, and here is why: \alert{arithmetic operations with large numbers!} \\ \vspace{1cm}
+\begin{enumerate}
+\item $4200 \times 4200 = (4.2 \times 10^{3})^2 = (4.2)^2 \times 10^6 \approx 16 \times 10^6$
+\item $\approx 17.6 \times 10^6$ if you account for the $0.2$ ...
+\end{enumerate}
+\hrulefill
+\begin{enumerate}
+\item $4000/3000 = 4 \times 10^{3} \times \frac{1}{3} \times 10^{-3} = \frac{4}{3}$
+\item $\frac{4}{3} \approx 1.33$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Number representation}
+Expand the following numbers to expanded decimal notation:
+\begin{itemize}
+\item -10.432
+\item 800,000,144
+\end{itemize}
+Expand the following numbers to expanded binary notation:
+\begin{itemize}
+\item 10011010
+\item 11110000
+\end{itemize}
+Convert the following decimal numbers to binary notation:
+\begin{itemize}
+\item 260
+\item 560
+\end{itemize}
+\textbf{Volunteer to board?} - Key is explaining how you did the binary conversions
+\end{frame}
+
+\begin{frame}{Number representation}
+How did you do the conversions to binary?  Is there a systematic what to do this? \\
+\begin{itemize}
+\item \textit{Successive Approximation} - like a number puzzle (\textit{Sum of Weights Method})
+\item \textit{Successive Division Method} - Example of an algorithm
+\end{itemize}
+\hrulefill \\ \vspace{0.5cm}
+\textit{Successive approximation} technique (does this remind you of doing division in your head?)
+$260$...$2^8 = 256$.  Now we need four more...$4 = 2^2$.  So $2^8 + 2^2 = 0b10000100$ \\ \vspace{0.5cm}
+What is 328 divided by 3?  Ok try 100 because three times one hundred is close...
+\end{frame}
+
+\begin{frame}{Number representation}
+\textit{Successive Division Method} \\ \vspace{0.5cm} \hrulefill \\
+$0d412 = 0b110011100 = 2^8 + 2^7 + 2^4 + 2^3 + 2^2$ \\
+Algorithm:
+\begin{enumerate}
+\item Divide the decimal number by 2, and write down the remainder.  This is the \textit{least-significant bit} or LSB.
+\item Keep dividing and recording the remainders in order, until you reach a dividend of 1.
+\item $1/2 = 0 r 1$, so the \textit{most-significant bit}, or MSB, is always 1.
+\end{enumerate}
+Convert 412 to binary using the successive division method.
+\end{frame}
+
+\begin{frame}{Number representation}
+Convert the numbers at right to binary. \\ \vspace{1cm}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item $2^0 = 1$
+\item $2^1 = 2$
+\item $2^2 = 4$
+\item $2^3 = 8$
+\item $2^4 = 16$
+\item $2^5 = 32$
+\item $2^6 = 64$
+\item $2^7 = 128$
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{enumerate}
+\item 93
+\item 189
+\item 270
+\end{enumerate}
+\textit{Note: how many bits do you need for that last one?}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Number representation}
+Fractional.
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}{Unit 1.3 Summary - Working with Binary}
+\textbf{Reading: Digital Fundamentals (DF) Ch. 2 (see Moodle)}
+\begin{enumerate}
+\item Number representation
+\item Binary conversions
+\item Binary arithmetic
+\item The floating-point system
+\item Hexidecimals, Binary-Coded Decimals (BCD), Gray codes, and ASCII
+\end{enumerate}
+\textbf{Homework: exercises 1-40 Ch. 2 (DF) (two weeks)}
+\end{frame}
+
+\end{document}
