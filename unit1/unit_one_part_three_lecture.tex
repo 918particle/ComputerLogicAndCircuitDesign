@@ -170,7 +170,9 @@ Convert the following decimal numbers to binary notation:
 \textbf{Volunteer to board?} - Key is explaining how you did the binary conversions
 \end{frame}
 
-\begin{frame}{Number representation}
+\section{Binary Conversion}
+
+\begin{frame}{Binary Conversion}
 How did you do the conversions to binary?  Is there a systematic what to do this? \\
 \begin{itemize}
 \item \textit{Successive Approximation} - like a number puzzle (\textit{Sum of Weights Method})
@@ -182,7 +184,7 @@ $260$...$2^8 = 256$.  Now we need four more...$4 = 2^2$.  So $2^8 + 2^2 = 0b1000
 What is 328 divided by 3?  Ok try 100 because three times one hundred is close...
 \end{frame}
 
-\begin{frame}{Number representation}
+\begin{frame}{Binary Conversion}
 \textit{Successive Division Method} \\ \vspace{0.5cm} \hrulefill \\
 $0d412 = 0b110011100 = 2^8 + 2^7 + 2^4 + 2^3 + 2^2$ \\
 Algorithm:
@@ -194,7 +196,7 @@ Algorithm:
 Convert 412 to binary using the successive division method.
 \end{frame}
 
-\begin{frame}{Number representation}
+\begin{frame}{Binary Conversion}
 Convert the numbers at right to binary. \\ \vspace{1cm}
 \begin{columns}[T]
 \begin{column}{0.5\textwidth}
@@ -215,13 +217,201 @@ Convert the numbers at right to binary. \\ \vspace{1cm}
 \item 189
 \item 270
 \end{enumerate}
-\textit{Note: how many bits do you need for that last one?}
+\textit{Note: how many bits do you need for that last one?}  For binary, show that the highest representable number with $n$ bits is $2^n-1$.
 \end{column}
 \end{columns}
 \end{frame}
 
-\begin{frame}{Number representation}
-Fractional.
+\begin{frame}{Binary Conversion}
+In decimal notation, we represent numbers $\in [0-1]$ with digits to the right of the \textit{decimal point.} \\ \vspace{0.5cm}
+In expanded notation: \\
+$42.42 = 4\times 10^{1} + 2\times 10^{0} ~~ . ~~ 4\times 10^{-1} + 2\times 10^{-2}$ \\ \vspace{0.5cm}
+We have a similar notation in other number systems: \\
+$101.11 = 2^2 + 2^0 ~~ . ~~ 2^{-1} + 2^{-2}$
+\end{frame}
+
+\begin{frame}{Binary Conversion}
+\textit{Successive Multiplication Method} \\ \vspace{0.5cm} \hrulefill \\
+$0d0.48 = 0b0.011110101 = 2^{-2}+2^{-3}+2^{-4}+2^{-5}+2^{-7}+2^{-9}$ \\
+Algorithm:
+\begin{enumerate}
+\item Multiply the decimal fraction by 2, and write down the \textit{carry} (the 1 to the left of the decimal point, else 0).  This is the \textit{most-significant bit} or MSB.
+\item Keep multiplying and recording the carries in order, to the desired precision.
+\item Watch for repeating patterns.
+\end{enumerate}
+Convert 0.48 to binary using the successive multiplication method until you identify a repeating pattern.
+\end{frame}
+
+\section{Binary Arithmetic}
+
+\begin{frame}{Binary Arithmetic}
+Binary arithmetic, like decimal arithmetic, relies upon \textit{carries} and \textit{borrows}.  For example in decimal: \\ \vspace{0.5cm}
+\begin{itemize}
+\item $8+7 = 5 c 1 = 15$
+\item $3+4 = 7 c 0 = 7$
+\item $8-2 = 6 b 0 = 6$
+\item $10-5 = (0 b 10) - 5 = 5$
+\item $13-7 = (0 b 10) - 4 = 6$ 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Binary Arithmetic}
+In binary there are limited combinations, so we may form a set of addition and subtraction rules that describe all possibilities: \\ \vspace{0.5cm}
+\hrulefill
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item $0+0=0$
+\item $1+0=1$
+\item $0+1=1$
+\item $1+1 = 0 c 1$
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item $0-0=0$
+\item $1-0=1$
+\item $0-1=0b1$
+\item $1-1 = 0$
+\end{itemize}
+\end{column}
+\end{columns}
+\tiny
+In the fourth rule for the addition set, the carry works the same way as a decimal carry: we add that $1$ to the digit corresponding to the next power of 2.  Similarly, in the third rule of the subtraction set, we subtract the $1$ on the left side of the equation from a $1$ from the digit corresponding to the next highest power of 2 available.
+\end{frame}
+
+\begin{frame}{Binary Arithmetic}
+Complete the following additions and subtractions: \\ \vspace{0.5cm}
+\hrulefill
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item $10+11$
+\item $111+1$
+\item $111+111$
+\item $1010+101$
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item $10-11$
+\item $111-1$
+\item $111-111$
+\item $1010-101$
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Binary Arithmetic}
+Binary multiplication stems from another set of rules: \\ \vspace{0.5cm}
+\hrulefill
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item $0\times 0=0$
+\item $1\times 0=0$
+\item $0\times 1=0$
+\item $1\times 1=1$
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\small
+Binary division is exactly the same as decimal long division.  Let's work these examples on the board:
+\begin{itemize}
+\item 145/12
+\item 1101/101
+\item 45/3
+\item 111/10
+\end{itemize}
+\end{column}
+\end{columns}
+\small
+Of what logic operation does binary multiplication remind you?
+\end{frame}
+
+\begin{frame}{Binary Arithmetic}
+We need a few tools to improve our arithmetic techniques in order to install these functions into circuits.  Consider two actions:
+\begin{itemize}
+\item NOT to the bit sequence of a number: \textbf{\alert{1's compliment}}
+\item Add 1 to the 1's compliment: \textbf{\alert{2's compliment}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Binary Arithmetic}
+Logical operator representation of these actions for 8-bits: \\ \vspace{0.5cm}
+\hrulefill
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/1Compliment.pdf}
+\caption{\label{fig:1comp} Representation of 1's compliment.}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/2Compliment.pdf}
+\caption{\label{fig:2comp} Representation of 2's compliment.}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Binary Arithmetic}
+Exercises, and a realization for the purpose of 2's compliment. \\ \vspace{0.5cm}
+\hrulefill
+\begin{columns}[T]
+\begin{column}{0.33\textwidth}
+Take the 1's compliment of the right-hand number, and complete the addition:
+\begin{itemize}
+\item $111+(000)$
+\item $111+(111)$
+\end{itemize}
+\end{column}
+\begin{column}{0.33\textwidth}
+Take the 2's compliment of the right-hand number, and complete the addition:
+\begin{itemize}
+\item $111+(000)$
+\item $111+(111)$
+\end{itemize}
+\end{column}
+\begin{column}{0.33\textwidth}
+Same, \alert{but drop the MSB}:
+\begin{itemize}
+\item $1010+(1010)$
+\item $1100+(1100)$
+\end{itemize}
+\end{column}
+\end{columns}
+\vspace{0.5cm}
+\small
+For what purpose are we going to use the 2's compliment?
+\end{frame}
+
+\begin{frame}{Binary Arithmetic}
+The answer: representing negative numbers.  For \textit{2's compliment form signed binary numbers, the MSB is the \textbf{sign bit}}.  To convert to decimal, \alert{give the MSB a negative weight}: \\ \vspace{0.5cm}
+Example: $10101010$ \\ 
+This is a negative number because the MSB is a $1$.  Converting in expanded form: $-2^7+2^5+2^3+2^1 = -128+32+8+2 = -86$.
+\end{frame}
+
+\begin{frame}{Binary Arithmetic}
+Consider the effect on the maximum \textit{range} of binary numbers after sacrificing the MSB to flag numbers less than zero.  For 8-bits unsigned numbers, the range is [0-255]: \\ \vspace{0.5cm}
+\begin{table}
+\small
+\centering
+\begin{tabular}{c c c c}
+$n$-bits & 8 & 16 \\
+Lowest unsigned & 0 & 0 \\
+Highest unsigned & 255 & 65535 \\
+Lowest signed & -128 & -32768 \\
+Highest signed & 127 & 32767
+\end{tabular}
+\caption{\label{tab:ranges} The ranges of unsigned and signed numbers using $n$ digits.}
+\end{table}
+\small
+By changing the role of the MSB, we are not reducing the \textit{range} of numbers, just its \textit{location}.  Related to \textit{conservation of information...}
 \end{frame}
 
 \section{Conclusion}
