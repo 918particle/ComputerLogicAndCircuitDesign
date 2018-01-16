@@ -21,7 +21,7 @@
 \item The floating-point system
 \item Hexadecimals, Binary-Coded Decimals (BCD), Gray codes, and ASCII
 \end{enumerate}
-\textbf{Homework: exercises 1-32, 35-40 Ch. 2 (DF) (two weeks).}
+\textbf{Homework: exercises 5-16, 19-32, 35-38, 45, 53, 58 Ch. 2 (DF) (two weeks).}
 \end{frame}
 
 \section{Number representation}
@@ -640,6 +640,178 @@ set terminal postscript color enhance
 \end{enumerate}
 \end{frame}
 
+\begin{frame}{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\textbf{Other codings with binary and hexadecimals:}
+\begin{itemize}
+\item Binary coded decimals
+\item Gray codes
+\item ASCII
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\small
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\textbf{Binary coded decimals} (BCD): \\ \vspace{0.5cm}
+The 8421 BCD system is often used in digital displays, readouts and number pads.  It combines the familiarity of decimal digits with the utility of binary. \\ \vspace{0.5cm}
+For example: $0d234 = 0010~0011~0100$ in BCD.
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{table}
+\centering
+\begin{tabular}{c c}
+0 & 0000 \\
+1 & 0001 \\
+2 & 0010 \\
+3 & 0011 \\
+4 & 0100 \\
+5 & 0101 \\
+6 & 0110 \\
+7 & 0111 \\
+8 & 1000 \\
+9 & 1001 \\
+\end{tabular}
+\caption{\label{tab:bcd} \small The 8421 coding for BCD.  Each four-digit bit sequence represents one decimal digit.}
+\end{table}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\small
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\textbf{Quick exercise:} Write your first name as a decimal string ($A=1$, $B=2$, etc.) and convert it to BCD. \\ \vspace{0.5cm}
+Jordan corresponds to 10 15 18 04 01 14 so 00010000 00010101 00011000 00000100 00000001 00010100
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{table}
+\centering
+\begin{tabular}{c c}
+Decimal digit & BCD \\
+0 & 0000 \\
+1 & 0001 \\
+2 & 0010 \\
+3 & 0011 \\
+4 & 0100 \\
+5 & 0101 \\
+6 & 0110 \\
+7 & 0111 \\
+8 & 1000 \\
+9 & 1001 \\
+\end{tabular}
+\caption{\label{tab:bcd} \small The 8421 coding for BCD.  Each four-digit bit sequence represents one decimal digit.}
+\end{table}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\small
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\textbf{The Gray Code}: \\ \vspace{0.5cm}
+The Gray code is a non-arithmetic code word system, related to binary, that minimizes transition errors by restricting one bit change per transition. \\ \vspace{0.5cm}
+\textbf{Binary to Gray Code conversion}
+\begin{enumerate}
+\item The MSB is conserved.
+\item Add consecutive binary bits starting with the MSB to obtain Gray Code bits.
+\item Discard carries.
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{table}
+\centering
+\begin{tabular}{c c}
+Binary & Gray Code \\
+0000 & 0000 \\
+0001 & 0001 \\
+0010 & 0011 \\
+0011 & 0010 \\
+0100 & 0110 \\
+0101 & 0111 \\
+0110 & 0101 \\
+0111 & 0100 \\
+1000 & 1100 \\
+1001 & 1101 \\
+... & ... 
+\end{tabular}
+\caption{\label{tab:grayCode} \small The 4-bit Gray Code.}
+\end{table}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\small
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\textbf{The Gray Code}: \\ \vspace{0.5cm}
+The Gray code is a non-arithmetic code word system, related to binary, that minimizes transition errors by restricting one bit change per transition. \\ \vspace{0.5cm}
+\textbf{Gray Code to Binary conversion}
+\begin{enumerate}
+\item The MSB is conserved.
+\item Add newest binary bit to next Gray Code bit to obtain next new binary bit.
+\item Discard carries.
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{table}
+\centering
+\begin{tabular}{c c}
+Binary & Gray Code \\
+0000 & 0000 \\
+0001 & 0001 \\
+0010 & 0011 \\
+0011 & 0010 \\
+0100 & 0110 \\
+0101 & 0111 \\
+0110 & 0101 \\
+0111 & 0100 \\
+1000 & 1100 \\
+1001 & 1101 \\
+... & ... 
+\end{tabular}
+\caption{\label{tab:grayCode} \small The 4-bit Gray Code.}
+\end{table}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\textbf{Other codings with binary and hexadecimals:}
+\begin{itemize}
+\item \alert{Binary coded decimals}
+\item \alert{Gray codes}
+\item ASCII - American Standard Code for Information Interchange
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\begin{figure}
+\centering
+\includegraphics[width=0.65\textwidth]{figures/ascii.jpg}
+\caption{\label{fig:ascii} \small An ASCII table, used in computer science for encoding text from standard input.}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\textbf{Example}: compiling the following C++ code on some machines still \textit{rings the bell}.
+\begin{verbatim}
+#include <stdio.h>
+using namespace std;
+int main()
+{
+char y = 7;
+printf("%c\n",y);
+return 0;
+}
+\end{verbatim}
+\small
+Often used in systems and code involving exchanging strings of text.
+\end{frame}
+
 \section{Conclusion}
 
 \begin{frame}{Unit 1.3 Summary - Working with Binary}
@@ -651,7 +823,7 @@ set terminal postscript color enhance
 \item The floating-point system
 \item Hexadecimals, Binary-Coded Decimals (BCD), Gray codes, and ASCII
 \end{enumerate}
-\textbf{Homework: exercises 1-32, 35-40 Ch. 2 (DF) (two weeks).}
+\textbf{Homework: exercises 5-16, 19-32, 35-38, 45, 53, 58 Ch. 2 (DF) (two weeks).}
 \end{frame}
 
 \end{document}
