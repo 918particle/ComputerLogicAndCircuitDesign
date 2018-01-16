@@ -19,9 +19,9 @@
 \item Binary conversions
 \item Binary arithmetic
 \item The floating-point system
-\item Hexidecimals, Binary-Coded Decimals (BCD), Gray codes, and ASCII
+\item Hexadecimals, Binary-Coded Decimals (BCD), Gray codes, and ASCII
 \end{enumerate}
-\textbf{Homework: exercises 1-40 Ch. 2 (DF) (two weeks)}
+\textbf{Homework: exercises 1-32, 35-40 Ch. 2 (DF) (two weeks).}
 \end{frame}
 
 \section{Number representation}
@@ -414,6 +414,232 @@ Highest signed & 127 & 32767
 By changing the role of the MSB, we are not reducing the \textit{range} of numbers, just its \textit{location}.  Related to \textit{conservation of information...}
 \end{frame}
 
+\begin{frame}{Binary Arithmetic}
+2's compliment, signed number representation and conversion, arithmetic with negative numbers \\ 
+\hrulefill
+\begin{enumerate}
+\item Write -278 in binary, 2's compliment form.
+\item Convert -302 and 65 each to binary, and add them.
+\item This number is in 2's compliment form: 11001101.  Convert it to decimal. 
+\end{enumerate}
+\end{frame}
+
+\section{The Floating-Point System}
+
+\begin{frame}{The Floating-Point System}
+\alert{Who has taken software programming?}\footnote{Normally, this is a pre-requisite for this course, but in this innaugural year we are more flexible.}\\
+In software code, we allocate memory for variables which could be decimal numbers.  In C++, this might look like \\ \vspace{0.5cm}
+\textit{\textbf{float} var = } $15.237$; \\ \vspace{0.15cm}
+\textit{\textbf{double} var = } $1.61E-19$; \\ \vspace{0.15cm}
+\textit{\textbf{unsigned int} var = } $8$; \\ \vspace{0.15cm}
+\textit{\textbf{long int} var = } $3200000000$; \\ \vspace{0.15cm}
+We will now learn the origin and purpose of these keywords.
+\end{frame}
+
+\begin{frame}{The Floating-Point System}
+A \textit{floating-point number} is a general system for storage of wide ranges of real numbers in binary.  \alert{The structure of a floating-point number:} \\ \vspace{0.125cm}
+\tiny
+\begin{table}
+\centering
+\begin{tabular}{| c | c | c | c | c | c |}
+\hline
+N & Binary & Scientific Notation & \alert{Sign bit} & \alert{Exponent} & \alert{Mantissa} \\ \hline
+$-10.23$ & $-1010.0011101$ & $-1.0100011101 \times 2^{3}$ & 1 & 10000010 & 01000111010000000000000 \\ \hline
+$22.3$ & $10110.01001100$ & $1.011001001100 \times 2^{4}$ & 0 & 10000011 & 01100100110000000000000 \\ \hline
+\end{tabular}
+\caption{\label{tab:floats} \small For \textbf{float} or \textbf{single} precision, the number of bits allowed for the sign, exponent and mantissa is \textbf{32}.  The exponent is $3+127$ in binary.  We \textit{bias} the exponent by 127 so that the range of exponents can be both negative and positive.}
+\end{table}
+\small
+\begin{itemize}
+\item Float or single precision: 32 bits
+\item Double precision: 64 bits
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Floating-Point System}
+\alert{The structure of a floating-point number:} \\ \vspace{0.125cm}
+\tiny
+\begin{table}
+\centering
+\begin{tabular}{| c | c | c | c | c | c |}
+\hline
+N & Binary & Scientific Notation & \alert{Sign bit} & \alert{Exponent} & \alert{Mantissa} \\ \hline
+$22.3$ & $10110.01001100$ & $1.011001001100 \times 2^{4}$ & 0 & 10000011 & 01100100110000000000000 \\ \hline
+$6.825$ & $1010.11010011$ & $1.01011010011 \times 2^{3}$ & 0 & 10000010 & 01011010011000000000000 \\ \hline
+\end{tabular}
+\caption{\label{tab:floats2} \small Note that the MSB in scientific notation is \textbf{dropped} in the mantissa.  Why?}
+\end{table}
+\small
+Convert the following numbers into \textbf{floats}:
+\begin{itemize}
+\item 8.125
+\item -4.0625
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Floating-Point System}
+\small
+\textbf{Addition and subtraction with signed numbers}: either number can be positive/negative, and the larger/smaller number by magnitude.  Thus, 4 combinations are possible:
+\begin{table}
+\centering
+\begin{tabular}{| c | c | c |}
+\hline
+... & Negative & Positive \\ \hline
+Larger & A & B \\ \hline
+Smaller & C & D \\ \hline
+\end{tabular}
+\caption{\label{tab:floats3} Four categories, two numbers, so 6 initial pairs: AB AC AD BC BD CD.  However, AB and CD aren't real choices, so the list is: AC AD BC BD.}
+\end{table}
+Bottom line: both negative, both positive, one negative one positive (two cases)
+\end{frame}
+
+\begin{frame}{The Floating-Point System}
+The results:
+\begin{enumerate}
+\item Both negative $\rightarrow$ \alert{discard the carry}
+\item One positive, one negative, and the negative number has a larger magnitude
+\item One positive, one negative, and the positive number has a larger magnitude $\rightarrow$ \alert{discard the carry}
+\item Both positive
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{The Floating-Point System}
+\small
+\textbf{Example of negative-negative case:} $-13-9=-22$. \\ \vspace{0.5cm}
+\begin{enumerate}
+\item Identify case: both are negative, with magnitudes of 13 and 9.
+\item Decide $n$-bits.  Ensure that $2^n-1$ is much larger than other numbers.  Let's choose $n=8$.
+\item Convert the first magnitude (13) to 2's compliment form: $2s(00001101) = 11110011$
+\item Convert the second magnitude (9) to 2's compliment form: $2s(00001001) = 11110111$
+\item Add them, and in this case, drop the final carry: $11101010$
+\item Check: $2s(11101010) = 00010110 = 22$
+\end{enumerate}
+\end{frame}
+
+\section{Hexadecimals, BCD, Gray-Codes, and ASCII}
+
+\begin{frame}{Hexadecimals, BCD, Gray-Codes, and ASCII}
+Why do we use Hexadecimals? \\ \vspace{0.5cm}
+\url{https://youtu.be/DqfnMzDhi38} \\
+In case you get your butt stranded on Mars, and need to devise a rag-tag communication system from a camera-pole, is why.
+\end{frame}
+
+\begin{frame}{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\small
+Astronaut Watney needs a way to cram more information into shorter-length words...hexadecimals
+\tiny
+\begin{table}
+\centering
+\begin{tabular}{c c c}
+Decimal & Binary & Hexadecimal \\ 
+0 & 0000 & 0 \\
+1 & 0001 & 1 \\
+2 & 0010 & 2 \\
+3 & 0011 & 3 \\
+4 & 0100 & 4 \\
+5 & 0101 & 5 \\
+6 & 0110 & 6 \\
+7 & 1111 & 7 \\
+8 & 1000 & 8 \\
+9 & 1001 & 9 \\
+10 & 1010 & A \\
+11 & 1011 & B \\
+12 & 1100 & C \\
+13 & 1101 & D \\
+14 & 1110 & E \\
+15 & 1111 & F 
+\end{tabular}
+\caption{\small \label{tab:hex1} Decimal, binary and Hexadecimal representations of numbers.  What do you notice that is different between the representations?}
+\end{table}
+\end{frame}
+
+\begin{frame}{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\small Because $2^4 = 16$, we may group bits in bit sequences in groups of four, and read out the hexadecimal conversion: \\ \vspace{0.5cm}
+$0b11010010 = 1101~0010 = (13)~(2) = 0xD2$ \\ \vspace{0.5cm}
+On page 71 of DF: ``It should be clear that it is much easier to deal with a hexadecimal number than with the equivalent binary number.  Since conversion is so easy, the hexadecimal system is widely used for representing binary numbers in programming, printouts, and displays.'' \\ \vspace{0.5cm}
+\alert{It is probably important.}  What follows is a few examples of how I've encountered hexadecimals.
+\end{frame}
+
+\begin{frame}[fragile]{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\tiny
+\begin{verbatim}
+set key at 500,73 box on samplen 2 spacing 1.5 font "Courier,16" width 2
+set xrange [1:1e3]
+set yrange [0:180]
+set format x "10^{%T}"
+set rmargin 8
+set lmargin 13
+set tmargin 2
+set bmargin 6
+set xlabel "Frequency [MHz]" font "Courier,28" offset 0,-2,0
+set ylabel "Phase (deg)" font "Courier,28" offset -5,0,0
+set ytics scale 2 font "Courier,28"
+set xtics scale 2 font "Courier,28" offset 0,-1,0
+set style line 6 linecolor rgb "#000000" linewidth 5.000 dashtype 3 pointtype 2
+set style line 7 linecolor rgb "#BBBBBB" linewidth 5.000 dashtype 3 pointtype 2
+set linestyle 1 lc rgb "#000000" lw 5
+set linestyle 2 lc rgb "#444444" lw 5
+set linestyle 3 lc rgb "#888888" lw 5
+set linestyle 4 lc rgb "#BBBBBB" lw 5
+set linestyle 5 lc rgb "#DDDDDD" lw 5
+set terminal postscript color enhance
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{figures/fromPaper.png}
+\caption{\label{fig:frompaper} A figure from a recent paper we published about neutrino signals in ice.  The hexadecimals were used to encode the line-colors.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\textbf{A math problem:} If the RGB (red, green, blue) codes have the following format 0xA1B2C3, where each hex word (two characters) represents an amount of red, green, and blue (sequentially), how many distinct shades of each are technically possibe? How many colors are therefore possible (even if a standard monitor could not resolve them)? \\ \vspace{0.5cm}
+\textbf{Volunteer to board?}
+\end{frame}
+
+\begin{frame}{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\small In graduate school, I was responsible for designing and deploying a housekeeping integrate circuit (HK board).  The task of this device was to control which subsystems are activated in an ARIANNA station, managing power consumption.
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth,trim=0cm 1cm 0cm 0.5cm,clip=true]{figures/RelayBank.pdf}
+\caption{\label{fig:relay} \small Symbolic representation of a relay bank. \textit{Raising} the various signals $S_{\rm i}$ to a HIGH state connects the sub-system voltages $V_{\rm i}$ to power sources at the given voltages, and setting them to LOW state powers down the subsystems.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\small In software, the C-code interpreted a \textit{\alert{bit-mask}} in hexadecimal, which the single-board computer (SBC) would send to the digital IO (input/output), connected to the $S_{\rm i}$ lines.  For example, $0b11100000$ activated only the 3V subsystems.
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth,trim=0cm 1cm 0cm 0.5cm,clip=true]{figures/RelayBank2.pdf}
+\caption{\label{fig:relay2} \small The $S_{\rm i}$ lines were controlled by the system digital IO.  The above bit-mask was sent from the C-code through the digital IO.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\small However, to save space on a hard drive that only had 4 GB of space, with potentially thousands of defined functions that had to send bit masks, the manufacturer designed the base bitmasking function input as a hex word (two hex characters).  In this case, it would have been $0xD0 = 0b11100000$.
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth,trim=0cm 1cm 0cm 0.5cm,clip=true]{figures/RelayBank2.pdf}
+\caption{\label{fig:relay3} \small A bitmask of $D0$.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth,trim=0cm 1cm 0cm 0.5cm,clip=true]{figures/RelayBank.pdf}
+\caption{\label{fig:relay4} \small The general case for the relay bank.}
+\end{figure}
+\small
+\begin{enumerate}
+\item What hex word would activate only the 5V systems?
+\item What hex word would activate only the 12V sytems?
+\item What hex word would activate just $S_{\rm 1}$, $S_{\rm 4}$, and $S_{\rm 7}$?
+\end{enumerate}
+\end{frame}
+
 \section{Conclusion}
 
 \begin{frame}{Unit 1.3 Summary - Working with Binary}
@@ -423,9 +649,9 @@ By changing the role of the MSB, we are not reducing the \textit{range} of numbe
 \item Binary conversions
 \item Binary arithmetic
 \item The floating-point system
-\item Hexidecimals, Binary-Coded Decimals (BCD), Gray codes, and ASCII
+\item Hexadecimals, Binary-Coded Decimals (BCD), Gray codes, and ASCII
 \end{enumerate}
-\textbf{Homework: exercises 1-40 Ch. 2 (DF) (two weeks)}
+\textbf{Homework: exercises 1-32, 35-40 Ch. 2 (DF) (two weeks).}
 \end{frame}
 
 \end{document}
