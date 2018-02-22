@@ -212,12 +212,14 @@ Convert the numbers at right to binary. \\ \vspace{1cm}
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
+\small
 \begin{enumerate}
 \item 93
 \item 189
 \item 270
 \end{enumerate}
-\textit{Note: how many bits do you need for that last one?}  For binary, show that the highest representable number with $n$ bits is $2^n-1$.
+\textit{Note: how many bits do you need for that last one?}  For binary, show that the highest representable number with $n$ bits is $2^n-1$. \\ \vspace{0.2cm}
+Notice that we get a \textit{repeating pattern} when we compare the conversion of 189 and 93.  Why?
 \end{column}
 \end{columns}
 \end{frame}
@@ -240,6 +242,32 @@ Algorithm:
 \item Watch for repeating patterns.
 \end{enumerate}
 Convert 0.48 to binary using the successive multiplication method until you identify a repeating pattern.
+\end{frame}
+
+\begin{frame}{Binary Conversion}
+Convert the numbers at right to binary. \\ \vspace{1cm}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item $2^0 = 1$
+\item $2^1 = 2$
+\item $2^2 = 4$
+\item $2^3 = 8$
+\item $2^4 = 16$
+\item $2^5 = 32$
+\item $2^6 = 64$
+\item $2^7 = 128$
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\small
+\begin{enumerate}
+\item 0.64
+\item 0.125
+\end{enumerate}
+Which result should have a smaller number of digits, and why?
+\end{column}
+\end{columns}
 \end{frame}
 
 \section{Binary Arithmetic}
@@ -314,6 +342,11 @@ Binary multiplication stems from another set of rules: \\ \vspace{0.5cm}
 \item $0\times 1=0$
 \item $1\times 1=1$
 \end{itemize}
+Multiply:
+\begin{enumerate}
+\item $10 \times 10$
+\item $110 \times 10$
+\end{enumerate}
 \end{column}
 \begin{column}{0.5\textwidth}
 \small
