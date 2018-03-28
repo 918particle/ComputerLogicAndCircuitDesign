@@ -1,0 +1,54 @@
+\title{Midterm 1 for Computer Logic and Circuit Design: PHYS306/COSC330}
+\author{Dr. Jordan Hanson - Whittier College Dept. of Physics and Astronomy}
+\date{\today}
+\documentclass[10pt]{article}
+\usepackage[a4paper, total={18cm, 27cm}]{geometry}
+\usepackage{outlines}
+\usepackage[sfdefault]{FiraSans}
+\usepackage{hyperref}
+\begin{document}
+\maketitle
+
+\textit{This take-home midterm exam is open-note.  It is due Thursday, April 5th, 2018 in SLC 212 mail slot.}
+
+\section{Super-heterodyne transistor radio}
+\begin{enumerate}
+\item Describe the function in a few sentences of each of the following components in the super-heterodyne radio:
+\begin{itemize}
+\item The local oscillator \\ \vspace{0.33cm}
+\item The mixer \\ \vspace{0.33cm}
+\item The intermediate frequency (IF) \\ \vspace{0.33cm}
+\item The demodulator \\ \vspace{0.33cm}
+\end{itemize}
+\item In the 2P3 example we built, what is the function of each of the three transistors? \\ \vspace{0.5cm}
+\end{enumerate}
+
+\section{Numerical systems}
+\begin{enumerate}
+\item Suppose we are dealing with a numerical code for displaying RGB colors.  The amount of red a pixel has is represented by a hexidecimal number between 0-255 (decimal), and the amounts of green and blue get similar values.  For example, the color white would be 0xFFFFFF, because red takes the value FF, green takes the value FF, and blue takes the value FF.  (a) Write an algorithm or a script in the space below that displays the colors of the rainbow by scanning in hexidecimal (red, orange, yellow, green, blue, indigo, and violet). (b) Modify the algorithm to display the RGB values in binary instead of hexidecimal.  \\ \vspace{3cm}
+\item (a) Repeat the prior algorithm, but instead of the rainbow, scan through grayscale (solid black to solid white, with shades of gray in between). (b) Convert the color codes to binary as in the prior algorithm. \\ \vspace{3cm}
+\item Using XOR and AND gates, draw an 8-bit adder with a pins for an output carry, 8 pins for each input number, and 8 pins for the output number. \\ \vspace{3cm}
+\item Use this 8-bit adder design to add 125 and -42, showing all input binary values and output binary values.  Confirm the answer with binary arithmetic separately. \\ \vspace{3cm}
+\item Express the following numbers in 32-bit floating point precision: (a) -103,102 (b) 201,301 (c) -1,001,000 \\ \vspace{2cm}
+\end{enumerate}
+
+\section{IC properties, and waveform properties}
+\begin{enumerate}
+\item Suppose a particular pulse has a width of 1 $\mu$s and a period of 10 $\mu$s.  What is the duty cycle? \\ \vspace{0.5cm}
+\item Suppose a particular system produces regular pulses at a rate of 20 MHz.  How many pulses are produced in 10 $\mu$s? \\ \vspace{0.5cm}
+\item If a gate input supply current in the low state, $I_{\rm CCL}$, and a gate input supply current in the high state, $I_{\rm CCH}$ average to $\bar{I} = (I_{\rm CCL} + I_{\rm CCH})/2$, and the gate supply voltage is $V_{\rm CC}$, then the power consumption is $P = V_{\rm CC} \bar{I}$.  Suppose each XOR gate in the 8-bit adder above draws $I_{\rm CCH} = 2 \mu$A and $I_{\rm CCL} = 0.5 \mu$A at $V_{\rm CC} = 5$V.  Suppose each AND gate in the 8-bit adder above draws $I_{\rm CCH} = 2.5 \mu$A and $I_{\rm CCL} = 0.75 \mu$A at $V_{\rm CC} = 5$V.  What is the total power consumption of the component? \\ \vspace{2cm}
+\end{enumerate}
+
+\section{Boolean Algebra}
+\begin{enumerate}
+\item Create an XOR gate from 4 NAND gates, and draw the circuit below.  Verify with a truth table. \\ \vspace{5cm}
+\item Suppose Alexa, Bobby, Carlos, and Diana run a shipping company.  Each member has the ability to give the OK for a shipping container to be shipped, or not OK.  Currently, a shipping container is added to the cargo ship if either Alexa or Bobby (but not both) gives the OK, and Carlos and Diana both give the OK.  (a) Write this process in terms of Boolean logic gates.  (b) Determine the S-SOP expression, and map it into a 4-domain K-map.  (c) Based on the K-map, can this situation be simplified?  Why or why not?  \\ \vspace{4cm}
+\item Suppose another requirement is added by management: in each shipping decision, Bobby and Diana both must give the OK, and the other two original criteria must also both be satisfied.  (a) Write this process in terms of Boolean logic gates.  (b) Determine the S-SOP expression, and map it into a 4-domain K-map.  (c) Based on the K-map, how can this situation be simplified?  Why or why not?  \\ \vspace{4cm}
+\item Simplify the following expression into an expression with as few operations as possible:
+\begin{equation}
+X = \bar{A}\bar{B}CD+\bar{A}BCD+ABCD+AB\bar{C}\bar{D}+ABC\bar{D}+\bar{A}\bar{B}\bar{C}D
+\end{equation} \\ \vspace{3cm}
+\item As part of an aircraft's functional monitoring system, a circuit is required to indicate the status of the landing gears prior to landing.  A green LED display turns on if all three gears are properly extended when the ``gear down'' switch has been activated in preparation for landing.  A red LED display turns on if the corresponding landing gear fails to extend properly prior to landing.  When a landing gear is extended, its sensor produces a HIGH voltage.  When a landing gear is retracted, its sensor produces a LOW voltage.  Implement a circuit that performs this task.
+\end{enumerate}
+
+\end{document}
