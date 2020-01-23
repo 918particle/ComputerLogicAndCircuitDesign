@@ -9,21 +9,21 @@
 \maketitle
 
 \begin{abstract}
-The fundamental concepts of digital logic and digital circuit design are presented, both theoretically and in laboratory exercises.  In the beginning, core concepts like binary number systems, binary mathematics, and floating point representation are presented.  The concepts of Boolean logic and logic gates, truth tables, combinatorial logic and Karnaugh maps follow, all with corresponding laboratory demonstrations or exercises.  These core concepts prove useful in a wide range of engineering, business, and scientific situations.  Laboratory exercises are designed to provide hands-on experience with the physical implementation of digital logic gates and programmable logic.  Following an understanding of core modules, more complex digital elements are introduced.  Examples include flip-flops (memory elements), counters, registers and shift registers.  The course concludes with examples of digital systems useful for science and engineering, including binary adders (ALUs) and analog-to-digital converters (ADCs), digital-to-analog converters (DACs), digital signal processing (DSP) of audio, and HDMI video.  Student-designed projects are created and presented near the end of the course that integrate programmable logic and peripheral devices that enrich the student experience.
+The core concepts of digital logic and digital circuit design are presented in this course, augmented with laboratory exercises.  The course begins with binary mathematics and floating point representation.  The concepts of Boolean logic and logic gates, truth tables, combinatorial logic and Karnaugh maps follow.  These core concepts prove useful in a wide range of engineering, business, and scientific situations.  Laboratory exercises are designed to emphasize hands-on experience with digital logic in firmware.  Following an understanding of core modules, more complex digital elements are introduced.  Examples include flip-flops (memory elements), counters, registers and shift registers.  The course concludes with examples of digital systems useful for science and engineering, including binary adders (ALUs), analog-to-digital converters (ADCs), and digital-to-analog converters (DACs).  Time permitting, the subject of digital signal processing (DSP) is introduced.  Students will create and present final projects that integrate programmable logic and peripheral devices, to enrich the learning experience.
 \end{abstract}
 
 \noindent
-\textit{\textbf{Pre-requisites}: PHYS180, COSC120.  Students may receive permission to take these courses in the same semester as PHYS306/COSC330.} \\
+\textit{\textbf{Pre-requisites}: PHYS180, COSC120.  Pre-requisites may be waived at instructor discretion.} \\
 \textit{\textbf{Course credits, Liberal Arts Categorization}: 3 Credits, None} \\
 \textit{\textbf{Regular course hours}: Tuesdays and Thursdays from 13:30 - 14:50 in SLC 104.  Laboratory exercises: SLC 102.} \\
 \textit{\textbf{Instructor contact information}: jhanson2@whittier.edu, tel. 562.907.5130} \\
 \textit{\textbf{Office hours}: Monday 8:00-12:00 in SLC 212} \\
-\textit{\textbf{Attendance/Absence}: Students needing to reschedule midterms and exams should notify the professor a reasonable time beforehand. Further attendance issues are left to the discretion of the instructor}.\\ 
+\textit{\textbf{Attendance/Absence}: Students needing to reschedule midterms and exams should notify the professor.} \\ 
 \textit{\textbf{Late work policy}: Late work is generally not accepted, but is left to the discretion of the instructor.} \\
 \textit{\textbf{Text}:  Digital Fundamentals, 11th ed., by Thomas L. Floyd (Pearson).  This is a widely adopted text with a variety of online features, online chapters, code examples, and excellent homework sets\footnote{As a general rule, Prof. Hanson does not require students to purchase expensive texts.  However, it is generally recommended to have this book as a reference if you are planning on a a degree in engineering or science.  Please make arrangements with Prof. Hanson if you need assistance acquiring the book.}.} \\
 \textit{\textbf{Grading}: The assignment weighting for this course: two midterms worth 15\% each, laboratory exercises worth 15\%, homework exercises worth 25\%, a final project design and presentation worth 15\%, and a final exam worth 15\%.  The final exam will be held on May 8th, from 15:30 - 17:30.} \\
 \textit{\textbf{Grade Settings}: $<60\%$ = F, $>60\%,\leq 70\%$ = D, $>70\%,\leq80\%$ = C, $>80\%,\leq 90\%$ = B, $<90\%,\leq 100\%$ = A.  Pluses and minuses: 0-3\% minus, 3\%-6\% straight, 6\%-10\% plus (e.g. 79\% = C+, 91\% = A-)} \\
-\textit{\textbf{Homework Sets}: Due weekly on Thursdays.  Homework sets usually include textbook problems, subitted computer code, and other digital designs/plans.} \\
+\textit{\textbf{Homework Sets}: Due weekly on Thursdays, including textbook problems, subitted code, and digital designs.} \\
 \textit{\textbf{ADA Statement on Disability Services}: The Americans with Disabilities Act (ADA) is a federal anti-discrimination statute that provides comprehensive civil rights protection for persons with disabilities. Among other things, this legislation requires that all students with disabilities be guaranteed a learning environment that provides for reasonable accommodation of their disabilities. If you believe you have a disability requiring an accommodation, please contact Disability Services: disabilityservices@whittier.edu, tel. 562.907.4825.} \\
 \textit{\textbf{Academic Honesty Policy}: \url{http://www.whittier.edu/academics/academichonesty}} \\
 \textit{\textbf{Course Objectives}:}
@@ -43,44 +43,37 @@ The fundamental concepts of digital logic and digital circuit design are present
 \2 First meeting - Thursday, January 30th, 2020.
 \3 Course introduction, syllabus distribution
 \3 \textit{Laboratory tour and introductory laboratory exercises}
-\4 The PYNQ-Z1 System on a Chip (SoC)
-\4 Jupyter Notebooks
+\4 The PYNQ-Z1 System on a Chip (SoC) and Jupyter Notebooks
 \4 Breadboards, digital voltmeters, DC power supplies
 \4 Oscilloscopes and signal generation
 \1 Week 1 - \textbf{Reading: Chapters 1-2 of Digital Fundamentals.}
-\2 First meeting - Tuesday, February 4th, 2020. \textit{Reading: Chapter 1 of DF.}
-\3 Introductory concepts in digital design
-\3 Logic functions: basic, combinatorial and sequential
+\2 First meeting - Tuesday, February 4th, 2020. \textit{Reading: Chapter 1.}
+\3 Logic functions: basic, combinatorial, and serial and parallel
 \3 Programmable logic and fixed IC logic
 \3 Test and measurement instruments
 \3 \textit{Laboratory exercise, part I}
 \4 Logic signal creation and measurement with oscilloscope
 \4 Capturing digital signals from PYNQ-Z1: the PL layer and logictools library
 \2 Second meeting - Thursday, February 6th, 2020. \textit{Reading: Chapters 2-1 through 2-7}
-\3 Decimal and binary numbers, conversions and arithmetic
-\3 Signed numbers and arithmetic with signed numbers
+\3 Decimal and binary numbers, conversions and arithmetic, signed numbers
 \3 \textit{Laboratory exercise, part II}
 \4 Representing a binary number with LEDs
 \4 PYNQ-Z1 and logictools: boolean generator, simple version.
 \1 Week 2 - \textbf{Reading: Chapters 2-3 of Digital Fundamentals.}
 \2 First meeting - Tuesday, February 11th, 2020.  \textit{Reading: Chapters 2-8, 2-10 through 2-12}
 \3 Hexadecimal numbers
-\3 BCD and other numerical codes
-\3 Error codes: parity bits and CRCs
+\3 BCD, gray codes, and the parity and CRC error codes
 \3 \textit{Laboratory exercise, part I}
 \4 Decimal, binary, and hexadecimal conversion
 \4 Python programming, random number generation, and matplotlib
 \2 Second meeting - Thursday, February 13th, 2020. \textit{Reading: Chapters 3-1 through 3-6}
 \3 Logic gates: NOT, AND, OR, NAND, NOR, XOR, XNOR
 \3 \textit{Laboratory exercise, part II}
-\4 PYNQ-Z1 and logictools finite state machine (FSM) generator
-\4 Creating a gray code counter
+\4 PYNQ-Z1 and logictools: finite state machine (FSM) generator, gray code counter
 \1 Week 3 - \textbf{Reading: Chapters 3-4 of Digital Fundamentals.}
 \2 First meeting - Tuesday, February 18th, 2020. \textit{Reading: Chapters 3-8 and 3-9, 4-1 and 4-2}
 \3 Programmable logic with gates
-\3 Troubleshooting
-\3 Boolean operations and expressions, algebra
-\3 Abstract applications and examples in business, engineering
+\3 Boolean algebra, with applications and examples in business and engineering
 \3 \textit{Laboratory exercise, part 1}
 \4 Complex boolean functions, simulation, programmable logic, verification, part I
 \2 Second meeting - Thursday, February 20th, 2020.  \textit{Reading: Chapters 4-3 through 4-10}
@@ -94,83 +87,104 @@ The fundamental concepts of digital logic and digital circuit design are present
 \3 Combinatorial systems of logic gates
 \3 Universal NAND and NOR gates
 \3 \textit{Laboratory exercise, part I}
-\4 Trace analyzer and pattern generator
-\4 Use PYNQ-Z1 and pattern generator to multi-pin digital patterns
-\4 View multi-pin digital patterns with trace analyzer
+\4 PYNQ-Z1 logictools: trace analyzer and pattern generator
+\4 Use PYNQ-Z1 and pattern generator to multi-pin digital patterns, view with trace analyzer
 \4 Plot the trace of combinatorial logic, part I
 \2 Second meeting - Thursday, February 27th, 2020. \textit{Reading: Chapters 5-4 through 5-7}
 \3 \textit{Laboratory exercise, part II}
+\4 Introduction to pynq logictools control module, stepping through code
 \4 Plot the trace of combinatorial logic, part II
-\4 System simplification and plot trace to show equivalency.
-\1 Week 5 - \textbf{Reading: Chapter 6 of Digital Fundamentals}
-\2 First meeting - Tuesday, March 3rd, 2020. \textit{Reading: Chapters 6-1 through 6-6}
-\3 Adders
-\3 Comparators
-\3 Encoders
+\4 System simplification and plot trace to show equivalency
+\1 Week 5 - \textbf{Reading: Review chapters 1-5 of Digital Fundamentals}
+\2 First meeting - Tuesday, March 3rd, 2020.
+\3 Review material, collection of example problems
+\3 Catch-up on laboratory exercises and troubleshooting
+\2 Second meeting - Thursday, March 5th, 2020.
+\3 \textbf{First midterm exam}
+\4 Covers material from chapters 1-5
+\4 Emphasis on binary operations, boolean algebra, and simple collections of gates
+\1 Week 6 - \textbf{Reading: Chapter 6 of Digital Fundamentals}
+\2 First meeting - Tuesday, March 10th, 2020. \textit{Reading: Chapters 6-1 through 6-6}
+\3 Adders, comparators, and encoders
 \3 \textit{Laboratory exercise, part I}
 \4 Testing fixed IC adders with scope, LEDs
 \4 Testing fixed IC comparators with scope, LEDs
-\2 Second meeting - Thursday, March 5th, 2020. \textit{Reading: Chapters 6-7 through 6-11}
+\2 Second meeting - Thursday, March 12th, 2020. \textit{Reading: Chapters 6-7 through 6-11}
 \3 Multiplexers and Demultiplexers
-\3 Troubleshooting
 \3 \textit{Laboratory exercise, part II}
 \4 Adders in programmable logic with gates
 \4 Comparators in programmable logic with gates
-\1 Week 6 - \textbf{Reading: Chapters 7 and 8}
-\2 First meeting - Tuesday, March 10th, 2020. \textit{Reading: Chapters 7-1 through 7-4, 7-5}
+\1 Week 7 - \textbf{Spring Break: March 16th through 20th, 2020.}
+\1 Week 8 - \textbf{Reading: Chapters 7 and 8}
+\2 First meeting - Tuesday, March 24th, 2020. \textit{Reading: Chapters 7-1 through 7-4, 7-5}
 \3 S-R latches, flip-flops, and applications
 \3 Timers and pulse generation
 \3 \textit{Laboratory exercise, part I}
 \4 Demonstration of fast pulse generation
 \4 Measurements of RF pulses, digital signal processing with NumPy/Octave
-\2 Second meeting - Thursday, March 12th, 2020. \textit{Reading: Chapters 7-5, and 8-1 through 8-4}
+\2 Second meeting - Thursday, March 26th, 2020. \textit{Reading: Chapters 7-5, and 8-1 through 8-4}
 \3 One-shots (timers)
 \3 Shift registers
 \3 \textit{Laboratory exercise, part II}
-\4 Formation of final project teams
-\4 Brainstorming for project ideas
-\1 Week 7 - \textbf{Spring Break: March 16th through 20th, 2020.}
-\1 Week 8 - \textbf{Reading: Chapters 8 and 9}
-\2 First meeting - Tuesday, March 24th, 2020. \textit{Reading: Chapters 8-5, 9-1 through 9-5}
+\4 Formation of final project teams.  \textit{Project proposals due one week later.}
+\1 Week 9 - \textbf{Reading: Chapters 8 and 9}
+\2 First meeting - Tuesday, March 31st, 2020. \textit{Reading: Chapters 8-5, 9-1 through 9-5}
 \3 Shift register applications
 \3 Finite state machines (FSMs)
 \3 Asynchronous and synchronous counters
 \3 \textit{Laboratory exercise, part I}
 \4 Testing fixed IC counters with scope
-\4 Simple FSM and counter example with PYNQ-Z!
-\2 Second meeting - Thursday, March 26th, 2020. \textit{Reading: 9-6 through 9-8}
-\3 Cascaded counters and counter decoding
-\3 Applications of counters
+\4 Simple FSM and counter example with PYNQ-Z1
+\2 Second meeting - Thursday, April 2nd, 2020. \textit{Reading: 9-6 through 9-8}
+\3 Cascaded counters and applications of counters
 \3 \textit{Laboratory exercise, part II}
 \4 Pattern generator counting and combination with boolean generator via pynq logictools control
 \4 FSM counter generation and combination with boolean generator via pynq logictools control
-\1 Week 9 - \textbf{Reading: Chapter 12}
-\2 First meeting - Tuesday, March 31st, 2020. \textbf{Reading: Chapters 12-1 through 12-3, with supplemental DSP reading}
+\1 Week 10 - \textbf{Reading: Review chapters 6-9}
+\2 First meeting - Tuesday, April 7th, 2020.
+\3 Review material, collection of example problems
+\3 Catch-up on laboratory exercises and troubleshooting
+\2 Second meeting - Thursday, April 9th, 2020.
+\3 \textbf{Second midterm exam}
+\4 Covers material from chapters 6-9
+\4 Emphasis on adders, timers and pulse generation, shift register applications, FSMs and counters
+\1 Week 11 - \textbf{Reading: Chapter 12}
+\2 First meeting - Tuesday, April 14th, 2020. \textbf{Reading: Chapters 12-1 through 12-3}
 \3 Analog-to-Digital Conversion (ADC)
 \3 Digital-to-Analog Conversion (DAC)
 \3 \textit{Laboratory exercise, part I}
 \4 PYNQ-Z1 PMOD (peripheral modules) ports
 \4 ADC PMOD - read in a voltage and plot it
-\2 Second meeting - Thursday, April 2nd, 2020. \textbf{Reading: Chapters 12-4 through 12-5, with supplemental DSP reading}
+\2 Second meeting - Thursday, April 16th, 2020. \textbf{Reading: Chapters 12-4 through 12-5}
 \3 Digital Signal Processing (DSP) - an introduction to sampling and digitization
-\3 The DSP processer
 \3 \textit{Laboratory exercise, part II}
 \4 PYNQ-Z1 PMOD (peripheral modules) ports
 \4 DAC PMOD - produce a voltage and plot it on oscilloscope
-\1 Week 10 - \textbf{Reading: }
-\2 First meeting - Tuesday, April 7th, 2020.
-\2 Second meeting - Thursday, April 9th, 2020.
-\1 Week 11
-\2 First meeting - Tuesday, April 14th, 2020.
-\2 Second meeting - Thursday, April 16th, 2020.
-\1 Week 12
-\2 First meeting - Tuesday, April 21st, 2020.
-\2 Second meeting - Thursday, April 23rd, 2020.
-\1 Week 13
-\2 First meeting - Tuesday, April 28th, 2020.
-\2 Second meeting - Thursday, April 30th, 2020.
+\1 Week 12 - \textbf{Reading: Chapters 2 and 3 of The Scientist and Engineer's Guide to DSP}
+\2 First meeting - Tuesday, April 21st, 2020. \textit{Reading: Chapters 2 of DSP Guide}
+\3 Selected topics in statistics and probability
+\3 Mathematics of sampling and digitization
+\3 \textit{Laboratory exercise, part I}
+\4 Audio signal acquisition with PYNQ-Z1
+\4 Processing of audio data in GNU Octave
+\2 Second meeting - Thursday, April 23rd, 2020. \textit{Reading: Chapters 3 of DSP Guide}
+\3 The sampling theorem
+\3 Aliasing and anti-aliasing
+\3 \textit{Laboratory exercise, part II}
+\4 More with GNU Octave
+\4 Aliasing in time-series (audio) data
+\1 Week 13 - \textbf{Reading: Chapters 30 and 31 of The Scientist and Engineer's Guide to DSP}
+\2 First meeting - Tuesday, April 28th, 2020. \textit{Reading: Chapter 30 of DSP Guide}
+\3 Complex numbers and the usage of complex numbers in DSP
+\3 \textit{Laboratory exercise, part I}
+\4 Exploring the Fourier transform, part I
+\2 Second meeting - Thursday, April 30th, 2020. \textit{Reading: Chapter 31 of DSP Guide}
+\3 Complex numbers and the FFT, filters
+\3 \textit{Laboratory exercise, part II}
+\4 Exploring the Fourier transform, part II
 \1 Week 14
 \2 First meeting - Tuesday, May 5th, 2020.
+\3 \textit{Group presentations: max. 15 minutes each, two students per group}
 \1 Final Exam: Friday, May 8th, 2020.
 \end{outline}
 \end{document}
