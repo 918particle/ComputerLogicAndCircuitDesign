@@ -42,12 +42,15 @@
 \section{Introduction to Test and Measurement Instruments}
 
 \begin{enumerate}
-\item Our first instrument to learn is the oscilloscope and function generator.  These two pieces of test equipment are incorporated into one device in this application.  Connect the BNC coaxial cable from the signal generator output into channel 1.
+\item Our first instrument to learn is the oscilloscope and function generator.  These two pieces of test equipment are incorporated into one device in this application.  Connect the BNC coaxial cable (the black cable) between the \verb+Gen+ output and channel 1\footnote{This feature is not enabled on every scope.  Please double up in groups to observe if the scope gives you an error message.}.  Press the Wave Gen button under Trigger.  Determine how to create a sine wave signal by tuning the parameters at the bottom.
 \begin{figure}
 \centering
 \includegraphics[width=0.55\textwidth,trim=0cm 5cm 0cm 5cm,clip=true]{Scope.pdf}
-\caption{\label{fig:scope} The basic controls of an oscilloscope.}
+\caption{\label{fig:scope} The basic controls of an oscilloscope  This model is not exactly the same one as those in the lab, but the features are identical.}
 \end{figure}
+\item Remember the amplitude in volts of the sine wave, and adjust the trigger voltage with the grey knob under trigger until the waveform is displayed.
+\item Select ``Pulse'' from the signal types, and set the frequency to 1 kHz.  Set the high level to some voltage above 100 mV, and the low voltage to 0.0 V (these controls are along the bottom).  Adjust the pulse width to 100 $\mu$s, giving the pulse a \textit{duty cycle} of 10 \%.  Make sure you are still triggering on it.
+\item Zoom in on one of the pulses, presumably the one on which the scope is triggering.  Sketch it below, noting how the features differ from a perfect square pulse.
 \end{enumerate}
 
 \end{document}
