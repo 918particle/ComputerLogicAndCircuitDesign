@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{fancyvrb}
+\usepackage{url}
+
+\begin{document}
+
+\title{Synopsis - Week 1: Introduction and Laboratory Tour}
+\author{Prof. Jordan C. Hanson}
+
+\maketitle
+
+\section{Introduction to PYNQ-Z1 System-on-a-Chip (SoC)}
+
+\begin{enumerate}
+\item Connect the PYNQ-Z1 board to the laptop via the USB to Ethernet converter.  Next, connect the micro-USB cable between the PYNQ-Z1 and the laptop.  Open a browser and navigate to http://192.168.2.99.
+\item You should be prompted to enter a password.  Type \verb+xilinx+.  You are now inside the chip at the center of the board, running a version of linux on the dual-core ARM.  Navigate to the Getting Started folder by clicking, and run the tutorial entitled \verb+1_jupyter_notebook.ipynb+.  Python notebooks can run code and contain writing in markup.
+\item Click the ``Running'' tab when you are done with the notebook, and close the jupyter notebook.  Click ``New'' in the upper right hand corner to open a terminal.  In the terminal, type \verb+shutdown now+.  Close the browser tabs and power down the PYNQ-Z1 board.
+\end{enumerate}
+
+\section{Boolean Generator on PYNQ-Z1}
+
+\begin{enumerate}
+\item Log in to the SoC in the usual way (see above).  Navigate to the \verb+logictools+ directory.
+\item Read the instructions for how to create a \textit{boolean generator}.  The boolean generator links digital inputs and outputs based on operations like NOT, OR, AND, and XOR.  Based on how the LEDs blink when you press the push buttons, what is the truth table of XOR? \\ \vspace{2cm}
+\item Create a python dictionary entitled \textit{function} and use the boolean generator to perform multiple logic operations:
+\begin{verbatim}
+from pynq.overlays.logictools import LogicToolsOverlay
+logictools_olay = LogicToolsOverlay('logictools.bit')
+function = {'f1': 'LD0 = PB0 ^ PB1', 'f2': 'LD1 = PB2 ^ PB3'}
+boolean_generator = logictools_olay.boolean_generator
+boolean_generator.setup(function)
+boolean_generator.run()
+\end{verbatim}
+Write the truth table for each separate logic function above. \\ \vspace{0.5cm}
+\item Finally, design a dictionary for a set of logic functions that adds the inputs of three pushbuttons \textit{as if they were binary digits}.
+\end{enumerate}
+
+\end{document}
