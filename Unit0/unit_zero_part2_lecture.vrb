@@ -1,0 +1,14 @@
+\frametitle{Hexadecimals, BCD, Gray-Codes, and ASCII}
+\textbf{Example}: compiling the following C++ code on some machines still \textit{rings the bell}.
+\begin{verbatim}
+#include <stdio.h>
+using namespace std;
+int main()
+{
+char y = 7;
+printf("%c\n",y);
+return 0;
+}
+\end{verbatim}
+\small
+Often used in systems and code involving exchanging strings of text.
