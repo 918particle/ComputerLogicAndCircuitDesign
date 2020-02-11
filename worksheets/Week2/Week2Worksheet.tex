@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{fancyvrb}
+\usepackage{url}
+
+\begin{document}
+
+\title{Synopsis - Week 2: Binary Numbers}
+\author{Prof. Jordan C. Hanson}
+
+\maketitle
+
+\section{Introductions to Connect and Disconnect to PYNQ-Z1 System-on-a-Chip (SoC)}
+
+\begin{enumerate}
+\item \textbf{Connect} the PYNQ-Z1 board to the laptop via the USB to Ethernet converter.  Next, connect the micro-USB cable between the PYNQ-Z1 and the laptop.  Open a browser and navigate to http://192.168.2.99.
+\item You should be prompted to enter a password.  Type \verb+xilinx+.  You are now inside the chip at the center of the board, running a version of linux on the dual-core ARM.  Navigate to the Getting Started folder by clicking, and run the tutorial entitled \verb+1_jupyter_notebook.ipynb+.  Python notebooks can run code and contain writing in markup.
+\item \textbf{Disconnect:} Click the ``Running'' tab when you are done with the notebook, and close the jupyter notebook.  Click ``New'' in the upper right hand corner to open a terminal.  In the terminal, type \verb+shutdown now+.  Close the browser tabs and power down the PYNQ-Z1 board.
+\item \textbf{Kernel reset:}  Whenever you make a mistake or want to change something, you should click the kernel reset button at the top of the screen.  This will reset all variables and make the SoC a blank slate again.  Kernel errors usually occur when the programmable logic is not programmed but the software asks for it.
+\end{enumerate}
+
+\section{Boolean Generator on PYNQ-Z1}
+
+\begin{enumerate}
+\item Navigate to the \verb+logictools+ directory.
+\item Read the instructions for how to create a \textit{boolean generator}.  The boolean generator links digital inputs and outputs based on operations like NOT, OR, AND, and XOR.  Based on how the LEDs blink when you press the push buttons, what is the truth table of XOR? \\ \vspace{2cm}
+\item Create a python dictionary entitled \textit{function} and use the boolean generator to perform multiple logic operations:
+\begin{verbatim}
+from pynq.overlays.logictools import LogicToolsOverlay
+logictools_olay = LogicToolsOverlay('logictools.bit')
+function = {'f1': 'LD0 = PB0 ^ PB1', 'f2': 'LD1 = PB2 ^ PB3'}
+boolean_generator = logictools_olay.boolean_generator
+boolean_generator.setup(function)
+boolean_generator.run()
+\end{verbatim}
+Write the truth table for each separate logic function above. \\ \vspace{1.5cm}
+\item Create a dictionary of logic functions $f_i$ that (a) add the input of up to three pressed buttons as if each is worth 1 point.  (b) Displays the 2's compliment of the pressed buttons as if the buttons represent a bitstream. Write example code for the functions here: \\ \vspace{1.5cm}
+\item Can you construct and verify an example that involves the associative property?  That is, a binary expression of the following sort:
+\begin{verbatim}
+f1 = (PB0 ^ PB1) & PB2'
+\end{verbatim}
+What \textit{should} the output be?  Does the LED output reflect this? 
+\end{enumerate}
+
+\end{document}
