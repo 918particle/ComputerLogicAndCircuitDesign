@@ -15,19 +15,33 @@
 \section{The Breadboard and the DVM}
 
 \begin{enumerate}
-\item Begin here.
+\item The DC power supply on the shelf above you should look familiar from PHYS180.  If you have not yet used one, the basic idea is that we can control the voltage \textit{between} the positive and negative terminals, while simultaneously limiting the current with the lower knob.  The \textit{digital volt-meter}, or DVM, is a device for measuring DC and AC voltage.
+\begin{enumerate}
+\item Set the DC power supply to 3.3 V.  Limit the current by turning the current knob all the way counter-clockwise, and then a little clockwise until the red light turns off.
+\item Plug the \textit{leads} of the DVM into the DVM ground or common (black) and DC voltage (red) holes if they are not already inserted.
+\item Touch the DVM leads into the ports in the DC power supply and verify the number displayed for the voltage.
+\item Use the black and red wires to connect the DC power supply to the \textit{breadboard} on the table.  Use the same color code and verify the voltage difference between the breadboard connections matches the DC power supply.
+\end{enumerate}
+\item Use the tiny \textit{jumper wires} to place the positive and ground voltages onto the breadboard.  Horizontal rows of five typically are an equipotential (all same voltage).  The long vertical rows also have all the same voltage, but this depends on the style of breadboard.
 \end{enumerate}
 
 \section{The LED and Resistor}
 
 \begin{enumerate}
-\item Begin here.
+\item The positive lead of the LED is longer than the negative lead.  We can't just give 3.3 V across the LED, though, it will burn out.  Thus, we place a \textit{resistor} to block the majority of the current from flowing through the LED.  We creat an $iR$ drop across the resistor and the rest of the current goes through the LED.
+\item Complete the circuit by attaching 3.3 V to one side of the resistor, followed \textit{in series} with the positive lead of the LED, followed \textit{in series} with ground.
+\item Turn on the 3.3V to activate the lead!
+\begin{enumerate}
+\item What happens when you change the voltage from 3.3V to 5V?
+\item What happens when you limit the current to zero?  (Use the current limit knob on DC power supply).
+\item \textit{Bonus: ask about how to perform the continuity test with the DVM}
+\end{enumerate}
 \end{enumerate}
 
 \section{Arduino Demonstration}
 
 \begin{enumerate}
-\item Begin here.
+\item Using a microcontroller to operate an LED with C-style code. (online: arduino.cc)
 \end{enumerate}
 
 \end{document}
