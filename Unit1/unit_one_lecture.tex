@@ -22,7 +22,6 @@
 \item Boolean logic
 \end{itemize}
 \item \alert{Boolean algebra I}
-\item IC Circuits, \textbf{data sheets}
 \item \alert{Boolean algebra II}
 \end{enumerate}
 \end{frame}
@@ -469,7 +468,7 @@ A ~ OR ~ B = A+B
 \begin{column}{0.5\textwidth}
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{figures/BasicNAND.pdf}
+\includegraphics[width=0.95\textwidth,trim=0cm 6cm 0cm 6cm,clip=true]{figures/BasicNAND.pdf}
 \caption{\label{fig:nand} The circuit representation of an NAND gate.  Two inputs, one output.}
 \end{figure}
 \end{column}
@@ -522,7 +521,7 @@ A & B & X \\
 \begin{column}{0.5\textwidth}
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{figures/TimingNand.pdf}
+\includegraphics[width=0.95\textwidth,trim=0cm 4cm 0cm 4cm,clip=true]{figures/TimingNand.pdf}
 \caption{\label{fig:nand2} Example timing diagram for NAND gate.  (Top) Input $A$.  (Middle) Input $B$. (Bottom) $\overline{AB}$ (A NAND B or NAND AB).}
 \end{figure}
 \end{column}
@@ -618,9 +617,32 @@ Note: have you started to pick up the notation here?  The bar is like complex co
 \small
 \textbf{In-class exercises:}
 \begin{itemize}
-\item Create an OR gate with NAND and NOT gates. a) 2-input version 3) 3-input version.
-\item Create an AND gate with NAND and NOT gates. a) 2-input version 3) 3-input version.
+\item Create an AND gate with the NAND operation.
 \end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Logic Gates}
+\textbf{The NAND gate:} requires \textbf{neither} input to be HIGH for the output to be HIGH \\ \vspace{0.5cm}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item \alert{NOT, $n=1$, $m=1$}
+\item \alert{AND, $n$, $m=1$}
+\item \alert{OR, $n$, $m=1$}
+\item \alert{NAND, $n$, $m=1$}
+\item NOR, $n=2$, $m=1$
+\item XOR, $n=2$, $m=1$
+\item XNOR, $n=2$, $m=1$
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.95\textwidth]{figures/NegativeOR.pdf}
+\caption{\label{fig:nand3} $\bar{AB} = \bar{A} + \bar{B}$.}
+\end{figure}
 \end{column}
 \end{columns}
 \end{frame}
@@ -642,7 +664,7 @@ Note: have you started to pick up the notation here?  The bar is like complex co
 \begin{column}{0.5\textwidth}
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth,trim=0cm 2cm 0cm 2cm,clip=true]{figures/BasicNOR.pdf}
+\includegraphics[width=0.95\textwidth,trim=0cm 6cm 0cm 6cm,clip=true]{figures/BasicNOR.pdf}
 \caption{\label{fig:nor} The circuit representation of an NOR gate.  Two inputs, one output.}
 \end{figure}
 \end{column}
@@ -695,7 +717,7 @@ A & B & X \\
 \begin{column}{0.5\textwidth}
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{figures/TimingNor.pdf}
+\includegraphics[width=0.95\textwidth,trim=0cm 4cm 0cm 4cm,clip=true]{figures/TimingNor.pdf}
 \caption{\label{fig:nor2} Example timing diagram for NOR gate.  (Top) Input $A$.  (Middle) Input $B$. (Bottom) $\overline{A+B}$ (A NOR B or NOR AB).}
 \end{figure}
 \end{column}
@@ -741,7 +763,7 @@ A ~ NOR ~ B = \overline{A+B}
 \begin{column}{0.5\textwidth}
 \textbf{In-class exercises:}
 \begin{itemize}
-\item Create a NOR gate from a NAND gate and inverters.  a) 2-input version b) 3-input version.  Verify with either a timing diagram or truth table.
+\item Create a 2-input NOR gate from NAND gates.  Verify with either a timing diagram or truth table.
 \end{itemize}
 \end{column}
 \end{columns}
@@ -762,76 +784,11 @@ A ~ NOR ~ B = \overline{A+B}
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
-\tiny
-\textbf{In-class exercise (from the text, this one is cool)}
-\begin{itemize}
-\item As part of an aircraft's functional monitoring system, a circuit is required to indicate the status of the landing gears prior to landing.  A green LED display turns on if all three gears are properly extended when the gear-down switch has been activated in preparation for landing.  A red LED display turns on if any of the gears fail to extend properly prior to landing.  When a landing gear is extended, its sensor produces a LOW voltage.  When a landing gear is retracted, its sensor produces a HIGH voltage.  Implement a circuit to meet this requirement.
-\end{itemize}
-\alert{To solve this problem, let's have a quick aside as to how LED's (light emitting diodes) work...}
-\end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}{Logic Gates}
-\textbf{LED - light emitting diode.}  What's a diode?  What is a transistor?  One kind of transistor is a p-n-p junction, or a n-p-n junction:
 \begin{figure}
 \centering
-\includegraphics[width=0.45\textwidth]{figures/transistor2.png}
-\includegraphics[width=0.45\textwidth]{figures/transistor3.png}
-\caption{\label{fig:trans1} One kind of transistor is the sandwich of semiconductors.}
+\includegraphics[width=0.95\textwidth]{figures/NORfromNAND.jpg}
+\caption{\label{fig:nor3} The result requires tying inputs together and inserting into NAND operations.}
 \end{figure}
-\end{frame}
-
-\begin{frame}{Logic Gates}
-\textbf{LED - light emitting diode.}  What's a diode?  Like a transistor, minus one layer.  Diodes will only conduct in one direction.
-\begin{figure}
-\centering
-\includegraphics[width=0.45\textwidth]{figures/diode.png}
-\caption{\label{fig:diode} A diode is a sandwich of only two layers of semiconductor rather than three.}
-\end{figure}
-\end{frame}
-
-\begin{frame}{Logic Gates}
-\textbf{LED - light emitting diode.}  What's a diode?  Like a transistor, minus one layer.  Diodes will only conduct in one direction.
-\begin{figure}
-\centering
-\includegraphics[width=0.45\textwidth]{figures/Diode.pdf}
-\includegraphics[width=0.45\textwidth]{figures/LED.png}
-\caption{\label{fig:diode2} (Left) The symbol for a diode.  Current flows towards the flat line. (Right) Some diodes emit visible photons when conducting electricity.}
-\end{figure}
-\end{frame}
-
-\begin{frame}{Logic Gates}
-\begin{figure}
-\centering
-\includegraphics[width=0.35\textwidth,trim=1cm 3cm 1cm 3cm,clip=true]{figures/GreenLEDOff.pdf}
-\includegraphics[width=0.35\textwidth,trim=1cm 3cm 1cm 3cm,clip=true]{figures/GreenLEDOn.pdf} \\
-\includegraphics[width=0.35\textwidth,trim=1cm 3cm 1cm 3cm,clip=true]{figures/RedLEDOff.pdf}
-\includegraphics[width=0.35\textwidth,trim=1cm 3cm 1cm 3cm,clip=true]{figures/RedLEDOn.pdf}
-\caption{\label{fig:diode3} \small (Upper left): The green LED is held off by a LOW signal, no voltage gradient. (Upper right) The green LED is activated by a HIGH signal, a voltage gradient.  (Lower left): The red LED is held off by a HIGH signal, no voltage gradient.  (Lower right): The red LED is activated by a LOW signal, a voltage gradient.}
-\end{figure}
-\end{frame}
-
-\begin{frame}{Logic Gates}
-\textbf{The NOR gate:} requires \textbf{both} inputs to be LOW for the output to be HIGH \\ \vspace{0.5cm}
-\begin{columns}[T]
-\begin{column}{0.5\textwidth}
-\begin{itemize}
-\item \alert{NOT, $n=1$, $m=1$}
-\item \alert{AND, $n$, $m=1$}
-\item \alert{OR, $n$, $m=1$}
-\item \alert{NAND, $n$, $m=1$}
-\item \alert{NOR, $n=2$, $m=1$}
-\item XOR, $n=2$, $m=1$
-\item XNOR, $n=2$, $m=1$
-\end{itemize}
-\end{column}
-\begin{column}{0.5\textwidth}
-\tiny
-\textbf{So now we can solve this problem:}
-\begin{itemize}
-\item As part of an aircraft's functional monitoring system, a circuit is required to indicate the status of the landing gears prior to landing.  A green LED display turns on if all three gears are properly extended when the gear-down switch has been activated in preparation for landing.  A red LED display turns on if any of the gears fail to extend properly prior to landing.  When a landing gear is extended, its sensor produces a LOW voltage.  When a landing gear is retracted, its sensor produces a HIGH voltage.  Implement a circuit to meet this requirement.
-\end{itemize}
 \end{column}
 \end{columns}
 \end{frame}
@@ -1006,7 +963,6 @@ A & B & X \\
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
-\tiny
 \textbf{In-class exercises:}
 \begin{itemize}
 \item Show that an XOR gate is a two-bit adder, neglecting the carry bit.
@@ -1055,7 +1011,6 @@ A & B & X \\
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
-\tiny
 \textbf{In-class exercises:}
 \begin{itemize}
 \item Create an 8-bit adder from XOR and AND gates.
@@ -1067,8 +1022,7 @@ A & B & X \\
 
 \section{Conclusion}
 
-\begin{frame}{Unit 2.1 Summary - Theoretical Logic Gates, and Operations}
-\textbf{Reading: DF Chapter 3-4 (Moodle)}
+\begin{frame}{Unit 1 Summary - Theoretical Logic Gates, and Operations}
 \begin{enumerate}
 \item Logic Gates
 \begin{itemize}
@@ -1078,7 +1032,6 @@ A & B & X \\
 \item Boolean logic
 \end{itemize}
 \item \alert{Boolean algebra I}
-\item IC Circuits, \textbf{data sheets}
 \item \alert{Boolean algebra II}
 \end{enumerate}
 \end{frame}
