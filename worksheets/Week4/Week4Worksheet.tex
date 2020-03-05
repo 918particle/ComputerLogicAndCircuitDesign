@@ -7,7 +7,7 @@
 
 \begin{document}
 
-\title{Synopsis - Week 3: Basic Logic Gates and Finite State Machines (FSMs)}
+\title{Synopsis - Week 4: Trace Analyzer, Pattern Generator, and Stepping}
 \author{Prof. Jordan C. Hanson}
 
 \maketitle
@@ -19,45 +19,26 @@
 \item If troubleshooting is needed, consult lab partners or the professor.
 \end{enumerate}
 
-\section{Boolean Generator on PYNQ-Z1}
+\section{Trace Analyzer and Pattern Generator}
 
 \begin{enumerate}
 \item Navigate to the \verb+logictools+ directory.
-\item Read the instructions for how to create a \textit{boolean generator}.  The boolean generator links digital inputs and outputs based on operations like NOT, OR, AND, and XOR.  If this looks familiar, create a blank Jupyer notebook and begin the next step.  If it doesn't look familiar, take a few minutes to run the steps in boolean generator.  Verify the correct behavior of the LEDs.
-\item In a new Jupyter notebook, create a python dictionary entitled \textit{function} and use the boolean generator to perform multiple logic operations:
-\begin{verbatim}
-from pynq.overlays.logictools import LogicToolsOverlay
-logictools_olay = LogicToolsOverlay('logictools.bit')
-function = {'f1': 'LD0 = !(PB0 | PB1)'}
-boolean_generator = logictools_olay.boolean_generator
-boolean_generator.setup(function)
-boolean_generator.run()
-\end{verbatim}
-In a separate cell, you can add the stop function for the boolean generator:
-\begin{verbatim}
-boolean_generator.stop()
-\end{verbatim}
-Write the truth table the logic function above.  What gate does it represent?  Draw the appropriate gate diagram.  \\ \vspace{0.5cm}
-\item Reset the kernel, and change the function to 
-\begin{verbatim}
-function = {'f1': 'LD0 = !(PB0 & PB1)'}
-\end{verbatim}
-Write the truth table the logic function above.  What gate does it represent?  Draw the appropriate gate diagram.  \\ \vspace{0.5cm}
-\item Finally, draw the relevant gate diagram for the function below.  Run the code and record the truth table.  Can you identify this as a basic logic function?  Why or why not?  
-\begin{verbatim}
-function = {'f1': 'LD0 = !(PB0 & PB1) & !(PB2 & PB3)'}
-\end{verbatim}
+\item Run the script entitled \verb+pattern generator and trace analyzer+, and carefully follow instructions.  Notice the notation in the \verb+up_counter+ object for the timing diagram.
+\item This notation is called waveJSON format.  It can also be used to display logic functions and gates.
+\item \textbf{Modify} the \verb+up_counter+ structure to change from a \textit{3-bit counter} to a \textit{4-bit counter.}  Use the display function to verify the timing diagram.
 \end{enumerate}
 
-\section{Finite State Machines (FSMs)}
+\section{Stepping}
 
 \begin{enumerate}
-\item Close the previous boolean generator script.  Navigate to the finite state machine Jupyter notebook in the logictools directory.
-\item Load the finite state machine generator according to the steps, and examine the diagram explaining the relationship between the eight states of the FSM.
-\item Notice that each state \textit{transition} goes either from state $N$ to $N+1$ or from $N$ to $N-1$.  Thus, each state either goes forward or backward
-\item Make sure you have two jumper wires to connect the right pins according to the image of the pynq-z1 board.
-\item Once you execute the FSM generator according to the plan in the diagram, the \textit{trace analyzer} will give you the timing diagram of the system.
-\item \textbf{Verify the that the timing diagram is counting in gray code.}  Read off the binary values from the timing diagram.  If you are not sure how this works, make sure to ask for assistance.
+\item Navigate to the \verb+single_stepping_generators+ notebook in \verb+logictools+.
+\item Carefully follow instructions and execute each cell in order.
+\item The \verb+logictools+ stepping function allows the firmware to (a) execute code as a digital firmware interface to the trace analyzer and pattern generator, and then (b) reprogram to form the boolean digital functions in the firmware and evaluate them, and (c) revert back.
+\item Do you observe the correct output?
 \end{enumerate}
+
+\section{Logging Out}
+
+Do not forget to log out of the system via the main page, 
 
 \end{document}
