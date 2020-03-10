@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{fancyvrb}
+\usepackage{url}
+
+\begin{document}
+
+\title{Synopsis - Week 5 Integrated Project: Universal NAND gates, FSM counter, and Boolean Logic}
+\author{Prof. Jordan C. Hanson}
+
+\maketitle
+
+\section{Universal NAND Gates}
+
+\begin{enumerate}
+\item Derive a two-input AND gate from NAND gates.  (a) Write this algebraically.  (b) Draw the gates below. \\ \vspace{1.25cm}
+\item Derive a three-input AND gate from NAND gates.  (a) Write this algebraically.  (b) Draw the gates below. \\ \vspace{1.25cm}
+\item Create a blank Jupyter notebook.  Use the \verb+boolean_generator+ code to create a three input AND gate from NAND gates.  Set the inputs to the push buttons and the output to an LED (as usual).
+\end{enumerate}
+
+\section{FSM Counter}
+
+\begin{enumerate}
+\item Recall the FSM counter in a prior laboaratory activity.  Create an FSM that acts as a 3-bit binary counter.  Assume the direction is always ``forward,'' so there is no need for a direction input.  Add this code to your Jupyter notebook.  Make sure to reset the kernel when new code is added, to ensure overlays are downloaded to the PL correctly.
+\item Verify that the FSM is counting correctly by using the \verb+trace+ and \verb+show_waveform+ methods of the \verb+fsm_generator+.  The trace method has to be run first.
+\end{enumerate}
+
+\section{Stepping from FSM to Boolean}
+
+\begin{enumerate}
+\item Recall from last time that the stepping controller can take the PL from one set of digital functions to the next.  See the \verb+single_stepping_generator+ example for further details.
+\item Adapt the \verb+single_stepping_generator+ code into your Jupyter notebook so that the three-input AND gate, constructed from NAND gates, receives the output of the FSM counter.
+\item Does the LED go HIGH when it should?  Verify with the trace and timing diagram functionality that the behavior is correct.
+\end{enumerate}
+
+\end{document}
