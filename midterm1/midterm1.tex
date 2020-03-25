@@ -30,49 +30,58 @@
 \end{enumerate}
 \begin{figure}[hb]
 \centering
-\includegraphics[width=0.2\textwidth]{grayCode1.png}
-\includegraphics[width=0.3\textwidth]{grayCode2.png}
+\includegraphics[width=0.15\textwidth]{grayCode1.png}
+\includegraphics[width=0.25\textwidth]{grayCode2.png}
 \caption{\label{fig:grayCode} A gray code shaft encoder, or angular encoder, reports the angular position of an object digitally, using the gray code.}
 \end{figure}
 
 \section{Chapter 3 - Logic Gates}
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.3\textwidth]{gateExample1.pdf}
-\caption{\label{fig:gates1} Examples of logic gate combinations.}
+\includegraphics[width=0.25\textwidth]{gateExample5.pdf}
+\includegraphics[width=0.25\textwidth]{gateExample6.pdf}
+\caption{\label{fig:gates1} (Left) A logic gate combination.  (Right) A liquid tank-level system built from a NAND gate.}
 \end{figure}
 \begin{enumerate}
-\item Generate the truth tables for the gate diagrams in Fig. \ref{fig:gates1}. Pay attention to the domain.  \\ \vspace{3cm}
-\item Identify the actions of the gate combinations in the previous problem from the truth tables.  (a) Fig. \ref{fig:gates1}, left:\rule{3cm}{0.1mm} (b) Fig. \ref{fig:gates1}, middle:\rule{3cm}{0.1mm} (c) Fig. \ref{fig:gates1}, right:\rule{3cm}{0.1mm}.
-\item Suppose the signals in Fig. \ref{fig:timing2} are fed into the circuit in Fig. \ref{fig:gates1}, right.  Fill in the S and Cout signals in Fig. \ref{fig:timing2}.
-\item Imagine a system for an electronic door lock which requires two electronic keys (two signals), S1 and S2.  The circuit has a red LED, a yellow LED, and a green LED.  The system unlocks when the output LOCK signal is LOW, caused by a LOW S1 and a LOW S2.  The red LED is activated when S1 and S2 are both HIGH.  The yellow LED is activated when S1 and S2 are different.  The green LED is activated when the system is unlocked.  \textit{By default, S1 and S2 are HIGH.} Draw the solution below.  \\ \vspace{4cm}
+\item Generate the simplified logic expression and truth table for Fig. \ref{fig:gates1}, left.  What do you call this type of gate? \\ \vspace{1cm}
+\item Suppose signals $D_{\rm 0}$ and $D_{\rm 1}$ in Fig. \ref{fig:timing1} are connected to $a$ and $b$ in Fig. \ref{fig:gates1}, left.  Generate the timing diagram for $out$. \\ \vspace{0.75cm}
+\item \textbf{Creative design}: A liquid tank system is depicted in Fig. \ref{fig:gates1}.  The sensors are HIGH when the liquid is above the level (green ON).  (a) Create a red LED system that activates when both tanks are \textit{below} the level, and draw it below.  (b) Create a yellow LED system that activates when one tank is below and one tank is above the level.  (c) Add a third tank with more liquid, and two pipes guiding liquid to tank A and B.  Each pipe should have a valve.  Add logic that opens the correct valve so as to fill only the low tank until it is no longer below the level.  \\ \vspace{1cm}
 \end{enumerate}
-\begin{figure}[hb]
-\centering
-\includegraphics[width=0.5\textwidth]{timingExample2.pdf}
-\caption{\label{fig:timing2} An example timing diagram for Fig. \ref{fig:gates1}, right.  The shaded regions indicate ``don't care'' conditions, or times when the data is not relevant.}
-\end{figure}
+
+\clearpage
 
 \section{Chapter 4 - Boolean Algebra and Logic Simplification}
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.4\textwidth]{gateExample4.pdf}
-\caption{\label{fig:gates2} A gate combination triggering a signal named ``record.''}
-\end{figure}
 \begin{enumerate}
-\item Consider the circuit in Fig. \ref{fig:gates2}.  (a) Write a logic expression for \textit{Record}. (b) Simplify the expression to as minimal a form as possible. (c) Are any signals or gates unnecessary? \\ \vspace{3cm}
-\item Consider again the logic expression that represents the circuit in Fig. \ref{fig:gates2}. (a) Write the corresponding domain-4 Karnaugh map.  (b) Use the Karnaugh map to produce the S-POS expression and truth table. \\ \vspace{3cm}
+\item Suppose an investment firm holds stock shares in four different stocks within a portfolio, labled A through D.  The companies corresponding to stocks A through D are labeled \textit{inactive} or \textit{active} by the firm, based on information about their productivity.  The firm notices that the portfolio output is \textit{on} (rising) under the following conditions:
+\begin{itemize}
+\item All four companies are inactive, or ...
+\item Companies A through C are inactive, while company D is active, or ...
+\item All companies are active, or ...
+\item Companies A through C are active, while company D is inactive.
+\end{itemize}
+(a) Develop a S-SOP expression for $X$, the portfolio's state (on or off) based on the data above. (b) Use a domain-4 Karnaugh map to simplify the S-SOP expression. (c) Which stock appears to be irrelevant to the state of the portfolio? \\ \vspace{2.5cm}
+\item A circuit contains three main branches leading to one output.  The output is observed to fail under the following conditions below.  (a) Use the domain-3 Karnaugh map to determine the conditions under which it does succeed, and write an S-SOP expression for the circuit. (b) Draw the circuit using gates.
+\begin{itemize}
+\item A: false, B: false, C: false
+\item A: false, B: true, C: false
+\item A: true, B: true, C: false
+\item A: true, B: false, C: false
+\item A: false, B: true, C: true
+\item A: true, B: true, C: true
+\end{itemize}
 \end{enumerate}
 
 \section{Chapter 5 - Combinatorial Logic Analysis}
 \label{sec:comb}
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.5\textwidth]{timingExample3.pdf}
-\caption{\label{fig:timing3} Timing diagram for Sec. \ref{sec:comb}.}
+\includegraphics[width=0.4\textwidth,trim=0cm 3cm 0cm 2cm,clip=true]{timingExample7.pdf}
+\includegraphics[width=0.5\textwidth,trim=0cm 4cm 0cm 2cm,clip=true]{bonus.pdf}
+\caption{\label{fig:timing3} Diagrams for Sec. \ref{sec:comb}. (Left) Inputs are ABC, and the output is X. (Right) The inputs are ABCDE, and the output is X.}
 \end{figure}
 \begin{enumerate}
-\item (a) Draw the circuit corresponding to the timing diagram in Fig. \ref{fig:timing3}.  (b) Create the Karnaugh map.  (c) Using the Karnaugh map, write the simplest expression for this logic function and re-draw the circuit.
+\item For the input waveforms shown in Fig. \ref{fig:timing3} (left), what logic circuit will generate the output waveform? \\ \vspace{2cm}
+\item \textbf{Bonus}: Assumming a propagation delay of 10 ns through each gate in Fig. \ref{fig:timing3}, determine if the \textit{desired} output waveform X will be generated.  The desired output is a pulse with a minimum width of 25 ns.
 \end{enumerate}
 
 \end{document}
