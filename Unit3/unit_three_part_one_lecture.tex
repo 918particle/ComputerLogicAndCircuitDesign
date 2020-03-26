@@ -23,7 +23,16 @@
 \item Propagation delays
 \end{itemize}
 \item Comparators
-\item Decodors/Encoders
+\begin{itemize}
+\item The XNOR gate
+\item Multi-bit comparators
+\item Inequalities
+\end{itemize}
+\item Decoders/Encoders
+\begin{itemize}
+\item Binary to decimal circuits
+\item Decimal to binary circuits
+\end{itemize}
 \end{enumerate}
 \end{frame}
 
@@ -101,6 +110,93 @@
 \end{figure}
 \end{frame}
 
+\begin{frame}{Half-Adders and Full-Adders, Ripple-Carry}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{figures/adder10.pdf}
+\caption{\label{fig:add10} Two 4-bit FA connected to form an 8-bit FA, accounting for carries.}
+\end{figure}
+\end{frame}
+
+\section{Comparators}
+
+\begin{frame}{Comparators}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{figures/comparator1.pdf}
+\caption{\label{fig:comparator1} The basic idea behind the comparator.  (a) Review the truth table for the XNOR-gate, which is the conjugate of the XOR gate. (b) What is the function of the AND gate?}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Comparators}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth,trim=0cm 3cm 0cm 3cm,clip=true]{figures/comparator2.pdf}
+\caption{\label{fig:comparator2} (a) Example of comparison of 2-bit binary numbers.  (b) What is the truth table? (c) What is the logical representation of the function?  (c) What is a logical representation for the inequality circuit?}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Comparators}
+\begin{figure}
+\centering
+\includegraphics[width=0.45\textwidth,trim=3cm 0cm 3cm 0cm,clip=true]{figures/comparator3.pdf} \hspace{0.25cm}
+\includegraphics[width=0.45\textwidth,trim=3cm 0cm 3cm 0cm,clip=true]{figures/comparator4.pdf}
+\caption{\label{fig:comparator3} (Left) One \textit{component} that is really 8 comparators linked to the same AND gate. (Right) What is the correct ouput? How to determine the inequality functions?}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Comparators}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{figures/2bitcomp.jpg}
+\caption{\label{fig:comparator4} Try some simple cases: (a) A = 00 and B = 01, (b) A = 10 and B = 01.}
+\end{figure}
+\end{frame}
+
+\section{Decoders}
+
+\begin{frame}{Decoders}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{figures/decoder1.pdf}
+\caption{\label{fig:decoder1} The binary decoder circuit for 9.  This circuit is true if the binary number is 1001.  (Pay attention to the order of MSB and LSB).}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Decoders}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{figures/decoder2.pdf}
+\caption{\label{fig:decoder2} (a) Which binary number is being decoded here? (b) What would it take to decode all binary numbers of $n$ bits?}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Decoders}
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{figures/decoder3.pdf}
+\caption{\label{fig:decoder3} The decoding table for ACTIVE LOW 4-bit binary.  Terms from linear algebra: this matrix has 0 trace, and is symmetric (we can exchange rows and columns).}
+\end{figure}
+\end{frame}
+
+\section{Encoders}
+
+\begin{frame}{Encoders}
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{figures/encoder1.pdf}
+\caption{\label{fig:encoder1} Recall the OR TT, and remember that this is a system in which there are forbidden or \textit{don't care} states.  Only one input line can be active at once.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Encoders}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth,trim=3cm 0cm 3cm 0cm,clip=true]{figures/encoder2.pdf}
+\caption{\label{fig:encoder2} A keypad system.  The binary encoder accepts only 9 digits because 0 is redundant.  Note the use of \textit{pull-up} resistors (recall LEDs operations).}
+\end{figure}
+\end{frame}
+
 \section{Conclusion}
 
 \begin{frame}{Unit 3 Summary}
@@ -114,7 +210,16 @@
 \item Propagation delays
 \end{itemize}
 \item Comparators
-\item Decodors/Encoders
+\begin{itemize}
+\item The XNOR gate
+\item Multi-bit comparators
+\item Inequalities
+\end{itemize}
+\item Decoders/Encoders
+\begin{itemize}
+\item Binary to decimal circuits
+\item Decimal to binary circuits
+\end{itemize}
 \end{enumerate}
 \end{frame}
 
