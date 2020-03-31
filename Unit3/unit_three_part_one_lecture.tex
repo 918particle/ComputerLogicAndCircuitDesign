@@ -197,6 +197,98 @@
 \end{figure}
 \end{frame}
 
+\section{Multiplexers}
+
+\begin{frame}{Multiplexers}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth,trim=3cm 0cm 3cm 0cm,clip=true]{figures/mux1.pdf}
+\caption{\label{fig:mux1} A general block diagram for a \textit{multiplexer.}  Parallel data input is successively rotated to the single output.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Multiplexers}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth,trim=3cm 0cm 3cm 0cm,clip=true]{figures/mux2.pdf}
+\caption{\label{fig:mux2} The desired TT for a 1-of-4 mux.  The n-of-m jargon corresponds to inputs and outputs.  We should also have \textit{enable}, and one or more output lines.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Multiplexers}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth,trim=3cm 0cm 3cm 0cm,clip=true]{figures/mux3.pdf}
+\caption{\label{fig:mux3} The AND-enable behavior is used in this 1-of-4 mux.  Note the interconnections are the key to generating the right output logic.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Multiplexers}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth,trim=3cm 0cm 3cm 0cm,clip=true]{figures/mux4.pdf}
+\caption{\label{fig:mux4} Exercise: verify the timing diagram output Y follows the 1-of-4 pattern.  The data-select lines follow a 2-bit \textit{counter} (coming soon).}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Multiplexers}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth,trim=3cm 0cm 3cm 0cm,clip=true]{figures/mux5.pdf}
+\caption{\label{fig:mux5} Active LOW enabled, 1-of-8 mux with complemented output.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Multiplexers}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth,trim=3cm 0cm 3cm 0cm,clip=true]{figures/mux6.pdf}
+\caption{\label{fig:mux6} Active LOW enabled, 1-of-8 mux with complemented output, connected to another one.  The overall system acts as a 1-of-16 with 4 data select lines.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Multiplexers}
+\begin{figure}
+\centering
+\includegraphics[width=0.55\textwidth]{figures/mux7.pdf}
+\caption{\label{fig:mux7} In this example, the mux is a \textit{quad} 1-of-2, to help switch between binary numbers A and B.  The BCD decoder converts the inputs, and the 2-to-4 decoder grounds either display.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Multiplexers}
+\begin{figure}
+\centering
+\includegraphics[width=0.95\textwidth,trim=2cm 2cm 0cm 2cm,clip=true]{figures/mux8.pdf}
+\caption{\label{fig:mux8} A mux can also be used to create any domain-N logic-function, provided we can connect HIGH and LOW to the desired input lines.  Do you see the pattern?}
+\end{figure}
+\end{frame}
+
+\section{Demultiplexers}
+
+\begin{frame}{Demultiplexers}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth,trim=3cm 0cm 3cm 0cm,clip=true]{figures/dmux1.pdf}
+\caption{\label{fig:dmux1} The reverse operation to a multiplexer is a demultiplexer, or demux.  Note the AND-enable is still there on the input line, but we need 4 ANDs: 1 for each possible input data line on the mux.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Demultiplexers}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth,trim=3cm 0cm 3cm 0cm,clip=true]{figures/dmux2.pdf}
+\caption{\label{fig:dmux2} One data line in and four data lines out.  \textit{Note the cadence:} we cannot know what $D_1$ is until we know what $D_0$ is...}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Demultiplexers}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth,trim=3cm 0cm 3cm 0cm,clip=true]{figures/dmux3.pdf}
+\caption{\label{fig:dmux3} A decoder is very similar to a demux, but it has to have the data input lines at the bottom left.}
+\end{figure}
+\end{frame}
+
 \section{Conclusion}
 
 \begin{frame}{Unit 3 Summary}
