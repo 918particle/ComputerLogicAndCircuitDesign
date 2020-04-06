@@ -15,7 +15,7 @@
 \caption{\label{fig:timing7} A timing diagram including a clock signal (CLK), a 4-bit parallel data stream (D0-D3), and enable/disable signals (EN/$\sim$EN).}
 \end{figure}
 \begin{enumerate}
-\item Consider Fig. \ref{fig:timing1}. (a) What is the duty cycle of each $D_{\rm i}$ signal? (b) Consider the bitstreams of $D_{\rm i}$.  What does the sequence of numbers represent?
+\item Consider Fig. \ref{fig:timing7}. (a) What is the duty cycle of each $D_{\rm i}$ signal? (b) Consider the bitstreams of $D_{\rm i}$.  What does the sequence of numbers represent?
 \begin{itemize}
 \item All duty cycles are 50\%
 \item This is a 4-bit counter
@@ -36,7 +36,7 @@
 \begin{itemize}
 \item 0100 0000 0000
 \item 1011 1011 1011 1011
-\item \textit{2's complement:} 1000 0000 0000 ... ends up the same representation unless you add leading 0's
+\item \textit{2's complement:} 1000 0000 0000 ... ends up the same representation unless you add leading 0's.  Also correct to use a sign bit.
 \end{itemize}
 \item Convert to hex: (a) 65535 (decimal) (b) 1000100010001000 (binary)
 \begin{itemize}
@@ -50,7 +50,7 @@
 \item Consider the gray code angular encoder in Fig. \ref{fig:grayCode}.  (a) If the shaft rotates 180 degrees, how many bit changes occur?  (b) If it rotates 180 degrees, and the initial gray code is 0000, what is the final gray code?  (c) With 4-bit gray code, how many distinct angles can the shaft encode?  What is 360 degrees divided by this number (i.e. the angular precision)? (d) What would be the angular precision of an 8 bit encoder?
 \begin{itemize}
 \item 7 bit changes
-\item 1000 (7 in gray code)
+\item 0100 (7 in gray code)
 \item 16, 22.5 degrees
 \item 1.4 degrees
 \end{itemize}
@@ -79,7 +79,7 @@
 \includegraphics[width=0.9\textwidth]{timingExample8.pdf}
 \item \textbf{Creative design}: A liquid tank system is depicted in Fig. \ref{fig:gates1}.  The sensors are HIGH when the liquid is above the level (green ON).  (a) Create a red LED system that activates when both tanks are \textit{below} the level, and draw it below.  (b) Create a yellow LED system that activates when one tank is below and one tank is above the level.  (c) Add a third tank with more liquid, and two pipes guiding liquid to tank A and B.  Each pipe should have a valve.  Add logic that opens the correct valve so as to fill only the low tank until it is no longer below the level.  \\ \\
 \begin{itemize}
-\item An OR gate with a pull-up resistor connected in series with a red LED.  If S1 and S2 are LOW, then the red LED will light.
+\item An OR gate with a pull-up resistor connected in series with a red LED.  If S1 and S2 are LOW, then the red LED will light.  Could also be a NOR gate on the high side of the LED.
 \item S1 and S2 input to a XOR gate.  Output connected to a resistor and yellow LED in series to GND.
 \item Sensors open valve when they receive a HIGH, and there is an inverter between S1 and its value, and an inverter between S2 and its valve.
 \end{itemize}
