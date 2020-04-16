@@ -1,0 +1,117 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{fancyvrb}
+\usepackage{url}
+
+\begin{document}
+
+\title{Synopsis - Week 11 Integrated Project: The Nyquist Frequency}
+\author{Prof. Jordan C. Hanson}
+
+\maketitle
+
+\section{TeamViewer Instructions}
+
+The following is a brief list of steps you can use to log in to the PYNQ-Z1 system in our laboratory.  TeamViewer has many settings and features, but we should only use the most common feature of remote desktop control.  This will allow you to use your computer to control the laptops in the lab as if you were there.
+
+\begin{itemize}
+\item Launch TeamViewer.
+\item On the right side of the application window, there should be a title that reads \textbf{Control Remote Computer}.
+\item Enter the partner ID in the \textit{next section} corresponding to your lab group.
+\item Make sure the ``remote control'' option is selected instead of the file transfer option.
+\item Click connect.
+\item You should be prompted to enter a password.  Enter the password corresponding to your partner ID.  The partner ID and password refer to the laptop in the laboratory, not your lab partner.
+\item If the connection is successful, a window should appear that corresponds to the desktop of the laptop.  \textit{Log in to the PYNQ-Z1 system as normal.}  
+\end{itemize}
+
+\textit{Available partner ID/password combinations: partnerID and password}.  We will sort out via Zoom who would like to participate in which group.  Once one person has accessed the laptop in the laboratory, this person must notify the group via the Zoom chat.  That group will then hang up from the class Zoom call and connect with the person who has linked to the laboratory laptop.  Then the host can share his or her screen with the group and proceed with the ADC/DAC tutorial.
+
+\begin{itemize}
+\item 1 836 201 767, wqw774 ... Group 1
+\item 1 618 539 011, p27nd3 ... Group 2
+\item 1 619 959 966, m5ze85 ... Group 3
+\item 1 836 166 130, j137fm ... Group 4
+\item 1 619 926 919, psw684 ... Group 5
+\item 1 618 471 601, x43kx1 ... Group 6
+\item 1 619 994 098, w573yh ... Group 7
+\end{itemize}
+
+\section{ADC and DAC Setup}
+
+Peripheral modules from Digilents are often called Pmods.  Pmods allow peripheral devices to connect and interact with the PYNQ-Z1 system and give it special abilities.  Recently in lecture we have learned how a flash ADC works.  There are several varieties of ADC, and we happened to cover the flash ADC.  A digital-to-analog converter (DAC) converts binary numbers in the form of high and low voltages to an analog voltage on the output.  \textit{In this lab activity, we will produce analog voltages via a DAC and feed them into an ADC.}
+
+\section{Create Code to Send and Plot a Sine Wave}
+
+\subsection{Set up the system correctly}
+
+Set up a new Jupyter workbook with the following libraries and toos:
+
+\begin{verbatim}
+#Setup programmable logic, including Pmods for DAC and ADC, and other libraries
+%matplotlib inline
+import matplotlib.pyplot as plot
+from time import sleep
+import numpy as np
+import matplotlib.pyplot as plt
+from pynq.lib import Pmod_ADC, Pmod_DAC
+from pynq.overlays.base import BaseOverlay
+ol = BaseOverlay("base.bit")
+dac = Pmod_DAC(ol.PMODB)
+adc = Pmod_ADC(ol.PMODA)
+\end{verbatim}
+
+The above code imports matplotlib, to graph the ADC output from the DAC input.  We also program the firmware to handle PMODA controlling the ADC, while PMODB controls the DAC.  They are connected physically by a wire.  Numpy is imported for math utilities, including creating vectors of data.
+
+\subsection{Send a Sine Wave through the DAC to the ADC}
+
+The following code defines a frequency $f$, an amplitude $A$, a DC offset $B$, a list of times $t$, and computes the sine wave according to
+
+\begin{equation}
+v(t) = A\sin(2\pi ft) + B
+\end{equation}
+
+The interesting part is that we must define \textit{a list} of times, spaced by $\Delta t$.  The \textit{sampling frequency} is $f_s = 1/\Delta t$.  Each sine wave value is sent over the line from the DAC to the ADC, value by value, and system sleeps for $\Delta t$ seconds.  The \verb+samples+ variable captures the ADC output.
+
+\begin{verbatim}
+#Transmission loop
+sampling_frequency = 10.0 #Units: Hertz
+delta_t = 1.0/sampling_frequency #Units: seconds
+t_max = 10.0 #Units: seconds
+times = np.arange(0, t_max, delta_t)
+dc_offset = 1.0 #Units: volts
+amplitude = 0.5 #Units: volts
+frequency = 0.5 #Units: Hertz
+samples = []
+for t in times:
+    dac.write(amplitude*np.sin(2.0*3.14159*frequency*t)+dc_offset)
+    sleep(delta_t)
+    samples.append(adc.read())
+\end{verbatim}
+
+\subsection{Plotting the Results}
+
+In the following code, a plot is created from the pyplot module from the matplotlib library.  The list of times defined in the last section is plotted on the x-axis, and the ADC voltages are plotted on the y-axis.  The title of the plot should display the sampling frequency and sine wave frequency.
+
+\begin{verbatim}
+#Plotting section
+plot.plot(times,samples,'-o')
+plotTitle = "Frequency: "+str(frequency)+" Hz, Sampling Frequency: "+str(sampling_frequency)+" Hz"
+plot.title(plotTitle)
+plot.xlabel('Time (seconds)')
+plot.ylabel('Amplitude (Volts)')
+plot.grid(True, which='both') 
+plot.legend(loc='upper left')
+plot.axis([0, t_max, 0, 2.0])
+plot.show()
+\end{verbatim}
+
+\subsection{Questions to be Answered}
+
+\begin{enumerate}
+\item What happens when the frequency of the sine wave is greater than half of the sampling frequency?  Create a plot that (a) sets the sine wave frequency equal to one-half of the sampling frequency.  (b) Create plots that push the sine wave frequency to values greater than one-half of the sampling frequency.  What do you observe? \\ \vspace{3cm}
+\item While respecting the Nyquist-Shannon limit ($f \leq f_s/2$), push the frequency of the sine wave into the MHz regime.  How high can you make the sine wave frequency before you start to notice changes in the sine wave amplitude?  What happens to the sine wave amplitude?
+\end{enumerate}
+
+\end{document}
