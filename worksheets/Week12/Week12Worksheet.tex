@@ -1,0 +1,114 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{fancyvrb}
+\usepackage{url}
+
+\begin{document}
+
+\title{Synopsis - Week 12 Integrated Project: The Nyquist Frequency and Fourier Series}
+\author{Prof. Jordan C. Hanson}
+
+\maketitle
+
+\section{TeamViewer Instructions}
+
+The following is a brief list of steps you can use to log in to the PYNQ-Z1 system in our laboratory.  TeamViewer has many settings and features, but we should only use the most common feature of remote desktop control.  This will allow you to use your computer to control the laptops in the lab as if you were there.
+
+\begin{itemize}
+\item Launch TeamViewer.
+\item On the right side of the application window, there should be a title that reads \textbf{Control Remote Computer}.
+\item Enter the partner ID in the \textit{next section} corresponding to your lab group.
+\item Make sure the ``remote control'' option is selected instead of the file transfer option.
+\item Click connect.
+\item You should be prompted to enter a password.  Enter the password corresponding to your partner ID.  The partner ID and password refer to the laptop in the laboratory, not your lab partner.
+\item If the connection is successful, a window should appear that corresponds to the desktop of the laptop.  \textit{Log in to the PYNQ-Z1 system as normal.}  
+\end{itemize}
+
+\textit{Available partner ID/password combinations: partnerID and password}.  We will sort out via Zoom who would like to participate in which group.  Once one person has accessed the laptop in the laboratory, this person must notify the group via the Zoom chat.  That group will then hang up from the class Zoom call and connect with the person who has linked to the laboratory laptop.  Then the host can share his or her screen with the group and proceed with the ADC/DAC tutorial.
+
+\begin{itemize}
+\item 1 836 201 767, wqw774 ... Group 1
+\item 1 618 539 011, p27nd3 ... Group 2
+\item 1 619 959 966, m5ze85 ... Group 3
+\item 1 836 166 130, j137fm ... Group 4
+\item 1 619 926 919, psw684 ... Group 5
+\item 1 618 471 601, x43kx1 ... Group 6
+\item 1 619 994 098, w573yh ... Group 7
+\end{itemize}
+
+\section{ADC and DAC Setup}
+
+Peripheral modules from Digilents are often called Pmods.  Pmods allow peripheral devices to connect and interact with the PYNQ-Z1 system and give it special abilities.  Recently in lecture we have learned how a flash ADC works.  There are several varieties of ADC, and we happened to cover the flash ADC.  A digital-to-analog converter (DAC) converts binary numbers in the form of high and low voltages to an analog voltage on the output.  \textit{In this lab activity, we will produce analog voltages via a DAC and feed them into an ADC.}
+
+\section{Create Code to Send and Plot a Fourier Series}
+
+\subsection{Set up the system correctly}
+
+Set up a new Jupyter workbook with the following libraries and toos:
+
+\begin{verbatim}
+#Setup programmable logic, including Pmods for DAC and ADC, and other libraries
+%matplotlib inline
+import matplotlib.pyplot as plot
+from time import sleep
+import numpy as np
+import matplotlib.pyplot as plt
+from pynq.lib import Pmod_ADC, Pmod_DAC
+from pynq.overlays.base import BaseOverlay
+ol = BaseOverlay("base.bit")
+dac = Pmod_DAC(ol.PMODB)
+adc = Pmod_ADC(ol.PMODA)
+\end{verbatim}
+
+The above code imports matplotlib, to graph the ADC output from the DAC input.  We also program the firmware to handle PMODA controlling the ADC, while PMODB controls the DAC.  They are connected physically by a wire.  Numpy is imported for math utilities, including creating vectors of data.
+
+\subsection{Send a Sine Wave through the DAC to the ADC}
+
+Along the lines of the \textit{Fouier Series and Sampling Tutorial}, create code that forms a Fourier series for a square wave.  Loop over times as in the example code below, but do not just write the value of a sine function to the DAC.  Instead, write the appropriate sum of several terms in the Fourier series.
+
+\begin{verbatim}
+#Transmission loop
+sampling_frequency = 10.0 #Units: Hertz
+delta_t = 1.0/sampling_frequency #Units: seconds
+t_max = 10.0 #Units: seconds
+times = np.arange(0, t_max, delta_t)
+dc_offset = 1.0 #Units: volts
+amplitude = 0.5 #Units: volts
+frequency = 0.5 #Units: Hertz
+samples = []
+for t in times:
+	#Don't do this (only one sine term):
+    #dac.write(amplitude*np.sin(2.0*3.14159*frequency*t)+dc_offset)
+    #Instead make it the sum of several sine or cosine terms
+    #as given by the Fourier series
+    sleep(delta_t)
+    samples.append(adc.read())
+\end{verbatim}
+
+\subsection{Plotting the Results}
+
+In the following code, a plot is created from the pyplot module from the matplotlib library.  The list of times defined in the last section is plotted on the x-axis, and the ADC voltages are plotted on the y-axis.  The title of the plot should display the sampling frequency and sine wave frequency.
+
+\begin{verbatim}
+#Plotting section
+plot.plot(times,samples,'-o')
+plotTitle = "Frequency: "+str(frequency)+" Hz, Sampling Frequency: "+str(sampling_frequency)+" Hz"
+plot.title(plotTitle)
+plot.xlabel('Time (seconds)')
+plot.ylabel('Amplitude (Volts)')
+plot.grid(True, which='both') 
+plot.legend(loc='upper left')
+plot.axis([0, t_max, 0, 2.0])
+plot.show()
+\end{verbatim}
+
+\subsection{Questions to be Answered}
+
+\begin{enumerate}
+\item (a) What is the effect of sending the Fourier series over the line from the DAC to the ADC? (b) What kinds of distortions or oddities occur that make the ADC signal different from a square wave? \\ \vspace{3cm}
+\item (a) What happens to your observations if you include a higher number of terms in the Fourier series? (b) While sending a relatively higher number of terms over the line, reduce the sampling frequency.  What do you notice?
+\end{enumerate}
+
+\end{document}
