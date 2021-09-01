@@ -28,16 +28,21 @@ def counter(n,m):
 def add_bin(x,y):
 	return convert_bin_dec(x) + convert_bin_dec(y)
 
-def two_comp(x):
+def one_comp(x):
 	str_num = [int(d) for d in str(x)]
 	n = len(str_num)
 	for i in range(0,n):
-		if(str_num[i]=='1'):
-			str_num[i]='0'
-		if(str_num[i]=='0'):
-			str_num[i]='1'
-	if(str_num[n-1]=='0'):
-		str_num[n-1]='1'
-	if(str_num[n-1]=='1'):
-		str_num
-	print(str_num)
+		if(int(str_num[i])==1):
+			str_num[i]=0
+			continue
+		if(int(str_num[i])==0):
+			str_num[i]=1
+			continue
+	return str_num
+
+def two_comp(x):
+	str_num = one_comp(x)
+	str_pass = ''
+	for i in str_num:
+		str_pass+=str(i)
+	return convert_dec_bin(add_bin(str_pass,1))

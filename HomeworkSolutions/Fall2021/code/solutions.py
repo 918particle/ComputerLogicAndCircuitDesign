@@ -38,7 +38,17 @@ y = ['01','10','11','110','101','1011']
 for i,j in zip(x,y):
 	print(converter.add_bin(i,j))
 
-#2-2, 19
+#2-5, 19
 print("2-5,19")
 print("For 8 bit numbers:")
 print("00000000 or 11111111")
+
+#2-6, 28
+print("2-6,28")
+l = ['10011001','01110100','10111111']
+for i in l:
+	t = converter.two_comp(i)
+	str_t = ''
+	for j in t:
+		str_t+=str(j)
+	print("-"+str(converter.convert_bin_dec(str_t)))
