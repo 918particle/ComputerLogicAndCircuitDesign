@@ -15,7 +15,7 @@
 \section{Introductions to Connect and Disconnect to PYNQ-Z1 System-on-a-Chip (SoC)}
 
 \begin{enumerate}
-\item \textbf{Connect} the PYNQ-Z1 board to the laptop via the USB to Ethernet converter.  Next, connect the micro-USB cable between the PYNQ-Z1 and the laptop.  Open a browser and navigate to http://192.168.2.99.
+\item \textbf{Connect} the PYNQ-Z1 board to the laptop via the USB to Ethernet converter.  Next, connect the micro-USB cable between the PYNQ-Z1 and the laptop.  Open a browser and navigate to http://192.168.2.99:9090.
 \item You should be prompted to enter a password.  Type \verb+xilinx+.  You are now inside the chip at the center of the board, running a version of linux on the dual-core ARM.  Navigate to the Getting Started folder by clicking, and run the tutorial entitled \verb+1_jupyter_notebook.ipynb+.  Python notebooks can run code and contain writing in markup.
 \item \textbf{Disconnect:} Click the ``Running'' tab when you are done with the notebook, and close the jupyter notebook.  Click ``New'' in the upper right hand corner to open a terminal.  In the terminal, type \verb+shutdown now+.  Close the browser tabs and power down the PYNQ-Z1 board.
 \item \textbf{Kernel reset:}  Whenever you make a mistake or want to change something, you should click the kernel reset button at the top of the screen.  This will reset all variables and make the SoC a blank slate again.  Kernel errors usually occur when the programmable logic is not programmed but the software asks for it.
