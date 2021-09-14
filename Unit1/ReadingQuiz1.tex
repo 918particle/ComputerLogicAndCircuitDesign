@@ -5,42 +5,34 @@
 
 \begin{document}
 
-\title{Tuesday Reading Assessment: Chapter 2,3}
+\title{Tuesday Reading Assessment: Chapter 3-1 through 3-3}
 \author{Prof. Jordan C. Hanson}
 
 \maketitle
 
-\section{Bit Parity, Error Checking (ch. 2)}
+
+\section{Basic Logic Gates}
 
 \begin{enumerate}
-\item Observe Fig. \ref{fig:par} below, depicting the 4-bit BCD code.  Observe how the parity bit causes \textit{even} parity (even number of 1's), or \textit{odd} parity (odd number of 1's).  Circle all the following 4-bit BCD code words below that have a \textit{single-bit} error, assuming the parity bit is even:
-\begin{itemize}
-\item 100110010
-\item 011101010
-\item 10111111010001010
-\end{itemize}
+\item
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.3\textwidth]{parity.pdf}
-\caption{\label{fig:par} Three basic logic operations.}
+\includegraphics[width=0.6\textwidth]{figures/timingExample14.pdf}
+\includegraphics[width=0.35\textwidth]{figures/ones_c.pdf}
+\caption{\label{fig:ones} (Left) A timing diagram for a 4-bit parallel binary number.  (Right) A simple logic circuit that computes the ones complement of a byte in parallel.}
 \end{figure}
-\item Same question, but the parity bit is \textit{odd}:
+Consider Fig. \ref{fig:ones}, in which a 4-bit parallel data stream is shown (right), and a basic logic circuit is shown (left).
 \begin{itemize}
-\item 11110110
-\item 00110001
-\item 01010101010101010
+\item Describe in words what function or process is happening with the data bits D0-D3 in Fig. \ref{fig:ones} (left). \\ \vspace{0.5cm}
+\item Suppose D0-D4 were fed into the left-most gates in Fig. \ref{fig:ones}.  Draw the timing diagram below. \\ \vspace{2cm}
 \end{itemize}
-\end{enumerate}
-
-\section{Basic Logic Gates (ch. 3)}
-
-\begin{enumerate}
-\item Draw the proper timing diagram for the 4-input AND gate below.  \textit{Hint: what should the truth table be for the 4-input AND?}
-\begin{figure}[ht]
+\item 
+\begin{figure}
 \centering
-\includegraphics[width=0.4\textwidth,trim=0cm 4cm 0cm 4cm,clip=true]{4and.pdf}
-\caption{\label{fig:4and} Three basic logic operations.}
+\includegraphics[width=0.5\textwidth,trim=0cm 4cm 0cm 4cm,clip=true]{4and.pdf}
+\caption{\label{fig:4and} A timing diagram as input to a 4-input AND gate.}
 \end{figure}
+Draw the output timing diagram for the 4-input AND gate below.  \textit{Hint: what should the truth table be for the 4-input AND?}
 \end{enumerate}
 
 \end{document}
