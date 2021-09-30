@@ -78,4 +78,59 @@ def convert_dec_hex(x):
 	return result
 
 def convert_bcd_dec(x):
-	list_in = []
+	list_in = [int(d) for d in str(x)]
+	list_out = []
+	word_length = 4
+	n = len(list_in)
+	count = word_length
+	while(count<=n):
+		current = ''
+		for x in list_in[count-word_length:count]:
+			current+=str(x)
+		list_out.append(convert_bin_dec(current))
+		count+=word_length
+	return list_out
+
+def convert_bin_gray(x):
+	list_in = [int(d) for d in str(x)]
+	n = len(list_in)
+	list_out = []
+	for i in range(0,n):
+		if(i==0):
+			list_out.append(list_in[i])
+		else:
+			list_out.append(list_in[i-1] ^ list_in[i])
+	return list_out
+
+def convert_gray_bin(x):
+	list_in = [int(d) for d in str(x)]
+	n = len(list_in)
+	list_out = []
+	previous = 0
+	for i in range(0,n):
+		if(i==0):
+			list_out.append(list_in[i])
+			previous = list_in[i]
+		else:
+			list_out.append(list_in[i] ^ previous)
+			previous = list_in[i] ^ previous
+	return list_out
+
+def convert_bin_ascii(x):
+	binary_int = int(x, 2)
+	byte_number = (binary_int.bit_length()+7) // 8
+	binary_array = binary_int.to_bytes(byte_number,"big")
+	ascii_text = binary_array.decode()
+	return ascii_text
+
+def parity_check(x):
+	list_in = [int(d) for d in str(x)]
+	even_parity_bit = list_in[0]
+	list_in = list_in[1:]
+	the_sum = 0
+	for i in list_in:
+		the_sum+=i
+	if(the_sum % 2 == even_parity_bit):
+		return True
+	else:
+		return False
