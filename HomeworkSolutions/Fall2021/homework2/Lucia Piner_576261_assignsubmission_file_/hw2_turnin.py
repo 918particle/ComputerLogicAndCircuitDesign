@@ -197,7 +197,7 @@ print('c: 10111111010001010 =',end=' ')
 if parity('10111111010001010'): print('no mistake') 
 else: print('mistake')
 
-print()
+print("Minus one: True False True (even parity bit is zero)")
 
 
 

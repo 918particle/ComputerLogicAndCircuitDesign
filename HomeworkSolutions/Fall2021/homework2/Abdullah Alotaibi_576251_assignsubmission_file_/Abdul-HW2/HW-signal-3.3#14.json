@@ -1,0 +1,21 @@
+{
+	"signal":
+		[
+          // Assiegnment 3.3#14
+          // gate And & OR
+			{ "name": "CLK", "wave": "p................"},
+			[ "Input", { 
+              "name": "A", "wave": "hlhlhlhlhlhlhlhlh"},
+			{ "name": "B", "wave": "h.l.h.l.h.l.h.l.h"},
+			{ "name": "C", "wave": "h...l...h...l...h"},
+             { "name": "D", "wave": "h.......l.......h"},
+             {"name": "F", "wave": "hl..hl..hl..hl..h"}
+          ],
+          ["   &",// for And gate
+            { "name": "X", "wave": "hl..............h"}
+            ],
+                    ["   |",// for OR gate
+            { "name": "Y", "wave": "h..............lh"}
+            ]
+		]
+}

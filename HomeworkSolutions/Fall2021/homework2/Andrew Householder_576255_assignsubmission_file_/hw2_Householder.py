@@ -1,3 +1,4 @@
+print("Checked for errors: None.  16/16 points.  Yay!")
 def dec_to_bin(decimal):
     binary = 0
     weight = 0
