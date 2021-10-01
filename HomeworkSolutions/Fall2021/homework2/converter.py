@@ -65,12 +65,15 @@ def convert_hex_bin(x):
 def convert_hex_dec(x):
 	result = 0
 	n = len(x)
+	count = 0
 	for i in reversed(range(n)):
-		result += 16**i * hex_conv[x[i]]
+		result += 16**i * hex_conv[x[count]]
+		count+=1
 	return result
 
 def convert_dec_hex(x):
 	result = []
+	x = int(x)
 	while(x != 0):
 		result.append(hex_conv_rev[x%16])
 		x = x // 16
