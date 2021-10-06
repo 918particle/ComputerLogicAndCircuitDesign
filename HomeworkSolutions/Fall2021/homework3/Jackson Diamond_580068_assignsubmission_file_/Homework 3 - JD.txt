@@ -1,0 +1,69 @@
+Section 3-2, #8
+Code for logic gate:
+{
+  "assign":
+  	[
+  		["x",["&","a","b","c","d"]]
+	]
+}
+Code for timing diagram:
+{ signal: [
+  { name: 'a', wave: 'lh...pl.h...pl' },
+  { name: 'b', wave: 'l.hpl.hpl.hpl.' },
+  { name: 'c', wave: 'lh.l..h....l..' },
+  { name: 'd', wave: 'lh.....pl.....' },
+  { name: 'out', wave: 'l.hl..........' },
+]}
+
+
+Section 3-3, #14
+Code for logic gates:
+{
+  "assign":
+  	[
+  		["x",["|","a","b","c","d","e"]]
+	]
+}
+{
+  "assign":
+  	[
+  		[“x",["&","a","b","c","d","e"]]
+	]
+}
+Code for timing diagrams:
+And:
+{ signal: [
+  { name: 'a', wave: 'lplplplplplplplplp' },
+  { name: 'b', wave: 'lh.l.h.l.h.l.h.l.h' },
+  { name: 'c', wave: 'lh...l...h...l...h' },
+  { name: 'd', wave: 'lh.......l.......h' },
+  { name: 'e', wave: 'lpl..pl..pl..pl..p' },
+  { name: 'out', wave: 'lpl..............p' },
+]}
+
+Or:
+{ signal: [
+  { name: 'a', wave: 'lplplplplplplplplp' },
+  { name: 'b', wave: 'lh.l.h.l.h.l.h.l.h' },
+  { name: 'c', wave: 'lh...l...h...l...h' },
+  { name: 'd', wave: 'lh.......l.......h' },
+  { name: 'e', wave: 'lpl..pl..pl..pl..p' },
+  { name: 'out', wave: ‘lh………….plh' },
+]}
+
+Section 3-4, #18
+Code for the logic gate:
+{
+  "assign":
+  	[
+  		["X",["&","A","B","C"]]
+	]
+}
+
+Code for the timing diagram:
+{ signal: [
+  { name: 'a', wave: 'lh..pnh..pnh..pnh' },
+  { name: 'b', wave: 'l..h...l...nh..l.' },
+  { name: 'c', wave: 'lnlnlnlnl.plplpnl' },
+  { name: 'out', wave: 'l..nlnl.....plpl.' },
+]}
