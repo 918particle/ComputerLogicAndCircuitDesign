@@ -65,8 +65,26 @@
 \item Consider Fig. \ref{fig:twoDFF}, in which a divide-by-four frequency divider is depicted with D flip-flops and a CLK signal. (a) Elaborate on this circuit to create a circuit that can divide the clock frequency by 2, 4, or 8. Show the flip-flops explicitly.  (b) Develop a symbol for the 2-4-8-16 divider, with CLK signal input and four ouputs (one each for $f/2$, $f/4$, $f/8$, and $f/8$, where $f$ is the clock frequency). (c) Connect the symbol for the new part to a symbolic 4-to-1 multiplexer with the appropriate number of data select lines to form a clock division system.  (d) Show with a timing diagram the output if the user changes the data select lines at least once.  For parts (b)-(d), it is only necessary to show symbols rather than individual flip-flops.
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.55\textwidth]{figures/twoDFF.pdf}
-\caption{\label{fig:twoDFF} Two D flip-flops forming a frequency divider.}
+\includegraphics[width=0.5\textwidth]{figures/twoDFF.pdf}
+\includegraphics[width=0.45\textwidth,trim=0cm 4cm 0cm 1cm,clip=true]{figures/design7.pdf}
+\caption{\label{fig:twoDFF} (Left) Two D flip-flops forming a frequency divider. (Right) Solution to Exercise 1 (a).}
+\end{figure}
+\begin{itemize}
+\item (a) See Fig. \ref{fig:twoDFF} (right).  The data-select lines enable the frequency outputs.  These outputs could be fed into a final OR gate to limit the outputs to one line.
+\item (b) See Fig. \ref{fig:twoDFF2} (left).
+\item (c) See Fig. \ref{fig:twoDFF2} (right).
+\item (d) See Fig. \ref{fig:twoDFF3}.
+\end{itemize}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.25\textwidth]{figures/design8.pdf}
+\includegraphics[width=0.45\textwidth]{figures/design9.pdf}
+\caption{\label{fig:twoDFF2} (Left) Solution to Exercise 1 (b).  (Right) Solution to Exercise 1 (c).}
+\end{figure}
+\begin{figure}[hb]
+\centering
+\includegraphics[width=0.65\textwidth]{figures/timingExample18.pdf}
+\caption{\label{fig:twoDFF3} Solution to Exercise 1 (d).  The user switches the data select signal at clock cycle 8, changing the frequency from 1/2 CLK to 1/8 CLK.}
 \end{figure}
 \end{enumerate}
 
@@ -75,12 +93,19 @@
 \section{Chapters 8 and 9 - Shift Registers and Counters}
 
 \begin{enumerate}
-\item Consider the timing diagram in Fig. \ref{fig:sr1}.  Using any combination of \textit{shift registers} and supporting gates, create a circuit with 8-outputs that produces this timing diagram.
+\item Consider the timing diagram in Fig. \ref{fig:sr1}.  Using any combination of \textit{shift registers} and supporting gates, create a circuit with 8-outputs that produces this timing diagram. \\
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.5\textwidth]{figures/timingExample15.pdf}
-\caption{\label{fig:sr1} A waveform that repeats every 16 clock periods.}
-\end{figure} \vspace{4cm}
+\includegraphics[width=0.45\textwidth]{figures/timingExample15.pdf}
+\includegraphics[width=0.5\textwidth]{figures/design10.pdf}
+\caption{\label{fig:sr1} (Left) A waveform that repeats every 16 clock periods. (Right) One possible solution to Exercise 1.}
+\end{figure}
+\textit{Fig. \ref{fig:sr2} contains a timing diagram corresponding to Fig. \ref{fig:sr1} (right).  Two bi-directional shift registers are OR'd in parallel, and initially are cleared.  One bit is loaded into one shift-register and shifted across the OR array.  At the right moment, that bit is lost and a new bit is added to the other register.  That bit travels in the register in the opposite direction.  A solution could be devised using only one bi-directional shift register, however the shifting would have to be ``paused'' for one clock cycle (cycles 7 and 8).  That is, with one register, the timing would be off when the bit turns around.  Alternatively, we could just OR one register with itself, and cleverly connect the outputs to avoid the timing issue.}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/timingExample19.pdf}
+\caption{\label{fig:sr2} A timing diagram corresponding to Fig. \ref{fig:sr1} (right).}
+\end{figure}
 \item Consider Fig. \ref{fig:SRG8}, in which 4 and 5-bit Johnson counters are depicted.  (a) Create a circuit based on Fig. \ref{fig:SRG8} called a \textit{combinatoric trigger.}  Imagine four digital channels A, B, C, and D, as inputs.  The output of the circuit should be True if \textit{any two} of the four channels is True \textit{within 100 ns of each other.}  Develop any necessary logic symbols, and use the appropriate clock frequency.  The Johnson counter(s) can have any number of bits.
 \begin{figure}[hb]
 \centering
