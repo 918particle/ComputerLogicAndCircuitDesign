@@ -109,8 +109,19 @@
 \item Consider Fig. \ref{fig:SRG8}, in which 4 and 5-bit Johnson counters are depicted.  (a) Create a circuit based on Fig. \ref{fig:SRG8} called a \textit{combinatoric trigger.}  Imagine four digital channels A, B, C, and D, as inputs.  The output of the circuit should be True if \textit{any two} of the four channels is True \textit{within 100 ns of each other.}  Develop any necessary logic symbols, and use the appropriate clock frequency.  The Johnson counter(s) can have any number of bits.
 \begin{figure}[hb]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/SRG8.pdf}
+\includegraphics[width=0.6\textwidth]{figures/SRG8.pdf}
 \caption{\label{fig:SRG8} (Left) 4 and 5-bit Johnson counters. (Right) The timing diagram for the 4-bit case.}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=0.45\textwidth]{figures/design11.pdf}
+\caption{\label{fig:design11} A solution to Exercise 2 based around the pulse output of a Johnson counter.}
+\end{figure}
+Fig. \ref{fig:design11} contains one possible design.  The JC component stands for Johnson counter.  Suppose it has 8 bits.  If we clock it at 80 MHz, then the basic pulse output will have 100 ns width.  We have $100/8 = 12.5$ ns per clock cycle, so $f = 1/12.5$ GHz, which is $0.08$ GHz or 80 MHz.  When any one of the four digital digital inputs goes high, it will trigger the Clock Enable (CE) via an OR gate.  The clock enabler, or clock generator, is a counter that turns on at some frequency (80 MHz in this case) when enabled, and switches off when disabled.  The digital inputs A-D are OR'd with the Johnson counter output.  This means that if another digital signal goes high when the Johnson counter is high, then the AND gate will raise the output high.  Whenever the Johnson counter recycles, the output will go low.  The active low disable on the clock enable (CE) will shut off the clock, and stop the Johnson counter.  Any new incoming signal A-D will override this and restart the Johnson counter.  An example timing diagram is given in Fig. \ref{fig:design12} below.
+\begin{figure}[hb]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/timingExample20.pdf}
+\caption{\label{fig:design12} A timing diagram corresponding to Fig. \ref{fig:design11}.}
 \end{figure}
 \end{enumerate}
 
