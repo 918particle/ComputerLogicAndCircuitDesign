@@ -9,77 +9,94 @@
 \maketitle
 
 \begin{abstract}
-The core concepts of digital logic and digital circuit design are presented in this course, augmented with laboratory exercises.  The course begins with binary mathematics and floating point representation.  The concepts of Boolean logic and logic gates, truth tables, combinatorial logic and Karnaugh maps follow.  These core concepts prove useful in a wide range of engineering, business, and scientific situations.  Laboratory exercises are designed to emphasize hands-on experience with digital logic in firmware.  Following an understanding of core modules, more complex digital elements are introduced.  Examples include flip-flops (memory elements), counters, registers and shift registers.  The course concludes with examples of digital systems useful for science and engineering, including binary adders (ALUs), analog-to-digital converters (ADCs), and digital-to-analog converters (DACs).  Time permitting, the subject of digital signal processing (DSP) is introduced.  Students will create and present final projects that integrate programmable logic and peripheral devices, to enrich the learning experience.
+The core concepts of digital logic and digital circuit design are presented in this course, augmented with laboratory exercises.  The course begins with binary mathematics and floating point representation.  The concepts of Boolean logic and logic gates, truth tables, combinatorial logic and Karnaugh maps follow.  These core concepts prove useful in engineering, business, and science.  Hands-on experience with programmable logic (firmware) and electronics lab equipment are emphasized in lab activities.  Following the core modules, more complex digital functions are introduced.  Examples include adders, comparators, multiplexers and demultiplexers, latches and flip-flops (memory elements), registers and shift registers, counters, and finite-state-machines (FSMs).  We conclude with analog-to-digital conversion (ADCs), and digital-to-analog conversion (DACs).  The ADC/DAC module builds to digital signal processing (DSP), as time permits.  Students will create and present final projects that integrate course concepts using programmable logic and Python code.
 \end{abstract}
 
 \noindent
 \textit{\textbf{Pre-requisites}: PHYS180, COSC120.  Pre-requisites may be waived at instructor discretion.} \\
 \textit{\textbf{Course credits, Liberal Arts Categorization}: 3 Credits, None} \\
-\textit{\textbf{Regular course hours}: Tuesdays and Thursdays from 15:00 - 16:20 in SLC 104.  Laboratory exercises: SLC 102.} \\
+\textit{\textbf{Regular course hours}: Tuesdays and Thursdays from 15:00 - 16:20 in SLC 104 (lecture) and 104 (electronics lab).} \\
 \textit{\textbf{Instructor contact information}: 
-\begin{enumerate}
+\begin{itemize}
+\item Discord: 918particle
 \item Email: jhanson2@whittier.edu
+\item Office: SLC 212
 \item Cell: 562.351.0047
-\item Zoom ID / pass: 796 092 0745 / 667725
 \item YouTube Channel: \url{www.youtube.com/918particle}
 \item Book online appointments: \url{https://fgucmvjkylvmgqfsco.10to8.com}
-\end{enumerate}}
+\end{itemize}}
+\noindent
 \textit{\textbf{Office hours}: Booking service to schedule meeting: \url{10to8.com} as above, and indicate in-person or online.} \\
-\textit{\textbf{Attendance/Absence}: Students needing to reschedule midterms and exams should notify the professor.} \\ 
+\textit{\textbf{Attendance/Absence}: Students needing to reschedule midterms must notify the professor a few days in advance.} \\ 
 \textit{\textbf{Late work policy}: Late work is generally not accepted, but is left to the discretion of the instructor.} \\
-\textit{\textbf{Text}:  Digital Fundamentals, 11th ed., by Thomas L. Floyd (Pearson).  This is a widely adopted text with a variety of online features, online chapters, code examples, and excellent homework sets\footnote{As a general rule, Prof. Hanson does not require students to purchase expensive texts.  However, it is generally recommended to have this book as a reference if you are planning on a a degree in engineering or science.  Please make arrangements with Prof. Hanson if you need assistance acquiring the book.}.} \\
-\textit{\textbf{Grading}: The assignment weighting for this course: two midterms worth 15\% each, laboratory exercises worth 15\%, homework exercises worth 25\%, a final project design and presentation worth 15\%, and a final exam worth 15\%.  The final exam will be held on December 7th, 2021 from 13:00 - 15:00.} \\
+\textit{\textbf{Text}:  Digital Fundamentals, Eleventh Edition., by Thomas L. Floyd (Pearson).  This is a widely adopted text with a variety of online features, bonus chapters, code examples, and excellent homework sets.  As a general rule, Prof. Hanson does not require students to purchase expensive texts.  Please make arrangements with Prof. Hanson if you need assistance acquiring the book.} \\
+\textit{\textbf{Grading}: The course grade will be a weighted average of assignment scores, and the weights are listed in Tab. \ref{tab:grading}.}
+\begin{table}[hb]
+\centering
+\begin{tabular}{| c | c | c |}
+\hline
+\textbf{Assignment} & \textbf{Weight} & \textbf{Date} \\ \hline
+Homework sets & 20\% & Weekly on Fridays \\ \hline
+Midterm 1 & 20\% & February 22nd (take-home) \\ \hline
+Midterm 2 & 20\% & March 28th (take-home) \\ \hline
+Final Exam & 20\% & May 1st (take-home) \\ \hline
+Final Project & 20\% & April 23rd and 25th (in-class) \\ \hline
+\end{tabular}
+\caption{\label{tab:grading} A list of major assignments and grade weights.}
+\end{table} \\
 \textit{\textbf{Grade Settings}: $<60\%$ = F, $>60\%,\leq 70\%$ = D, $>70\%,\leq80\%$ = C, $>80\%,\leq 90\%$ = B, $<90\%,\leq 100\%$ = A.  Pluses and minuses: 0-3\% minus, 3\%-6\% straight, 6\%-10\% plus (e.g. 79\% = C+, 91\% = A-)} \\
 \textit{\textbf{Homework Sets}: Due weekly on Thursdays, including textbook problems, subitted code, and digital designs.} \\
 \textit{\textbf{ADA Statement on Disability Services}: Whittier College is committed to make learning experiences as accessible as possible. If you experience physical or academic barriers due to a disability, you are encouraged to contact Student Disability Services (SDS) to discuss options. To learn more about academic accommodations, email disabilityservices@whittier.edu, call (562) 907-4825, or go to SDS which is located on the ground floor of Wardman Library.} \\
-\textit{\textbf{Academic Honesty Policy}: \url{http://www.whittier.edu/academics/academichonesty}} \\
+\textit{\textbf{Academic Honesty Policy}: \url{http://www.whittier.edu/academics/academichonesty}}
+\clearpage
 \textit{\textbf{Course Objectives}:}
 \begin{itemize}
-\item To master the binary and hexadecimal number systems, fluency with various binary codes and checksums.
-\item To master Boolean logic and logic gates, Boolean algebra and logical simplification through Karnaugh maps.
-\item To practice the application of Boolean logic to scientific, engineering, and business scenarios.
-\item To train in the art of transforming a diagram into a working prototype.
-\item To train in the art of troubleshooting a digital design and remedy bugs and errors.
-\item To develop confidence in building digital prototypes that accomplish design goals.
-\item To learn how to control programmable logic firmware with computer code.
+\item Fluency with binary and hexadecimal number systems, and various binary codes and checksums
+\item Fluency with logic gates, Boolean algebra, logic simplification, and complex logic functions
+\item Application of digital logic in science, engineering, and business administration
+\item Practice the art of translating a diagram with inputs to the expected outputs of a prototype
+\item Practice the art of troubleshooting digital circuits and prototypes
+\item Create and control digital logic within firmware using Python
+\item Create and verify final project designs that accomplish design tasks
+\item Present final project results to peers
 \end{itemize}
-\clearpage
+
 \textit{\textbf{Course Outline}:}
 \begin{outline}[enumerate]
 
 \1 Week 0 - \textbf{Reading: Chapter 1 of Digital Fundamentals.}
-\2 First meeting - Tuesday, August 24th, 2021.
+\2 First meeting - Tuesday, January 16th, 2024.
 \3 Course introduction, syllabus distribution
 \3 \textit{Laboratory tour and introductory laboratory exercises}
 \4 Breadboards, digital voltmeters, DC power supplies
 \4 Oscilloscopes and signal generation
-\2 Second meeting - Thursday, August 26th, 2021.
+\2 Second meeting - Thursday, January 18th, 2024.
 \3 Digital concepts lecture content, block diagram of designs
 \3 Digital concepts and introduction of integrate circuit
 \4 The PYNQ-Z1 System on a Chip (SoC) and Jupyter Notebooks
 \4 Signal properties
 
 \1 Week 1 - \textbf{Reading: Chapters 1-2 of Digital Fundamentals.}
-\2 First meeting - Tuesday, August 31st, 2021. \textit{Reading: Chapter 1.}
+\2 First meeting - Tuesday, January 23rd, 2024. \textit{Reading: Chapter 1.}
 \3 Logic functions: basic, combinatorial, and serial and parallel
 \3 Programmable logic and fixed IC logic
 \3 Test and measurement instruments
 \3 \textit{Laboratory exercise, part I}
 \4 Logic signal creation and measurement with oscilloscope
 \4 Capturing digital signals from PYNQ-Z1: the PL layer and logictools library
-\2 Second meeting - Thursday, September 2nd, 2021. \textit{Reading: Chapters 2-1 through 2-7}
+\2 Second meeting - Thursday, January 25th, 2024. \textit{Reading: Chapters 2-1 through 2-7}
 \3 Decimal and binary numbers, conversions and arithmetic, signed numbers
 \3 \textit{Laboratory exercise, part II}
 \4 Representing a binary number with LEDs
 \4 PYNQ-Z1 and logictools: boolean generator, simple version.
 
 \1 Week 2 - \textbf{Reading: Chapter 2 of Digital Fundamentals.}
-\2 First meeting - Tuesday, September 7th, 2021. \textit{Reading: Chapter 2-1 through 2-7.}
+\2 First meeting - Tuesday, January 30th, 2024. \textit{Reading: Chapter 2-1 through 2-7.}
 \3 Binary arithmetic, signed numbers
 \3 \textit{Laboratory exercise, part I}
 \4 Representing a binary number with LEDs, part II
 \4 PYNQ-Z1 and logictools: boolean generator, with multiple logic functions (python dictionaries)
-\2 Second meeting - Thursday, September 9th, 2021. \textit{Reading: Chapters 2-8, 2-10 through 2-12}
+\2 Second meeting - Thursday, February 1st, 2024. \textit{Reading: Chapters 2-8, 2-10 through 2-12}
 \3 Hexadecimal numbers
 \3 BCD, gray codes, and the parity and CRC error codes
 \3 \textit{Laboratory exercise, part II}
@@ -87,24 +104,24 @@ The core concepts of digital logic and digital circuit design are presented in t
 \4 Digital voltmeters, DC power supplies
 
 \1 Week 3 - \textbf{Reading: Chapters 3 of Digital Fundamentals.}
-\2 First meeting - Tuesday, September 14th, 2021.  \textit{Reading: Chapters 3-1 through 3-3}
+\2 First meeting - Tuesday, February 6th, 2024.  \textit{Reading: Chapters 3-1 through 3-3}
 \3 Hexadecimal numbers
 \3 BCD, gray codes, and the parity and CRC error codes
 \3 \textit{Laboratory exercise, part I}
 \4 Decimal, binary, and hexadecimal conversion
 \4 Python programming, random number generation, and matplotlib
-\2 Second meeting - Thursday, September 16th, 2020. \textit{Reading: Chapters 3-4 through 3-6}
+\2 Second meeting - Thursday, February 8th, 2024. \textit{Reading: Chapters 3-4 through 3-6}
 \3 Logic gates: NOT, AND, OR, NAND, NOR, XOR, XNOR
 \3 \textit{Laboratory exercise, part II}
 \4 PYNQ-Z1 and logictools: finite state machine (FSM) generator, gray code counter
 
 \1 Week 4 - \textbf{Reading: Chapters 3-4 of Digital Fundamentals.}
-\2 First meeting - Tuesday, September 21st, 2021. \textit{Reading: Chapters 3-8 and 3-9, 4-1 and 4-2}
+\2 First meeting - Tuesday, February 13th, 2024. \textit{Reading: Chapters 3-8 and 3-9, 4-1 and 4-2}
 \3 Programmable logic with gates
 \3 Boolean algebra, with applications and examples in business and engineering
 \3 \textit{Laboratory exercise, part 1}
 \4 Complex boolean functions, simulation, programmable logic, verification, part I
-\2 Second meeting - Thursday, September 23rd, 2021.  \textit{Reading: Chapters 4-3 through 4-10}
+\2 Second meeting - Thursday, February 15th, 2024.  \textit{Reading: Chapters 4-3 through 4-10}
 \3 DeMorgan's Theorems; further abstract examples in business and engineering
 \3 Boolean analysis of logic circuits, simplification
 \3 Truth tables, Karnaugh maps and SOP/POS minimization
@@ -112,97 +129,99 @@ The core concepts of digital logic and digital circuit design are presented in t
 \4 Complex boolean functions, simulation, programmable logic, verification, part II
 
 \1 Week 5 - \textbf{Reading: Chapter 5 of Digital Fundamentals}
-\2 First meeting - Tuesday, September 28th, 2021. \textit{Reading:  Chapters 5-1 through 5-3}
+\2 First meeting - Tuesday, February 20th, 2024. \textit{Reading:  Chapters 5-1 through 5-3}
 \3 Combinatorial systems of logic gates
 \3 Universal NAND and NOR gates
 \3 \textit{Laboratory exercise, part I}
 \4 PYNQ-Z1 logictools: trace analyzer and pattern generator
 \4 Use PYNQ-Z1 and pattern generator to multi-pin digital patterns, view with trace analyzer
 \4 Plot the trace of combinatorial logic, part I
-\2 Second meeting - Thursday, September 30th, 2021. \textit{Reading: Chapters 5-4 through 5-7}
+\2 Second meeting - Thursday, February 22nd, 2024. \textit{Reading: Chapters 5-4 through 5-7}
 \3 \textit{Laboratory exercise, part II}
 \4 Introduction to pynq logictools control module, stepping through code
 \4 Plot the trace of combinatorial logic, part II
 \4 System simplification and plot trace to show equivalency
 
 \1 Week 6 - \textbf{Reading: Review chapters 1-5 of Digital Fundamentals}
-\2 First meeting - Tuesday, October 5th, 2021.
+\2 First meeting - Tuesday, February 27th, 2024.
 \3 Review material, collection of example problems
 \3 Catch-up on laboratory exercises and troubleshooting
-\2 Second meeting - Thursday, October 7th, 2021.
+\2 Second meeting - Thursday, February 29th, 2024.
 \3 \textbf{First midterm exam}
 \4 Covers material from chapters 1-5
 \4 Emphasis on binary operations, boolean algebra, and simple collections of gates
 
 \1 Week 8 - \textbf{Reading: Chapter 6 of Digital Fundamentals}
-\2 First meeting - Tuesday, October 12th, 2021. \textit{Reading: Chapters 6-1 through 6-6}
+\2 First meeting - Tuesday, March 5th, 2024. \textit{Reading: Chapters 6-1 through 6-6}
 \3 Adders, comparators, and encoders
 \3 \textit{Laboratory exercise, part I}
 \4 Testing fixed IC adders with scope, LEDs
 \4 Testing fixed IC comparators with scope, LEDs
-\2 Second meeting - Thursday, October 14th, 2021. \textit{Reading: Chapters 6-7 through 6-11}
+\2 Second meeting - Thursday, March 7th, 2024. \textit{Reading: Chapters 6-7 through 6-11}
 \3 Multiplexers and Demultiplexers
 \3 \textit{Laboratory exercise, part II}
 \4 Adders in programmable logic with gates
 \4 Comparators in programmable logic with gates
 
+\1 \textbf{Spring Break:} March 11th - 15th, 2024.
+
 \1 Week 9 - \textbf{Reading: Chapters 7 and 8}
-\2 First meeting - Tuesday, October 19th, 2021. \textit{Reading: Chapters 7-1 through 7-4, 7-5}
+\2 First meeting - Tuesday, March 19th, 2024. \textit{Reading: Chapters 7-1 through 7-4, 7-5}
 \3 S-R latches, flip-flops, and applications
 \3 Timers and pulse generation
 \3 \textit{Laboratory exercise, part I}
 \4 Demonstration of fast pulse generation
 \4 Measurements of RF pulses, digital signal processing with NumPy/Octave
-\2 Second meeting - Thursday, October 21st, 2021. \textit{Reading: Chapters 7-5, and 8-1 through 8-4}
+\2 Second meeting - Thursday, March 21st, 2024. \textit{Reading: Chapters 7-5, and 8-1 through 8-4}
 \3 One-shots (timers)
 \3 Shift registers
 \3 \textit{Laboratory exercise, part II}
 \4 Formation of final project teams.  \textit{Project proposals due one week later.}
 
 \1 Week 10 - \textbf{Reading: Chapters 8 and 9}
-\2 First meeting - Tuesday, October 26th, 2021. \textit{Reading: Chapters 8-5, 9-1 through 9-5}
+\2 First meeting - Tuesday, March 26th, 2024. \textit{Reading: Chapters 8-5, 9-1 through 9-5}
 \3 Shift register applications
 \3 Finite state machines (FSMs)
 \3 Asynchronous and synchronous counters
 \3 \textit{Laboratory exercise, part I}
 \4 Testing fixed IC counters with scope
 \4 Simple FSM and counter example with PYNQ-Z1
-\2 Second meeting - Thursday, October 28th, 2021. \textit{Reading: 9-6 through 9-8}
+\2 Second meeting - Thursday, March 28th, 2024. \textit{Reading: 9-6 through 9-8}
 \3 Cascaded counters and applications of counters
 \3 \textit{Laboratory exercise, part II}
 \4 Pattern generator counting and combination with boolean generator via pynq logictools control
 \4 FSM counter generation and combination with boolean generator via pynq logictools control
 
 \1 Week 11 - \textbf{Reading: Review chapters 6-9}
-\2 First meeting - Tuesday, November 2nd, 2021.
+\2 First meeting - Tuesday, April 2nd, 2024.
 \3 Review material, collection of example problems
 \3 Catch-up on laboratory exercises and troubleshooting
-\2 Second meeting - Thursday, November 4th, 2021.
+\2 Second meeting - Thursday, April 4th, 2024.
 \3 \textbf{Second midterm exam}
 \4 Covers material from chapters 6-9
 \4 Emphasis on adders, timers and pulse generation, shift register applications, FSMs and counters
 
 \1 Week 12 - \textbf{Reading: Chapter 12}
-\2 First meeting - Tuesday, November 9th, 2021. \textbf{Reading: Chapters 12-1 through 12-3}
+\2 First meeting - Tuesday, April 9th, 2024. \textbf{Reading: Chapters 12-1 through 12-3}
 \3 Analog-to-Digital Conversion (ADC)
 \3 Digital-to-Analog Conversion (DAC)
 \3 \textit{Laboratory exercise, part I}
 \4 PYNQ-Z1 PMOD (peripheral modules) ports
 \4 ADC PMOD - read in a voltage and plot it
-\2 Second meeting - Thursday, November 11th, 2021. \textbf{Reading: Chapters 12-4 through 12-5}
+\2 Second meeting - Thursday, April 11th, 2024. \textbf{Reading: Chapters 12-4 through 12-5}
 \3 Digital Signal Processing (DSP) - an introduction to sampling and digitization
 \3 \textit{Laboratory exercise, part II}
 \4 PYNQ-Z1 PMOD (peripheral modules) ports
 \4 DAC PMOD - produce a voltage and plot it on oscilloscope
 
 \1 Week 13 - \textbf{Reading: Chapters 2 and 3 of The Scientist and Engineer's Guide to DSP}
-\2 First meeting - Tuesday, November 16th, 2021. \textit{Reading: Chapters 2 of DSP Guide}
+\2 First meeting - Tuesday, April 16th, 2024. \textit{Reading: Chapters 2 of DSP Guide}
 \3 Selected topics in statistics and probability
 \3 Mathematics of sampling and digitization
 \3 \textit{Laboratory exercise, part I}
 \4 Audio signal acquisition with PYNQ-Z1
 \4 Processing of audio data in GNU Octave
-\2 Second meeting - Thursday, November 18th, 2021. \textit{Reading: Chapters 3 of DSP Guide}
+\2 Second meeting - Thursday, April 18th, 2024. \textit{Reading: Chapters 3 of DSP Guide}
 \3 The sampling theorem
 \3 Aliasing and anti-aliasing
 \3 \textit{Laboratory exercise, part II}
@@ -210,20 +229,21 @@ The core concepts of digital logic and digital circuit design are presented in t
 \4 Aliasing in time-series (audio) data
 
 \1 \textit{Optional extra topics}- \textbf{Reading: Chapters 30 and 31 of The Scientist and Engineer's Guide to DSP}
-\2 First meeting - Tuesday, November 30th, 2021. \textit{Reading: Chapter 30 of DSP Guide}
+\2 First meeting - Tuesday, April 23rd, 2024. \textit{Reading: Chapter 30 of DSP Guide}
 \3 Complex numbers and the usage of complex numbers in DSP
 \3 \textit{Laboratory exercise, part I}
 \4 Exploring the Fourier transform, part I
 \4 Power spectra and spectrograms
-\2 Second meeting - Thursday, December 2nd, 2021. \textit{Reading: Chapter 31 of DSP Guide}
+\2 Second meeting - Thursday, April 25th, 2024. \textit{Reading: Chapter 31 of DSP Guide}
 \3 Complex numbers and the FFT, filters
 \3 \textit{Laboratory exercise, part II}
 \4 Exploring the Fourier transform, part II
 \4 Filters and filtering data
 
 \1 Week 14 - \textbf{Group presentations and Final Exam}
-\2 First meeting - Tuesday, November 30th, 2021.
-\3 \textit{Group presentations: max. 15 minutes each, two students per group}
-\2 The final exam will be held on December 7th, 2021 from 13:00 - 15:00.
+\2 Meetings - Tuesday, April 23rd, 2024, and Thursday, April 25th, 2024.
+\3 \textit{Group presentations: 15 minutes each, 1-2 students per group}
+\3 \textit{Final presentations can be via \textbf{option A}, live in person, or \textbf{option B} through WeVideo. A WeVideo tutorial will be given as part of the course.}
+\2 The final exam will be issued on May 1st, 2024 in take-home style.  It will be due 48 hours after issued, and submitted in PDF form to Moodle.
 \end{outline}
 \end{document}
