@@ -7,7 +7,7 @@
 
 \begin{document}
 
-\title{Synopsis - Week 7 Integrated Project: fixed IC gates and counters, gates and counters in programmable logic}
+\title{Synopsis - Week 13 Integrated Project: Hardware Acceleration}
 \author{Prof. Jordan C. Hanson}
 
 \maketitle
@@ -25,14 +25,165 @@ A finite impulse response (FIR) filter takes digitized data as the input, and re
 
 \begin{equation}
 y[n] = \sum_{i=0}^N b_i x[n-i]
+\label{eq:fir}
 \end{equation}
 
-In this lab, we are going to create a PYNQ overlay that will implement Eq. \ref{fig:fir} in the SoC PL layer.
+\noindent
+In this lab, we are going to create a PYNQ overlay that will implement Eq. \ref{fig:fir} in the SoC PL layer.  We will show that:
 
-\section{Comparing fixed IC gates and counters to programmable logic}
+\begin{itemize}
+\item Implementing the FIR filter in the PL layer \textit{accelerates} the results
+\item The acceleration depends on $N$, the number of data samples
+\end{itemize}
+
+\section{Example of an FIR Filter in SciPy}
+
+Copy the following code into a Jupyter Notebook on the PYNQ-Z1 board:
+
+\begin{verbatim}
+import matplotlib.pyplot as plt
+def plot_to_notebook(time_sec,in_signal,n_samples,out_signal=None):
+    plt.figure()
+    plt.subplot(1, 1, 1)
+    plt.xlabel('Time (usec)')
+    plt.grid()
+    plt.plot(time_sec[:n_samples]*1e6,in_signal[:n_samples],'y-',label='Input signal')
+    if out_signal is not None:
+        plt.plot(time_sec[:n_samples]*1e6,out_signal[:n_samples],'g-',linewidth=2,label='FIR output')
+    plt.legend()
+\end{verbatim}
+
+\noindent
+This Python function will plot time samples in microseconds versus data samples in Volts.  If a second signal is given, it will be plotted with the same time samples.  The following code creates a list of time samples, sampled at 100 MHz, that is 1 ms long.  The result is $10^5$ samples.  There are $10^5$ samples because the \textit{sampling rate} is 100 million samples per second, for 1 ms.  The \verb+linspace+ function is used to create a list of $N = 10^5$ samples evenly spaced between 0 and 1 ms.
+
+\begin{verbatim}
+import numpy as np
+# Total time
+T = 0.001
+# Sampling frequency
+fs = 100e6
+# Number of samples
+n = int(T * fs)
+# Time vector in seconds
+t = np.linspace(0, T, n, endpoint=False)
+# Samples of the signal
+samples = 10000*np.sin(0.2e6*2*np.pi*t) + 1500*np.cos(46e6*2*np.pi*t) + 2000*np.sin(12e6*2*np.pi*t)
+# Convert samples to 32-bit integers
+samples = samples.astype(np.int32)
+print('Number of samples: ',len(samples))
+# Plot signal to the notebook
+plot_to_notebook(t,samples,2000)
+\end{verbatim}
+
+\noindent
+The signal samples are the sum of three sinusoidal functions, with frequencies 0.2 MHz, 46 MHz, and 12 MHz.  The plot shows a noisy sine wave.  Our goal is to filter the higher frequencies, leaving just the first signal at 0.2 MHz.  Let $V_{\rm in}$ be the input amplitude in Volts, and $V_{\rm out}$ be the output amplitude in Volts.  Filtering the higher frequencies means we must use a \textit{low-pass filter}.  It follows that $P_{\rm in} \propto V^2_{\rm in}$, and $P_{\rm out} \propto V^2_{\rm out}$.  Let the \textit{gain} of a filter in decibels be
+
+\begin{align}
+G_{\rm dB} &= 20 \log_{10}\left( \frac{V_{\rm out}}{V_{\rm in}} \right) \\
+G_{\rm dB} &= 10 \log_{10}\left( \frac{P_{\rm out}}{P_{\rm in}} \right)
+\end{align}
+
+\noindent
+The gain versus frequency of our FIR low-pass filter is shown in Fig. \ref{fig:fir}.  Notice that 0 dB means the input and output have the same amplitude and power.  A gain of -3 dB implies the output power is half that of the input.
+
+\begin{figure}[hb]
+\centering
+\includegraphics[width=0.5\textwidth]{FIR_gain_vs_freq.png}
+\caption{\label{fig:fir} The gain in dB versus frequency of the FIR low-pass filter we will use in this lab activity.}
+\end{figure}
 
 \begin{enumerate}
-\item Things
+\item What will happen to our signal, composed of three amplitudes at the three frequencies 0.2 MHz, 12 MHz, and 46 MHz, when it is passed through our FIR low-pass filter? \\ \vspace{1cm}
+\item If we pass a 1 Volt, 20 MHz signal through our FIR low-pass filter, what will the final amplitude be in (a) dB (according to Fig. \ref{fig:fir}), and (b) in Volts? \\ \vspace{1cm}
 \end{enumerate}
+
+\noindent
+The following code implements the FIR low-pass filter in Python.  Copy this code into your notebook for execution.  Make note of the SciPy function \verb+lfilter+ that implements Eq. \ref{eq:fir} with the coefficients $b_i$ given by the array \verb+coeffs+.
+
+\begin{verbatim}
+from scipy.signal import lfilter
+import time
+coeffs = [-255,-260,-312,-288,-144,153,616,1233,1963,2739,3474,4081,4481,4620,4481,4081,3474,2739,
+1963,1233,616,153,-144,-288,-312,-260,-255]
+start_time = time.time()
+sw_fir_output = lfilter(coeffs,100e3,samples)
+stop_time = time.time()
+sw_exec_time = stop_time - start_time
+print('Software FIR execution time: ',sw_exec_time)
+# Plot the result to notebook
+plot_to_notebook(t,samples,2000,out_signal=sw_fir_output)
+\end{verbatim}
+
+\noindent
+Notice the execution time of the \verb+lfilter+ function is recorded in the variable \verb+sw_exec_time+.  What is a typical execution time for the \verb+lfilter+ function.  How does it appear to scale with $N$, the total number of samples?
+
+\section{Creating a Block Diagram in Vivado with FIR Filter and DMA}
+
+On the ASUS laptop, open the application \textit{Vivado} using the menu at the bottom left of the desktop environment.  Create a new project by choosing a project name and ensuring that it is an RTL (register-transfer level) project.  In the Default part dialogue, choose the Boards tab, then search for the PYNQ-Z1 board.  Select the PYNQ-Z1 board, then click Finish.  The screen should now resemble Fig. \ref{fig:vid_1}.  Locate the IP Integrator section on the left-hand column.  Click IP Integrator, and click OK in pop-up window named Create Block Design.  Using this functionality, we are going to add some digital logic to the standard PYNQ-Z1 PL.  In the diagram space, click the $+$ button, search for Zynq (the Xilinx SoC that powers the PYNQ-Z1).  Add the Zynq system to the diagram, which should resemble \ref{fig:vid_2} below.  Notice the bar at the top of the block diagram inviting the user to run block automation.  Run this to set the normal initial conditions to the Zynq block.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.45\textwidth]{fir_video_1.png}
+\caption{\label{fig:vid_1} Beginning a firmware project in Vivado.}
+\end{figure}
+
+\begin{figure}[hb]
+\centering
+\includegraphics[width=0.45\textwidth]{fir_video_2.png}
+\caption{\label{fig:vid_2} Adding the Zynq SoC to the block diagram.}
+\end{figure}
+
+\clearpage
+
+\noindent
+At the top of the block diagram, click the $+$ button and search for FIR Compiler.  Once the FIR block is added to the block diagram, double click it to open its settings.  Configure the FIR Compiler in the following ways:
+
+\begin{enumerate}
+\item Copy the \verb+coeffs+ list from the Jupyter notebook to the Coefficient Vector field in the FIR Compiler.
+\item Click the Channel Specification tab, and under Hardware Oversampling Specification, set the input sampling frequency to 100 MHz.
+\item Just below the sampling frequency, set the clock frequency to 100 MHz.  This will set the FIR filter to accept one new sample per clock cycle.
+\item Click the Implementation tab, and scroll down to Data Path Options.  Set the input and output data widths to be 32 bits, just as they are generated in the Python3 code.  Set output rounding mode to ``non-symmetric rounding up.''  Full-precision output is not possible with 32 bit samples as inputs.
+\item Under the Interface tab, select Packet Framing for TLAST, and check the Output Ready box.  These choices will help transfer the data between the PS and PL layers.
+\item To finalize the FIR configuration, click OK.  The block diagram should now resemble Fig. \ref{fig:vid_3} (left).
+\end{enumerate}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.45\textwidth]{fir_video_3.png}
+\includegraphics[width=0.45\textwidth]{fir_video_4.png}
+\caption{\label{fig:vid_3} (Left) Adding the FIR filter block. (Right) Connections between DMA and FIR filter.}
+\end{figure}
+
+\noindent
+The next IP component we will add is a direct memory access (DMA) block.  We need to find the input signal data by address in our Zynq system, pass it to the configured FIR filter, and pass the output back to the Zynq.  The DMA will manage this.  To add the DMA, click $+$ in the block diagram, and search for DMA.  Choose AXI Direct Memory Access, and wait for the new block to appear in our design.  Double click on the DMA block to configure it.  Perform the following tasks:
+
+\begin{enumerate}
+\item Disable ``scatter gather engine,'' (not supported in PYNQ-Z1).
+\item Set the width of buffer length register to 23 bits.  This was the maximum when this project was created.  Click OK.
+\end{enumerate}
+
+\noindent
+Now connect the proper outputs and inputs between the DMA and the FIR filter, as shown in Fig. \ref{fig:vid_3} (right).  Double click the Zynq block, and enable a high-performance AXI port by clicking the green block (bottom right of the diagram).
+
+\begin{figure}[hb]
+\centering
+\includegraphics[width=0.45\textwidth]{fir_video_5.png}
+\caption{\label{fig:vid_4} The inner workings of the Zynq SoC.}
+\end{figure}
+
+\clearpage
+
+\noindent
+Under PS-PL Configuration, enable ``S AXI HP0 interface.''  Click OK, and leave the Zynq block selected.  Now we can run connection automation via the green bar above the overall block diagram.  In the ensuing dialogue, check the boxes for the AXI DMA, FIR Compiler, and processing system connections.  Vivado will discern which connections make sense in light of the usual functionality of these blocks.  Click OK to run the automation.  Run the automation again, and leave the boxes checked.  The full block diagram should now resemble Fig. \ref{fig:vid_5}.  Click the DMA block, then under Block Properties, enter \verb+fir_dma+ in the Name field.  Similarly, re-name the FIR block \verb+fir+.  Select both the DMA and the FIR blocks by clicking one, then holding \verb+Shift+ key, and clicking the second.  Right-click the pair of blocks and select Create Hierarchy.  Name the hierarchy filter.  This will make the new PL easier to reference in Python3.  Save the block design by clicking the disk icon at the top left of the Vivado window.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.45\textwidth]{fir_video_6.png}
+\caption{\label{fig:vid_5} The inner workings of the Zynq SoC.}
+\end{figure}
+
+\section{Creating a Custom PYNQ Overlay}
+
+Locate the pane with Design, Sources, Signals, and Board tabs.  Click Sources, and under Design Sources, right-click on the design file \verb+design_1+.  Select create HDL wrapper, and click OK in the pop-up window.
 
 \end{document}

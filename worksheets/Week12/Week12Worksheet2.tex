@@ -7,7 +7,7 @@
 
 \begin{document}
 
-\title{Synopsis - Week 12 Integrated Project: The Nyquist Frequency}
+\title{Synopsis - Week 12 Integrated Project: The Nyquist Frequency and Fourier Series}
 \author{Prof. Jordan C. Hanson}
 
 \maketitle
@@ -16,7 +16,7 @@
 
 Peripheral modules from Digilents are often called Pmods.  Pmods allow peripheral devices to connect and interact with the PYNQ-Z1 system and give it special abilities.  Recently in lecture we have learned how a flash ADC works.  There are several varieties of ADC, and we happened to cover the flash ADC.  A digital-to-analog converter (DAC) converts binary numbers in the form of high and low voltages to an analog voltage on the output.  \textit{In this lab activity, we will produce analog voltages via a DAC and feed them into an ADC.}
 
-\section{Create Code to Send and Plot a Sine Wave}
+\section{Create Code to Send and Plot a Fourier Series}
 
 \subsection{Set up the system correctly}
 
@@ -40,13 +40,7 @@ The above code imports matplotlib, to graph the ADC output from the DAC input.  
 
 \subsection{Send a Sine Wave through the DAC to the ADC}
 
-The following code defines a frequency $f$, an amplitude $A$, a DC offset $B$, a list of times $t$, and computes the sine wave according to
-
-\begin{equation}
-v(t) = A\sin(2\pi ft) + B
-\end{equation}
-
-The interesting part is that we must define \textit{a list} of times, spaced by $\Delta t$.  The \textit{sampling frequency} is $f_s = 1/\Delta t$.  Each sine wave value is sent over the line from the DAC to the ADC, value by value, and system sleeps for $\Delta t$ seconds.  The \verb+samples+ variable captures the ADC output.
+Along the lines of the \textit{Fouier Series and Sampling Tutorial}, create code that forms a Fourier series for a square wave.  Loop over times as in the example code below, but do not just write the value of a sine function to the DAC.  Instead, write the appropriate sum of several terms in the Fourier series.
 
 \begin{verbatim}
 #Transmission loop
@@ -59,7 +53,10 @@ amplitude = 0.5 #Units: volts
 frequency = 0.5 #Units: Hertz
 samples = []
 for t in times:
-    dac.write(amplitude*np.sin(2.0*3.14159*frequency*t)+dc_offset)
+	#Don't do this (only one sine term):
+    #dac.write(amplitude*np.sin(2.0*3.14159*frequency*t)+dc_offset)
+    #Instead make it the sum of several sine or cosine terms
+    #as given by the Fourier series
     sleep(delta_t)
     samples.append(adc.read())
 \end{verbatim}
@@ -84,8 +81,8 @@ plot.show()
 \subsection{Questions to be Answered}
 
 \begin{enumerate}
-\item What happens when the frequency of the sine wave is greater than half of the sampling frequency?  Create a plot that (a) sets the sine wave frequency equal to one-half of the sampling frequency.  (b) Create plots that push the sine wave frequency to values greater than one-half of the sampling frequency.  What do you observe? \\ \vspace{3cm}
-\item While respecting the Nyquist-Shannon limit ($f \leq f_s/2$), push the frequency of the sine wave into the MHz regime.  How high can you make the sine wave frequency before you start to notice changes in the sine wave amplitude?  What happens to the sine wave amplitude?
+\item (a) What is the effect of sending the Fourier series over the line from the DAC to the ADC? (b) What kinds of distortions or oddities occur that make the ADC signal different from a square wave? \\ \vspace{3cm}
+\item (a) What happens to your observations if you include a higher number of terms in the Fourier series? (b) While sending a relatively higher number of terms over the line, reduce the sampling frequency.  What do you notice?
 \end{enumerate}
 
 \end{document}

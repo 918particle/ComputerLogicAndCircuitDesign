@@ -9,13 +9,13 @@
 \maketitle
 
 \begin{abstract}
-The core concepts of digital logic and digital circuit design are presented in this course, augmented with laboratory exercises.  The course begins with binary mathematics and floating point representation.  The concepts of Boolean logic and logic gates, truth tables, combinatorial logic and Karnaugh maps follow.  These core concepts prove useful in engineering, business, and science.  Hands-on experience with programmable logic (firmware) and electronics lab equipment are emphasized in lab activities.  Following the core modules, more complex digital functions are introduced.  Examples include adders, comparators, multiplexers and demultiplexers, latches and flip-flops (memory elements), registers and shift registers, counters, and finite-state-machines (FSMs).  We conclude with analog-to-digital conversion (ADCs), and digital-to-analog conversion (DACs).  The ADC/DAC module builds to digital signal processing (DSP), as time permits.  Students will create and present final projects that integrate course concepts using programmable logic and Python code.
+The core concepts of digital logic and digital circuit design are presented via integrated lectures and laboratory activities.  The course begins with binary mathematics and floating point representation.  The concepts of Boolean logic and logic gates, truth tables, combinatorial logic and Karnaugh maps follow.  These core concepts prove useful in engineering, business, and science.  Hands-on experience with programmable logic (firmware) and electronics lab equipment are emphasized in lab activities.  Following the core modules, more complex digital functions are introduced.  Examples include adders, comparators, multiplexers and demultiplexers, latches and flip-flops (memory elements), registers and shift registers, counters, and finite-state-machines (FSMs).  We conclude with analog-to-digital conversion (ADCs), and digital-to-analog conversion (DACs).  The ADC/DAC module builds to digital signal processing (DSP), as time permits.  Students will create and present final projects that integrate course concepts using programmable logic and Python code.
 \end{abstract}
 
 \noindent
 \textit{\textbf{Pre-requisites}: PHYS180, COSC120.  Pre-requisites may be waived at instructor discretion.} \\
 \textit{\textbf{Course credits, Liberal Arts Categorization}: 3 Credits, None} \\
-\textit{\textbf{Regular course hours}: Tuesdays and Thursdays from 15:00 - 16:20 in SLC 104 (lecture) and 104 (electronics lab).} \\
+\textit{\textbf{Regular course hours}: Tuesdays and Thursdays from 15:00 - 16:20 in SLC 102 (lecture) and 104 (electronics lab).} \\
 \textit{\textbf{Instructor contact information}: 
 \begin{itemize}
 \item Discord: 918particle
@@ -45,7 +45,7 @@ Final Project & 20\% & April 23rd and 25th (in-class) \\ \hline
 \caption{\label{tab:grading} A list of major assignments and grade weights.}
 \end{table} \\
 \textit{\textbf{Grade Settings}: $<60\%$ = F, $>60\%,\leq 70\%$ = D, $>70\%,\leq80\%$ = C, $>80\%,\leq 90\%$ = B, $<90\%,\leq 100\%$ = A.  Pluses and minuses: 0-3\% minus, 3\%-6\% straight, 6\%-10\% plus (e.g. 79\% = C+, 91\% = A-)} \\
-\textit{\textbf{Homework Sets}: Due weekly on Thursdays, including textbook problems, subitted code, and digital designs.} \\
+\textit{\textbf{Homework Sets}: Due weekly on Fridays, including textbook problems, subitted code, and digital designs.} \\
 \textit{\textbf{ADA Statement on Disability Services}: Whittier College is committed to make learning experiences as accessible as possible. If you experience physical or academic barriers due to a disability, you are encouraged to contact Student Disability Services (SDS) to discuss options. To learn more about academic accommodations, email disabilityservices@whittier.edu, call (562) 907-4825, or go to SDS which is located on the ground floor of Wardman Library.} \\
 \textit{\textbf{Academic Honesty Policy}: \url{http://www.whittier.edu/academics/academichonesty}}
 \clearpage
@@ -56,7 +56,7 @@ Final Project & 20\% & April 23rd and 25th (in-class) \\ \hline
 \item Application of digital logic in science, engineering, and business administration
 \item Practice the art of translating a diagram with inputs to the expected outputs of a prototype
 \item Practice the art of troubleshooting digital circuits and prototypes
-\item Create and control digital logic within firmware using Python
+\item Create and control programmable logic using Python
 \item Create and verify final project designs that accomplish design tasks
 \item Present final project results to peers
 \end{itemize}
@@ -95,7 +95,7 @@ Final Project & 20\% & April 23rd and 25th (in-class) \\ \hline
 \3 Binary arithmetic, signed numbers
 \3 \textit{Laboratory exercise, part I}
 \4 Representing a binary number with LEDs, part II
-\4 The \verb+logictools+ boolean generator: multiple logic functions (python dictionaries)
+\4 The \verb+logictools+ boolean generator: multiple logic functions, associative property
 \2 Second meeting - Thursday, February 1st, 2024. \textit{Reading: Chapters 2-8, 2-10 through 2-12}
 \3 Hexadecimal numbers
 \3 BCD, gray codes, and the parity and CRC error codes
@@ -112,38 +112,35 @@ Final Project & 20\% & April 23rd and 25th (in-class) \\ \hline
 \3 \textit{Laboratory exercise, part I}
 \4 Decimal, binary, and hexadecimal conversion (Python codelab)
 \4 Random number generation, and matplotlib (\verb+common+ Jupyter notebooks)
-\4 PYNQ-Z1 and \verb+logictools+: finite state machines (FSMs), part I
+\4 PYNQ-Z1 and \verb+logictools+: finite state machines (FSMs) and logic simplification, part I
 \2 Second meeting - Thursday, February 8th, 2024. \textit{Reading: Chapters 3-4 through 3-6}
 \3 Logic gates: NOT, AND, OR, NAND, NOR, XOR, XNOR
 \3 \textit{Laboratory exercise, part II}
-\4 PYNQ-Z1 and \verb+logictools+: finite state machine (FSMs) part II, gray code counter
+\4 PYNQ-Z1 and \verb+logictools+: finite state machines (FSMs) and logic simplification, part II
 
 \1 Week 4 - \textbf{Reading: Chapters 3-4 of Digital Fundamentals.}
 \2 First meeting - Tuesday, February 13th, 2024. \textit{Reading: Chapters 3-8 and 3-9, 4-1 and 4-2}
 \3 Programmable logic with gates
 \3 Boolean algebra, with applications and examples in business and engineering
 \3 \textit{Laboratory exercise, part 1}
-\4 Complex boolean functions, simulation, programmable logic, verification, part I
+\4 PYNQ-Z1 and \verb+logictools+: finite state machines (FSMs) and logic simplification, part III
 \2 Second meeting - Thursday, February 15th, 2024.  \textit{Reading: Chapters 4-3 through 4-10}
 \3 DeMorgan's Theorems; further abstract examples in business and engineering
 \3 Boolean analysis of logic circuits, simplification
 \3 Truth tables, Karnaugh maps and SOP/POS minimization
 \3 \textit{Laboratory exercise, part II}
-\4 Complex boolean functions, simulation, programmable logic, verification, part II
+\4 PYNQ-Z1 \verb+logictools+: trace analyzer and pattern generator
+\4 Use pattern generator to create multi-pin digital patterns, view with trace analyzer
 
 \1 Week 5 - \textbf{Reading: Chapter 5 of Digital Fundamentals}
 \2 First meeting - Tuesday, February 20th, 2024. \textit{Reading:  Chapters 5-1 through 5-3}
 \3 Combinatorial systems of logic gates
 \3 Universal NAND and NOR gates
 \3 \textit{Laboratory exercise, part I}
-\4 PYNQ-Z1 \verb+logictools+: trace analyzer and pattern generator
-\4 Use pattern generator to create multi-pin digital patterns, view with trace analyzer
 \4 Plot the trace of combinatorial logic, part I
 \2 Second meeting - Thursday, February 22nd, 2024. \textit{Reading: Chapters 5-4 through 5-7}
 \3 \textit{Laboratory exercise, part II}
-\4 Introduction \verb+logictools+ control module, stepping through code
-\4 Plot the trace of combinatorial logic, part II
-\4 System simplification and plot trace to show equivalency
+\4 Cumulative exercise with boolean generator, pattern generator, trace analyzer, and stepper
 
 \1 Week 6 - \textbf{Reading: Review chapters 1-5 of Digital Fundamentals}
 \2 First meeting - Tuesday, February 27th, 2024.
@@ -187,18 +184,18 @@ Final Project & 20\% & April 23rd and 25th (in-class) \\ \hline
 \3 Finite state machines (FSMs)
 \3 Asynchronous and synchronous counters
 \3 \textit{Laboratory exercise, part I}
-\4 Simple FSM and counter example with \verb+logictools+
-\4 \textit{Final project proposals due.}
+\4 Catch-up on laboratory exercises and troubleshooting
+\4 \textit{Work on final project proposals}
+\4 Optional: FSM and counter example with \verb+logictools+
 \2 Second meeting - Thursday, March 28th, 2024. \textit{Reading: 9-6 through 9-8}
 \3 Cascaded counters and applications of counters
 \3 \textit{Laboratory exercise, part II}
-\4 Pattern generator counting
-\4 Combination with boolean generator with \verb+logictools+
+\4 Study period for second midterm
+\4 \textit{Final project proposals due}
 
 \1 Week 11 - \textbf{Reading: Review chapters 6-9}
 \2 First meeting - Tuesday, April 2nd, 2024.
 \3 Review material, collection of example problems
-\3 Catch-up on laboratory exercises and troubleshooting
 \2 Second meeting - Thursday, April 4th, 2024.
 \3 \textbf{Second midterm exam}
 \4 Covers material from chapters 6-9
@@ -209,13 +206,15 @@ Final Project & 20\% & April 23rd and 25th (in-class) \\ \hline
 \3 Analog-to-Digital Conversion (ADC)
 \3 Digital-to-Analog Conversion (DAC)
 \3 \textit{Laboratory exercise, part I}
-\4 PYNQ-Z1 PMOD (peripheral modules)
-\4 ADC PMOD - read in a voltage and plot it
+\4 ADC/DAC with PMODs, part I
+\4 Produce analog voltage from programmable logic, read analog voltage to programmable logic
 \2 Second meeting - Thursday, April 11th, 2024. \textbf{Reading: Chapters 12-4 through 12-5}
 \3 Digital Signal Processing (DSP) - an introduction to sampling and digitization
 \3 \textit{Laboratory exercise, part II}
-\4 PYNQ-Z1 PMOD (peripheral modules)
-\4 DAC PMOD - produce a voltage and plot it on oscilloscope
+\4 ADC/DAC with PMODs, part II
+\4 ADC/DAC and Fourier series
+
+\clearpage
 
 \1 Week 13 - \textbf{Reading: Chapters 2-3 of Digital Signal Processing}
 \2 First meeting - Tuesday, April 16th, 2024. \textit{Reading: Chapter 2 of DSP}
