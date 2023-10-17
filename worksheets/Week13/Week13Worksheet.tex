@@ -184,6 +184,73 @@ Under PS-PL Configuration, enable ``S AXI HP0 interface.''  Click OK, and leave 
 
 \section{Creating a Custom PYNQ Overlay}
 
-Locate the pane with Design, Sources, Signals, and Board tabs.  Click Sources, and under Design Sources, right-click on the design file \verb+design_1+.  Select create HDL wrapper, and click OK in the pop-up window.
+Locate the pane with Design, Sources, Signals, and Board tabs.  Click Sources, and under Design Sources, right-click on the design file \verb+design_1+.  Select create HDL wrapper, and click OK in the pop-up window.  When this process is finished, locate the Program and Debug section in the left pane.  Click generate bitstream.  Click OK until the process begins.  Using the HDL wrapper, this should generate the \verb+.bit+ file that will be loaded by the PYNQ-Z1 SoC as an ``overlay.''  The overlay will keep all of the original SoC functionality, and add the FIR filter logic function.  When the bitstream is generated, go to \verb+File+, \verb+Export+, and export the block design to a TCL file.  Give your TCL file the name \verb+fir_accel.tcl+.  Now open a file browser on the laptop, and accomplish these three remaining tasks:
+\begin{enumerate}
+\item In the project folder corresponding the design, find and rename the HDL wrapper \verb+fir_accel.bit+.
+\item Similarly, locate the ``hardware handoff'' file (.hwh), and rename it \verb+fir_accel.hwh+.
+\item Gather together \verb+fir_accel.bit+, \verb+fir_accel.tcl+, and \verb+fir_accel.hwh+ in the Downloads folder of Linux.
+\end{enumerate}
+
+\noindent
+We must now mv the files to the right location on our PYNQ-Z1 board.  Return to the browser that corresponds to the PYNQ-Z1 system.  Using the Upload button at the top right, load the files onto the board.  We must then put them in the right location.  Follow these steps to do this:
+\begin{enumerate}
+\item In the browser, open a terminal (New $\rightarrow$ Terminal), for interacting with the operating system.
+\item Type \verb+pwd+.  This command prints the working directory, or current directory.
+\item Notice we are in the \verb+root+ directory, or $/$.  Type \verb+cd /home/xilinx/jupyter_notebooks+, then type \verb+ls+.
+\item Do you see the files named \verb+fir_accel.bit+, \verb+fir_accel.tcl+, and \verb+fir_accel.hwh+? 
+\item The \verb+mv+ (move) command works like: \verb+mv file /path/to/destination/+.
+\item Using the \verb+mv+ command, move the files to \verb+/home/xilinx/pynq/overlays+.
+\item Now change directories (cd) like \verb+cd /home/xilinx/pynq/overlays+.
+\item Create a directory called \verb+fir_accel+ using the \verb+mkdir+ command: \verb+mkdir fir_accel+.
+\item Move the files into the \verb+fir_accel+ directory.
+\end{enumerate}
+
+\clearpage
+
+\section{Using the FIR Low-Pass Filter in the PL Layer}
+
+The \verb+pynq+ package \verb+Overlay+ loads bit files.  We usually load the \verb+base.bit+ for our lab activities involving \verb+logictools+.  Execute the code below to load our new bitstream, and gain access to the DMA block.
+
+\begin{verbatim}
+from pynq import Overlay
+import pynq.lib.dma
+# Load the overlay
+overlay = Overlay('/home/xilinx/pynq/overlays/fir_accel/fir_accel.bit')
+# Load the FIR DMA
+dma = overlay.filter.fir_dma
+\end{verbatim}
+
+\noindent
+The final code block below performs several actions.  First, we need the \verb+allocate+ function to copy (bit by bit) the 32-bit data samples into correctly-shaped ``buffers'' that will be fed through the DMA to the FIR filter in the PL layer. The buffers need to know $N$, the number of samples.  The functions from the \verb+time+ package will time the operations.  It is important to count the data transfer time as well as time required to filter the data.  The DMA sub-classes \verb+sendchannel+ and \verb+recvchannel+ are the inputs and outputs, and the \verb+transfer+ function moves the data accordingly.  The \verb+out_buffer+ receives the filtered data.  We calculate the ratio of the ``software execution time'' and the ``hardware execution time'' to find the ``speed-up factor.''  Finally, we plot some samples of the un-filtered and filtered data from \verb+out_buffer+, and free the \verb+in_buffer+ and \verb+out_buffer+ memory.
+
+\begin{verbatim}
+from pynq import allocate
+import numpy as np
+# Allocate buffers for the input and output signals
+in_buffer = allocate(shape=(n,), dtype=np.int32)
+out_buffer = allocate(shape=(n,), dtype=np.int32)
+# Copy the samples to the in_buffer
+np.copyto(in_buffer,samples)
+# Trigger the DMA transfer and wait for the result
+import time
+start_time = time.time()
+dma.sendchannel.transfer(in_buffer)
+dma.recvchannel.transfer(out_buffer)
+dma.sendchannel.wait()
+dma.recvchannel.wait()
+stop_time = time.time()
+hw_exec_time = stop_time-start_time
+print('Hardware FIR execution time: ',hw_exec_time)
+print('Hardware acceleration factor: ',sw_exec_time / hw_exec_time)
+# Plot to the notebook
+plot_to_notebook(t,samples,1000,out_signal=out_buffer)
+# Free the buffers
+in_buffer.close()
+out_buffer.close()
+\end{verbatim}
+
+\section{Measuring Speed-Up Factor vs. $N$}
+
+Determine how the speed-up factor depends on $N$, the number of samples.  Measure the speed-up factor several times for each new $N$ value you choose, so that you can obtain an average.  Plot the average speed-up factor versus $N$.  Try plotting speed-up versus $\log_{10}(N)$.  Do you notice the trend?
 
 \end{document}
