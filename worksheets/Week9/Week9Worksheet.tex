@@ -38,17 +38,57 @@ Make sure that your lap table is powered, and that the DC power supply is connec
  
 \begin{figure}
 \centering
-\includegraphics[width=0.35\textwidth,trim=5cm 6cm 9cm 13cm,clip=true]{breadboard.jpg} \hspace{0.5cm}
-\includegraphics[width=0.37\textwidth]{breadboard_power.pdf}
+\includegraphics[width=0.20\textwidth,trim=5cm 6cm 9cm 13cm,clip=true]{breadboard.jpg} \hspace{0.5cm}
+\includegraphics[width=0.21\textwidth]{breadboard_power.pdf}
 \caption{\label{fig:count2} (Left) The basic breadboard layout.  The rows of five pins are connected, but the connection does not persist across the center divide.  Outer columns of five pins are also connected. (Right) Place the IC counter across the divide, and connect $V_{\rm CC}$ to pin 1 and GND to pin 8.}
 \end{figure}
 
-\section{Generating a Clock Signal with the Oscilloscope}
+\section{Generating a Clock Signal with the Oscilloscope Signal Generator}
 
-Things
+On the oscilloscope, there is a built-in signal generator.  The button to activate it is named ``wave gen.''  Press it to open the signal generator menu.  If a message appears indicating the wave generator is not available, we will use a separate signal generator.  Use the controls to create a square wave.  Use the Timing Characteristics table in the SN54HC4040 spec sheet to determine the maximum clock frequency.  Choose the highest frequency that (a) is producable by the signal generator, and (b) below the maximum clock frequency for the SN54HC4040.  We recommend the leading digit of the chosen clock frequency be a power of 2, but this is not mandatory if a higher frequency is desired.  Connect a BNC coaxial cable from the signal output to the channel 1 scope input.  Use the spec sheet to determine what CLK amplitude is appropriate.  \textbf{Please ensure that the minimum voltage of CLK signal is 0V.}  Adjust the scope trigger settings such that the scope displays the CLK signal on channel 1.
+
+\section{Wiring the IC Counter with CLK, Holding CLR Signal LOW}
+
+Our next job is to provide the CLK signal to the IC counter, and to ensure that the CLR signal is LOW.  In the lab, there are special coaxial cables with BNC connectors on one side, and red/black leads on the other side.  Connect the CLK signal to the BNC side, and use the leads with jumpers to deliver the CLK signal to the board.  Connect the black CLK lead to GND with a jumper, connect the red CLK lead to pin 10, and jump GND to CLR on pin 11 (Fig. \ref{fig:count3}, left).
+
+\begin{figure}[hb]
+\centering
+\includegraphics[width=0.21\textwidth]{breadboard_power_clk_reset.pdf}
+\includegraphics[width=0.21\textwidth]{breadboard_power_clk_reset_probe.pdf}
+\caption{\label{fig:count3} (Left) The CLK signal is connected to pin 10 and GND.  The CLR signal is held LOW by connecting it to GND. (Right) The probe is connected to GND, and the tip passes the signal to the scope.}
+\end{figure}
 
 \section{Probing IC Counter Channels with Scope Probe}
 
-Things
+Connect the scope probe BNC connector to scope channel 1.  Connect the probe to GND using the GND clip and a jumper.  Use the probe tip to probe the CLK signal on the breadboard (Fig. \ref{fig:count3}, right).
+
+\begin{itemize}
+\item Adjust the scope trigger settings to trigger on the probe signal.
+\item Locate the Measurement section of the scope panel.  Press the Measurement button to bring up a menu at the bottom of the screen.
+\item Add a measurement, and choose Frequency as the measurement.  Is the measured frequency the same as the chosen CLK frequency?
+\item Consult the spec sheet to determine which pin corresponds to the LSB in the count.  Probe that pin and record its frequency in the table below.
+\item Repeat the prior step, adjusting trigger and channel 1 controls as necessary to obtain frequency measurements.
+\item Do you identify the correct pattern in the frequency measurements?  Explain why below.
+\end{itemize}
+
+\begin{table}
+\centering
+\begin{tabular}{| c | c | c |}
+\hline
+Pin & Frequency [MHz] & Frequency [MHz] / $f_{\rm CLK}$ [MHz] \\ \hline
+9 & & \\ \hline
+7 & & \\ \hline
+6 & & \\ \hline
+5 & & \\ \hline
+3 & & \\ \hline
+2 & & \\ \hline
+4 & & \\ \hline
+13 & & \\ \hline
+12 & & \\ \hline
+14 & & \\ \hline
+15 & & \\ \hline
+\end{tabular}
+\caption{\label{tab:data} Fill in your frequency measurments in the second column, and divide them by $f_{\rm CLK}$ in the third column.}
+\end{table}
 
 \end{document}
