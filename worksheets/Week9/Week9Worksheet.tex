@@ -14,7 +14,7 @@
 
 \section{Reading the Specification Sheet of IC Counter}
 
-Today we will be working with the Texas Instruments SN54HC4040 component.  This is a 16-pin, 12-bit, asynchronous counter.  The specification sheet is posted the course Moodle page, under Week 9.  Note the specification includes the functional block diagram (Fig. \ref{fig:count1}, left).  Note that there are 12 flip-flops, making the SN54HC4040 a 12-bit counter.  The gate logic before the pin-1 flip-flop involves the clear (CLR) and clock (CLK) signals.  The clock is inverted, so a high-to-low transition starts the count.  The CLR signal is split and then passed into an OR (after being inverted and un-inverted).  The CLR is connected to all flip-flop reset inputs, so a HIGH on CLR resets the counter.
+Today we will be working with the Texas Instruments SN54HC4040 component.  This is a 16-pin, 12-bit, asynchronous counter.  The specification sheet is posted to the course Moodle page, under Week 9.  Note the specification includes the functional block diagram (Fig. \ref{fig:count1}, left).  Note that there are 12 flip-flops, making the SN54HC4040 a 12-bit counter.  The gate logic before the pin-1 flip-flop involves the clear (CLR) and clock (CLK) signals.  The clock is inverted, so a high-to-low transition starts the count.  The CLR signal is split and then passed into an OR (after being inverted and un-inverted).  The CLR is connected to all flip-flop reset inputs, so a HIGH on CLR resets the counter.
 
 \begin{figure}[ht]
 \centering
