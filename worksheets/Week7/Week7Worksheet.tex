@@ -7,12 +7,13 @@
 
 \begin{document}
 
-\title{Synopsis - Week 9 Integrated Project: Probing Fixed IC Gates with Oscilloscope, DC Power Supply, Breadboard, and Digital Voltmeter}
+\title{Synopsis - Week 7 Integrated Project: Probing Fixed IC Gates with Oscilloscope, DC Power Supply, Breadboard, and Digital Voltmeter}
 \author{Prof. Jordan C. Hanson}
 
 \maketitle
 
 \section{Reading the Specification Sheet of IC Gates}
+\label{sec:spec}
 
 Today we will be working with the Texas Instruments SN74HC00N component.  This is a 14-pin DIP package containing 4 NAND gates, each with 2 inputs and 1 output.  The specification sheet is posted to the course Moodle page, under Week 7.  Note the specification includes the functional block diagram (Fig. \ref{fig:count1}, left).  Note that there are 4 gates, requiring 8 inputs and 4 outputs.  There are two additional pins, $V_{\rm CC}$ (DC power), and GND (ground).  Pairs of inputs are labelled 1A, 1B, 2A, 2B, ..., and outputs are labelled 1Y, 2Y, ... .
 
@@ -34,61 +35,70 @@ Using the Table of Contents and tables within the specification sheet, answer th
 
 \section{Breadboard Setup, Connecting the IC Gates}
 
-Make sure that your lap table is powered, and that the DC power supply is connected.  Switch on the power supply, and use the digital voltmeter to check that the voltage between the red and black (GND) terminals is 3.3 V.  Use the red and black banana-plug cables to route power down to your breadboard.  Use the red breadboard post for $V_{\rm CC}$, and the black post for GND.  Use the DVM to check that the voltage between the posts is still 3.3V.  Now turn off the DC power supply.  Unscrew the red post cap until you find a hole through the post.  Do the same for the black post.  Slide jumper wires into these holes, and then screw the post down to hold the jumpers in place.  Orient the posts away from you on the table.  Note in Fig. \ref{fig:count1} (left) the pinout of the DIP package for the IC gates contains a notch near pin 1.  Straddle the counter across the center divide of the breadboard such that pin 1 is oriented away from you.  The IC gates should be within range of the jumpers so that the hot jumper can bring $V_{\rm CC}$ to pin 14, and the GND jumper can bring GND to pin 7.
+Make sure that your lap table is powered, and that the DC power supply is connected.  Switch on the power supply, and use the digital voltmeter to check that the voltage between the red and black (GND) terminals is 3.3 V.  Use the red and black banana-plug cables to route power down to your breadboard.  Use the red breadboard post for $V_{\rm CC}$, and the black post for GND.  Use the DVM to check that the voltage between the posts is still 3.3V.  Now turn off the DC power supply.  Unscrew the red post cap until you find a hole through the post.  Do the same for the black post.  Slide jumper wires into these holes, and then screw the post down to hold the jumpers in place.  Orient the posts away from you on the table.  Note in Fig. \ref{fig:count1} (left) the pinout of the DIP package for the IC gates contains a notch near pin 1.  Straddle the counter across the center divide of the breadboard such that pin 1 is oriented away from you.  The IC gates should be within range of the jumpers so that the hot jumper can bring $V_{\rm CC}$ to pin 14, and the GND jumper can bring GND to pin 7 (Fig. \ref{fig:count2}).
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.20\textwidth,trim=5cm 6cm 9cm 13cm,clip=true]{breadboard.jpg} \hspace{0.5cm}
-%\includegraphics[width=0.21\textwidth]{breadboard_power.pdf}
-\caption{\label{fig:count2} (Left) The basic breadboard layout.  The rows of five pins are connected, but the connection does not persist across the center divide.  Outer columns of five pins are also connected. (Right) Place the IC counter across the divide, and connect $V_{\rm CC}$ to pin 1 and GND to pin 8.}
+\includegraphics[width=0.21\textwidth]{breadboard_power.pdf}
+\caption{\label{fig:count2} (Left) The basic breadboard layout.  The rows of five pins are connected, but the connection does not persist across the center divide.  Outer columns of five pins are also connected. (Right) Place the IC gates across the divide, and connect $V_{\rm CC}$ to pin 14 and GND to pin 7.}
 \end{figure}
 
-%\section{Generating a Clock Signal with the Oscilloscope Signal Generator}
-%
-%On the oscilloscope, there is a built-in signal generator.  The button to activate it is named ``wave gen.''  Press it to open the signal generator menu.  If a message appears indicating the wave generator is not available, we will use a separate signal generator.  Use the controls to create a square wave.  Use the Timing Characteristics table in the SN54HC4040 spec sheet to determine the maximum clock frequency.  Choose the highest frequency that (a) is producable by the signal generator, and (b) below the maximum clock frequency for the SN54HC4040.  We recommend the leading digit of the chosen clock frequency be a power of 2, but this is not mandatory if a higher frequency is desired.  Connect a BNC coaxial cable from the signal output to the channel 1 scope input.  Use the spec sheet to determine what CLK amplitude is appropriate.  \textbf{Please ensure that the minimum voltage of CLK signal is 0V.}  Adjust the scope trigger settings such that the scope displays the CLK signal on channel 1.
-%
-%\section{Wiring the IC Counter with CLK, Holding CLR Signal LOW}
-%
-%Our next job is to provide the CLK signal to the IC counter, and to ensure that the CLR signal is LOW.  In the lab, there are special coaxial cables with BNC connectors on one side, and red/black leads on the other side.  Connect the CLK signal to the BNC side, and use the leads with jumpers to deliver the CLK signal to the board.  Connect the black CLK lead to GND with a jumper, connect the red CLK lead to pin 10, and jump GND to CLR on pin 11 (Fig. \ref{fig:count3}, left).
-%
-%\begin{figure}[hb]
-%\centering
-%\includegraphics[width=0.21\textwidth]{breadboard_power_clk_reset.pdf}
-%\includegraphics[width=0.21\textwidth]{breadboard_power_clk_reset_probe.pdf}
-%\caption{\label{fig:count3} (Left) The CLK signal is connected to pin 10 and GND.  The CLR signal is held LOW by connecting it to GND. (Right) The probe is connected to GND, and the tip passes the signal to the scope.}
-%\end{figure}
-%
-%\section{Probing IC Counter Channels with Scope Probe}
-%
-%Connect the scope probe BNC connector to scope channel 1.  Connect the probe to GND using the GND clip and a jumper.  Use the probe tip to probe the CLK signal on the breadboard (Fig. \ref{fig:count3}, right).
-%
-%\begin{itemize}
-%\item Adjust the scope trigger settings to trigger on the probe signal.
-%\item Locate the Measurement section of the scope panel.  Press the Measurement button to bring up a menu at the bottom of the screen.
-%\item Add a measurement, and choose Frequency as the measurement.  Is the measured frequency the same as the chosen CLK frequency?
-%\item Consult the spec sheet to determine which pin corresponds to the LSB in the count.  Probe that pin and record its frequency in the table below.
-%\item Repeat the prior step, adjusting trigger and channel 1 controls as necessary to obtain frequency measurements.
-%\item Do you identify the correct pattern in the frequency measurements?  Explain why below.
-%\end{itemize}
-%
-%\begin{table}
-%\centering
-%\begin{tabular}{| c | c | c |}
-%\hline
-%Pin & Frequency [MHz] & Frequency [MHz] / $f_{\rm CLK}$ [MHz] \\ \hline
-%9 & & \\ \hline
-%7 & & \\ \hline
-%6 & & \\ \hline
-%5 & & \\ \hline
-%3 & & \\ \hline
-%2 & & \\ \hline
-%4 & & \\ \hline
-%13 & & \\ \hline
-%12 & & \\ \hline
-%14 & & \\ \hline
-%15 & & \\ \hline
-%\end{tabular}
-%\caption{\label{tab:data} Fill in your frequency measurments in the second column, and divide them by $f_{\rm CLK}$ in the third column.}
-%\end{table}
+\section{Generating a Clock Signal with the Oscilloscope Signal Generator}
+
+On the oscilloscope, there is a built-in signal generator.  The button to activate it is named ``wave gen.''  Press it to open the signal generator menu.  If a message appears indicating the wave generator is not available, we will use a separate signal generator.  Use the controls to create a square wave.  For the clock frequency, use your response in Sec. \ref{sec:spec}.  Connect a BNC coaxial cable from the signal output to the channel 1 scope input.  Use the spec sheet to determine what CLK amplitude is appropriate.  \textbf{Please ensure that the minimum voltage of CLK signal is 0V.}  Adjust the scope trigger settings such that the scope displays the CLK signal on channel 1.
+
+\section{Wiring the IC Gates with CLK, Probing the Output}
+
+Our next job is to provide the CLK signal to the IC gates as an input signal.  In the lab, there are special coaxial cables with BNC connectors on one side, and red/black leads on the other side.  Connect the CLK signal to the BNC side, and use the leads with jumpers to deliver the CLK signal to the board.  Connect the black CLK lead to GND (pin 7) with a jumper, and use two jumpers to connect the red CLK lead to pins 1 and 2 (Fig. \ref{fig:count3}, left).  Finally, connect the scope probe BNC connector to scope channel 1.  Connect the grounding clip of the scope probe to ground via a jumper.  Then probe of the CLK signals on pin 1 or 2.  Adjust the trigger controls until you are triggering on the CLK signal.  Does this signal match your expected CLK settings?  Next, we will probe pin 3, the output of the first NAND gate.
+
+\begin{figure}[hb]
+\centering
+\includegraphics[width=0.21\textwidth]{breadboard_power_clk_pins.pdf}
+\includegraphics[width=0.21\textwidth]{breadboard_power_clk_pins_probe.pdf}
+\caption{\label{fig:count3} (Left) The CLK signal is connected to pin 10 and GND.  The CLR signal is held LOW by connecting it to GND. (Right) The probe is connected to GND, and the tip passes the signal to the scope.}
+\end{figure}
+
+\section{Probing IC Gate Channels with Scope Probe}
+
+Use the probe tip to probe the pin 3 signal on the breadboard (Fig. \ref{fig:count3}, right).  Adjust the trigger controls to display the signal.  Now complete the following steps:
+
+\begin{itemize}
+\item Locate the Measurement section of the scope panel.  Press the Measurement button to bring up a menu at the bottom of the screen.
+\item Add a measurement, and choose Frequency as the measurement.  Is the measured frequency the same as the chosen CLK frequency?  Does this match or not match expectations?
+\item What is the duty cycle of the signal?  Does this match or not match expectations?
+\item Switch the CLK inputs to pins 4 and 5, and probe the output pin 6.  Repeat the frequency and duty cycle measurements to confirm that they match expectations.
+\end{itemize}
+
+Notice that you can jump GND to input pins to hold inputs LOW, and you can jump $V_{\rm CC}$ to input pins to hold inputs HIGH.  Using this technique and the DVM to probe output pins, determine the truth tables of the gates and record the data in Tab. \ref{tab:data}.  In the space below, draw the output timing diagram corresponding to the following scenario: pin 1 is held LOW (GND), pin 2 receives the CLK signal, and pin 3 is probed by the scope probe.  Explain the features of the signal.
+
+\begin{table}
+\centering
+\begin{tabular}{| c | c | c |}
+\hline
+Input Pin & Input Pin & Output Pin \\ \hline \hline
+1 & 2 & 3 \\ \hline \hline
+& & \\ \hline
+& & \\ \hline
+& & \\ \hline
+& & \\ \hline
+4 & 5 & 6 \\ \hline \hline
+& & \\ \hline
+& & \\ \hline
+& & \\ \hline
+& & \\ \hline
+9 & 10 & 8 \\ \hline \hline
+& & \\ \hline
+& & \\ \hline
+& & \\ \hline
+& & \\ \hline
+12 & 13 & 11 \\ \hline \hline
+& & \\ \hline
+& & \\ \hline
+& & \\ \hline
+& & \\ \hline
+\end{tabular}
+\caption{\label{tab:data} Fill in the measured data for the truth tables of the 3 NAND gates.}
+\end{table}
 
 \end{document}
