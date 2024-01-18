@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{amsmath}
+
+\begin{document}
+
+\title{Thursday  Reading Assessment: Chapter 1}
+\author{Prof. Jordan C. Hanson}
+
+\maketitle
+
+\section{Memory Bank}
+
+\begin{enumerate}
+\item Combining resistors \textit{in series}: $R_{\rm tot} = R_1 + R_2$
+\item Combining resistors \textit{in parallel}: $R_{\rm tot}^{-1} = R_1^{-1} + R_2^{-1}$
+\end{enumerate}
+
+\section{Digital and Analog Concepts, Unit Conversions}
+
+\begin{enumerate}
+\item Perform the following unit conversions:
+\begin{itemize}
+\item Convert 0.24 V to mV. \\ \vspace{0.5cm}
+\item Convert 0.035 A to mA. \\ \vspace{0.5cm}
+\item If two 1200 $\Omega$ resistors are connected \textit{in series}, what is the total resistance in k$\Omega$? \\ \vspace{0.5cm}
+\item If two 1200 $\Omega$ resistors are connected \textit{in parallel}, what is the total resistance in k$\Omega$? \\ \vspace{0.5cm}
+\item If a digital pulse has a \textit{rise time} of 0.01 $\mu$s, what is the rise time in ns? \\ \vspace{0.5cm}
+\item If a system can send a digital pulse with a minimum \textit{pulse width} of 300 ns, how many pulses per second can it send?  That is, what is the maximum pulse rate? \\ \vspace{0.5cm}
+\end{itemize}
+\item Suppose a system is passing an analog voltage signal down a wire, with \textit{amplitude} $a$, and \textit{frequency} $f_1$:
+\begin{equation}
+v(t) = a\cos(2\pi f_1 t) + v_0
+\end{equation}
+(a) \textbf{Digitizing} the signal means breaking the amplitude variable into discrete components.  If we can measure 256 discrete voltages between 0 and 5V, and $a = 2.5$ V, $v_0 = 2.5$ V, what is the smallest change in voltage we can measure? (b) \textbf{Sampling} the signal means breaking the time variable into discrete components.  Suppose $f_1 = 60$ Hz.  This means the \textit{period} is $1/60$ seconds.  If we sample $v(t)$ at a rate of 1 kHz, how many samples per period will we collect?
+\end{enumerate}
+
+\end{document}
