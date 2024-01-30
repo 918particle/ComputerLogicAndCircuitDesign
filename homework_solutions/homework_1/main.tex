@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[margin=1.5cm]{geometry}
+
+\title{COSC330/PHYS306: Solutions to Homework 1}
+\author{Jordan Hanson}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Chapter 1}
+
+\begin{itemize}
+    \item Exercise 7: For the pulse shown in Fig. 1-60, graphically determine the following: (a) rise time, (b) fall time, (c) pulse width, and (d) amplitude. \\ \\
+    \noindent
+    \textbf{Solution:} Use the graph to determine changes in time and voltage.  (a) The rise time is typically measured from 10\% amplitude to 90\% amplitude.  The amplitude is 10V, so we need the times that correspond to 9V and 1V.  We have $\Delta t = 0.8 - 0.2$ $\mu$s, so 600 ns. (b) Similarly, we have $\Delta t = 3.5 - 2.9$ $\mu$s, so 600 ns.  (c) THe pulse width is typically measured from 50\% amplitude to 50\% amplitude, so 5V and 5V.  We have $\Delta t = 3.2 - 0.5$ $\mu$s, so 2.7 $\mu$s. (d) From the graph, the amplitude is 10V - 0V, so 10V. \\
+    \item Exercise 8: Determine the period of the digital waveform in Fig. 1-61. \\ \\
+    \noindent
+    \textbf{Solution:} The waveform repeats itself every 4 ms, so 4 ms. \\
+    \item Exercise 9: What is the frequency of the waveform in Fig. 1-61? \\ \\
+    \noindent
+    \textbf{Solution:} The inverse of the period is the frequency, so $1/T = f = 250$ Hz. \\
+    \item Exercise 10: Is the pulse waveform in Fig. 1-61 periodic or non-periodic? \\ \\
+    \noindent
+    \textbf{Solution:} It is periodic, from the graph. \\
+    \item Exercise 11: Determine the duty cycle of the waveform in Fig. 1-61. \\ \\
+    \noindent
+    \textbf{Solution:}  The duty cycle is the ratio of pulse width to period, so 2 ms/4 ms gives 0.5 or 50 percent. \\
+    \item Exercise 12: Determine the bit sequence represented by the waveform in Fig. 1-62.  A bit time is 1 $\mu$s in this case. \\ \\
+    \textbf{Solution:} From the waveform, we read 10101110. \\
+    \item Exercise 13: What is the the total serial transfer time for the eight bits in Fig. 1-62?  What is the total parallel transfer time? \\ \\
+    \noindent
+    \textbf{Solution:} The serial transfer time is 8 bits times 1 $\mu$s per bit, so 8 $\mu$s.  For eight lines in parallel, we need only one bit time, or $\mu$s. \\
+    \item Exercise 14: What is the period if the clock frequency is 3.5 GHz? \\ \\
+    \noindent
+    \textbf{Solution:} Invert 3.5 GHz to find 0.286 ns. \\
+    \item Exercise 15: Form a single logical statement from the following information: (a) The light is ON if SW1 is closed. (b) The light is ON if SW2 is closed. (c) The light is OFF if both SW1 and SW2 are open. \\ \\
+    \noindent
+    \textbf{Solution:} This behavior resembles an OR gate.  For a light, however, this can also be accomplished with a parallel power line and two lines with switches connected to the same light.  A common example is a kitchen light that can be turned on with switches on each side of the room.  \\
+    \item Exercise 18: A basic 2-input logic circuit has a HIGH on one input and a LOW on the other input, and the output is HIGH.  What type of logic ciruit is it? \\ \\
+    \noindent
+    \textbf{Solution:}  This is an OR gate. \\
+    \item Exercise 20: A pulse waveform with a frequency of 10 kHz is applied to the input of a counter.  During 100 ms, how many pulses are counted? \\ \\
+    \noindent
+    \textbf{Solution:} Use $N = f\Delta t$.  We have $10^{-1}$ s $\times$ $10^4$ pulses s$^{-1}$, so $10^3$ pulses. \\
+    \item Exercise 29: A pulse is displayed on the screen of an oscilloscope, and you measure the base line as 1V and the top of the pulse as 8V.  What is the amplitude? \\ \\
+    \noindent
+    \textbf{Solution:} 8V - 1V = 7V. \\
+    \item Exercise 30: A waveform is measured on the oscilloscope and its amplitude covers three vertical divisions.  If the vertical control is set at 2V/div, what is the total amplitude of the waveform? \\ \\
+    \noindent
+    \textbf{Solution:} 2V/div $\times$ 3 div is 6V. \\
+    \item Exercise 31: The period of a pulse waveform measures four horizontal divisions on an oscilloscope.  If the time base is set at 2 ms/div, what is the frequency of the waveform? \\ \\
+    \textbf{Solution:} First, determine the period: 8 ms (four divisions at 2ms/div).  The frequency is then 1/8 kHz, or 125 Hz.
+\end{itemize}
+
+\end{document}
+
+#7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 20, 29, 30, 31
