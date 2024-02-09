@@ -28,7 +28,7 @@
 \begin{verbatim}
 from pynq.overlays.logictools import LogicToolsOverlay
 logictools_olay = LogicToolsOverlay('logictools.bit')
-function = {'f1': 'LD0 = !(PB0 | PB1)'}
+function = {'f1': 'LD0 = ~(PB0 | PB1)'}
 boolean_generator = logictools_olay.boolean_generator
 boolean_generator.setup(function)
 boolean_generator.run()
@@ -40,12 +40,12 @@ boolean_generator.stop()
 Write the truth table the logic function above.  What gate does it represent?  Draw the appropriate gate diagram.  \\ \vspace{0.5cm}
 \item Reset the kernel, and change the function to 
 \begin{verbatim}
-function = {'f1': 'LD0 = !(PB0 & PB1)'}
+function = {'f1': 'LD0 = ~(PB0 & PB1)'}
 \end{verbatim}
 Write the truth table the logic function above.  What gate does it represent?  Draw the appropriate gate diagram.  \\ \vspace{0.5cm}
 \item Finally, draw the relevant gate diagram for the function below.  Run the code and record the truth table.  Can you identify this as a basic logic function?  Why or why not?  
 \begin{verbatim}
-function = {'f1': 'LD0 = !(PB0 & PB1) & !(PB2 & PB3)'}
+function = {'f1': 'LD0 = ~(PB0 & PB1) & ~(PB2 & PB3)'}
 \end{verbatim}
 \end{enumerate}
 
