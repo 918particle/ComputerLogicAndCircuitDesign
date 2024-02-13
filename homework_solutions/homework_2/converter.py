@@ -9,3 +9,6 @@ def bin2dec(x):
 		return result
 	else:
 		print("Input must be a string.")
+
+defin 2comp(x):
+	
