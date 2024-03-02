@@ -31,14 +31,19 @@
 \section{Chapter 2 - Number Systems, Operations, and Codes}
 
 \begin{enumerate}
-\item Convert to binary: (a) 1024 (b) 0xBBBB (c) -2048 \\ \vspace{1cm}
-\item Convert to hex: (a) 65535 (b) 1000100010001000 \\ \vspace{1cm}
-\item \textbf{Design problem.}  Consider the angular shaft encoder in Fig. \ref{fig:grayCode}.  The IR emitter/detector detects IR light reflected from white sectors, while the dark sectors absorb the light.  The sectors are encoded in binary.  For example, starting from inner sectors and reading outward, dark-dark-light is translated to state 001 by the detector.  If the shaft rotates 45 degrees, the detector records a state change.  (a) If the initial state is 000 and the shaft rotates 360 degrees, how many bit changes occur?  (b) How many bit changes would occur if the shaft position was encoded in gray code?  (c) Draw the correct face of the shaft encoder, encoded in 3-bit gray code instead of binary\footnote{Caution: I believe the figure in the textbook contains errors.} (c) If 45 degrees is the angular precision with 3-bit gray code, what is the angular precision with 8 bit gray code? \\ \vspace{2cm}
+\item Convert to binary: (a) 1024 (b) 0xBBBB (c) -2048 \\ \\
+\textit{(a) 100 0000 0000 (b) 1011 1011 1011 1011 (c) 1000 0000 0000 (2's complement form.  When added to 2048 in binary, this result produces zero in a 12 bit system.}
+\item Convert to hex: (a) 65535 (b) 1000100010001000 \\ \\
+\textit{(a) 0xFFFF (b) 0x8888}
+\item \textbf{Design problem.}  Consider the angular shaft encoder in Fig. \ref{fig:grayCode}.  The IR emitter/detector detects IR light reflected from white sectors, while the dark sectors absorb the light.  The sectors are encoded in binary.  For example, starting from inner sectors and reading outward, dark-dark-light is translated to state 001 by the detector.  If the shaft rotates 45 degrees, the detector records a state change.  (a) If the initial state is 000 and the shaft rotates 360 degrees, how many bit changes occur?  (b) How many bit changes would occur if the shaft position was encoded in gray code?  (c) Draw the correct face of the shaft encoder, encoded in 3-bit gray code instead of binary\footnote{Caution: I believe the figure in the textbook contains errors.} (c) If 45 degrees is the angular precision with 3-bit gray code, what is the angular precision with 8 bit gray code? \\ \\
+\textit{(a) There are 8 state changes for every 360 degree rotation. Counting bit transitions for 0-7 in binary, we find a total of 11 bit changes.  There are an additional three when rotating from 111 back to 000, making the total 14. (b) For gray code, the same accounting gives 8 bit changes. (b) See Fig. \ref{fig:grayCode}. 
+ (c) $360^{\circ}/2^8 = 1.4$ degrees.}
 \end{enumerate}
 \begin{figure}[hb]
 \centering
 \includegraphics[width=0.33\textwidth,trim=0cm 0cm 12cm 0cm,clip=true]{gray_code_shaft.jpg}
-\caption{\label{fig:grayCode} A gray code shaft encoder, or angular encoder, reports the angular position of an object digitally, using the gray code.}
+\includegraphics[width=0.33\textwidth]{Encoding_Disk_Gray.png}
+\caption{\label{fig:grayCode} (Left) Binary version. (Right) Gray code version.}
 \end{figure}
 
 \section{Chapter 3 - Logic Gates}
@@ -49,9 +54,15 @@
 \caption{\label{fig:gates1} (Left) A logic gate combination.  (Right) A liquid tank-level system built from a NAND gate.}
 \end{figure}
 \begin{enumerate}
-\item Generate the simplified logic expression and truth table for Fig. \ref{fig:gates1}, left.  What do you call this type of gate? \\ \vspace{1.5cm}
-\item Suppose signals $D_{\rm 0}$ and $D_{\rm 1}$ in Fig. \ref{fig:timing1} are connected to $a$ and $b$ in Fig. \ref{fig:gates1}, left.  Generate the timing diagram. \\ \vspace{1cm}
-\item \textbf{Design problem.}  A liquid tank system is depicted in Fig. \ref{fig:gates1} (right).  The sensors are HIGH when the liquid is above the level.  (a) Create and display a red LED system that activates when both tanks are \textit{below} the level.  (b) Create and display a yellow LED system that activates when one tank is below and one tank is above the level.  (c) Add a third tank with two pipes guiding liquid to tanks A and B.  Each pipe should have a valve.  Add logic that opens the correct valve so as to fill only the low tank until it is no longer below the level.  \\ \vspace{5cm}
+\item Generate the simplified logic expression and truth table for Fig. \ref{fig:gates1}, left.  What do you call this type of gate? \\ \\
+\textit{(a) $out = ab + \bar{a} \bar{b}$, an XNOR gate.  The truth table is 1 for the states 00 and 11, and 0 for 10 and 01.} \\
+\item Suppose signals $D_{\rm 0}$ and $D_{\rm 1}$ in Fig. \ref{fig:timing1} are connected to $a$ and $b$ in Fig. \ref{fig:gates1}, left.  Generate the timing diagram. \\ \\
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{timing_4.png}
+\end{figure}
+\item \textbf{Design problem.}  A liquid tank system is depicted in Fig. \ref{fig:gates1} (right).  The sensors are HIGH when the liquid is above the level.  (a) Create and display a red LED system that activates when both tanks are \textit{below} the level.  (b) Create and display a yellow LED system that activates when one tank is below and one tank is above the level.  (c) Add a third tank with two pipes guiding liquid to tanks A and B.  Each pipe should have a valve.  Add logic that opens the correct valve so as to fill only the low tank until it is no longer below the level.  \\ \\
+\textit{(a) Connect wires from sensors 1 and 2 to an OR gate.  Connect the output of the OR gate to the low side of an LED in series with a blocking resistor.  The high side of the LED should be connected to 5 Volts ($V_{\rm CC}$). (b) Connect wires from sensors 1 and 2 to an XNOR gate.  Connect the output of the XNOR gate to the low side of an LED in series with a blocking resistor.  The high side of the LED should be connected to 5 Volts ($V_{\rm CC}$). (c) Suppose the valves open when the receive a high signal.  Connect wires from sensors 1 and 2 to inverters, then connect the inverters to the valve inputs.  Valves will remain open until the tank sensors go high.}
 \end{enumerate}
 
 \section{Chapter 4 - Boolean Algebra and Logic Simplification}
@@ -64,7 +75,8 @@
 \item Company A is inactive, while companies B, C, and D are active, or ...
 \item Company B is inactive, while companies A, C, and D are active.
 \end{itemize}
-(a) Develop a S-SOP expression for $X$, the portfolio's state.  If profit is increasing, label the output ON, and label it OFF if profit is decreasing. (b) Use a domain-4 Karnaugh map to simplify the S-SOP expression. (c) Based on your analysis, which stock or stocks should be eliminated from the portfolio?  \\ \vspace{2.5cm}
+(a) Develop a S-SOP expression for $X$, the portfolio's state.  If profit is increasing, label the output ON, and label it OFF if profit is decreasing. (b) Use a domain-4 Karnaugh map to simplify the S-SOP expression. (c) Based on your analysis, which stock or stocks should be eliminated from the portfolio?  \\ \\
+\textit{(a) $X = ABCD + \bar{A}\bar{B}CD + \bar{A}BCD + A\bar{B}CD$. (b) We find a column of states that form a group of 4.  The expression simplifies to $X=CD$. (c) Eliminate stocks A and B.}
 \item A circuit contains three main branches leading to one output.  The output is observed to \textbf{fail} under the following conditions below.  (a) Use the domain-3 Karnaugh map to determine the conditions under which it does succeed, and write an S-SOP expression for the circuit. (b) Draw the circuit using gates.
 \begin{itemize}
 \item A: false, B: false, C: false
@@ -74,6 +86,13 @@
 \item A: false, B: true, C: true
 \item A: true, B: true, C: true
 \end{itemize}
+\textit{(a) $X=\bar{B}C$.}
+(b)
+\begin{figure}[hb]
+\centering
+\includegraphics[width=0.25\textwidth]{gates_1.png}
+\caption{Exercisec 4.2}
+\end{figure}
 \end{enumerate}
 
 \clearpage
@@ -87,8 +106,20 @@
 \caption{\label{fig:timing3} Diagrams for Sec. \ref{sec:comb}. (Left) Inputs are ABC, and the output is X. (Right) The inputs are ABCDE, and the output is X.}
 \end{figure}
 \begin{enumerate}
-\item For the input waveforms shown in Fig. \ref{fig:timing3} (left), what logic circuit will generate the output waveform? \\ \vspace{2cm}
-\item \textbf{Bonus}: Assumming a propagation delay of 10 ns through each gate in Fig. \ref{fig:timing3}, determine if the \textit{desired} output waveform X will be generated.  The desired output is a pulse with a minimum width of 25 ns.
+\item For the input waveforms shown in Fig. \ref{fig:timing3} (left), what logic circuit will generate the output waveform? \\ \\
+\textit{Read the input states across the timing diagram.  The truth table is nearly completed, with only the $ABC = 011$ and $ABC = 111$ states left unprobed.  The question asks for the logic circuit that will generate the given waveform, and the only true state is $X = A\bar{B}\bar{C}$.  Treating the unprobed states as "don't cares" does not help with the Karnaugh map.  The circuit is an AND gate with an inverter on the B and C inputs:}
+\begin{figure}[hb]
+\centering
+\includegraphics[width=0.25\textwidth]{gates_2.png}
+\caption{Exercise 5.1}
+\end{figure}
+\item \textbf{Bonus}: Assumming a propagation delay of 10 ns through each gate in Fig. \ref{fig:timing3}, determine if the \textit{desired} output waveform X will be generated.  The desired output is a pulse with a minimum width of 25 ns. \\ \\
+\textit{Accounting for delays and overlaps in timing, we find a final pulse width of 70 ns:}
+\begin{figure}
+\centering
+\includegraphics[width=0.35\textwidth]{timing_bonus.png}
+\caption{Bonus exercise.}
+\end{figure}
 \end{enumerate}
 
 \end{document}
