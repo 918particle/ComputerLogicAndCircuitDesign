@@ -5,28 +5,30 @@
 
 \begin{document}
 
-\title{Tuesday Reading Assessment: Chapter 6}
+\title{Tuesday Reading Assessment: Chapters 6-1 through 6-6}
 \author{Prof. Jordan C. Hanson}
 
 \maketitle
 
-\section{Functions of Combinatorial Logic: Adders/Subtractors, Comparators, and Decoders/Encoders}
-
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.4\textwidth,trim=2cm 0cm 2cm 0cm,clip=true]{figures/quiz2.pdf}
-\caption{\label{fig:quiz1} A logic circuit collecting two 4-bit binary numbers, with (effectively) one output.}
+\includegraphics[width=0.45\textwidth]{figures/adder1.pdf} \hspace{0.5cm}
+\includegraphics[width=0.25\textwidth]{figures/adder2.pdf}
+\caption{\label{fig:1} (Left) Symbol for a \textit{half-adder}, that adds two bits and produces the sum and carry bits. (Right) The truth table for the sum and carry bits in terms of the input bits A and B.}
 \end{figure}
+
+\section{Functions of Combinatorial Logic: Adders}
 
 \begin{enumerate}
-\item Given the input timing diagram in Fig. \ref{fig:quiz1}, what is the output waveform of the logic circuit? \\ \vspace{1cm}
-\item Figure \ref{fig:quiz2} resembles a 4-bit FA (full adder).  (a) The middle row of gates are XNOR gates.  Show that B XNOR HIGH equals B, and that B XNOR LOW equals NOT B.  (b) Taking A and B data from the first time bin in Fig. \ref{fig:quiz1} (left), compute the $\Sigma$ outputs if $\bar{Add}/Subt$ is HIGH. (c) What would the outputs be if $\bar{Add}/Subt$ is LOW?
+\item Examine the $\Sigma$ (sum) output in the truth table in Fig. \ref{fig:1} (right).  What gate accurately describes $\Sigma$ in terms of the inputs A and B? \\ \vspace{0.5cm}
+\item Examine the $C_{\rm out}$ (carry) output in the truth table in Fig. \ref{fig:1} (right).  What gate accurately describes $C_{\rm out}$ in terms of the inputs A and B? \\ \vspace{0.5cm}
+\item Create a logic circuit schematic in the space below that functions like the component in Fig. \ref{fig:1} (left), producing the truth table in Fig. \ref{fig:1} (right). \\ \vspace{2.0cm}
 \end{enumerate}
 
-\begin{figure}[hb]
-\centering
-\includegraphics[width=0.45\textwidth,trim=0cm 2cm 0cm 2cm,clip=true]{figures/quiz1.pdf}
-\caption{\label{fig:quiz2} A 4-bit FA with an additional feature.}
-\end{figure}
+\section{Functions of Combinatorial Logic: Comparators}
+
+\begin{enumerate}
+\item (a) Write down the truth table for an XOR gate, but inverted (XNOR). (b) Use this truth table to create a circuit that is HIGH if two 2-bit binary numbers are equal.
+\end{enumerate}
 
 \end{document}
