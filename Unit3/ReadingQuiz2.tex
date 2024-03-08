@@ -5,28 +5,28 @@
 
 \begin{document}
 
-\title{Tuesday Reading Assessment: Chapter 6}
+\title{Thursday Reading Assessment: Chapter 6}
 \author{Prof. Jordan C. Hanson}
 
 \maketitle
 
-\section{Functions of Combinatorial Logic: Adders/Subtractors, Comparators, and Decoders/Encoders}
-
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.4\textwidth,trim=2cm 0cm 2cm 0cm,clip=true]{figures/quiz2.pdf}
-\caption{\label{fig:quiz1} A logic circuit collecting two 4-bit binary numbers, with (effectively) one output.}
+\includegraphics[width=0.33\textwidth]{figures/comparator3.pdf} \hspace{0.5cm}
+\includegraphics[width=0.33\textwidth]{figures/decoder2.pdf}
+\caption{\label{fig:1} (Left): A comparator for two 4-bit numbers. (Right) A decoding function for the code 1011.}
 \end{figure}
+
+\section{Functions of Combinational Logic: Comparators}
 
 \begin{enumerate}
-\item Given the input timing diagram in Fig. \ref{fig:quiz1}, what is the output waveform of the logic circuit? \\ \vspace{1cm}
-\item Figure \ref{fig:quiz2} resembles a 4-bit FA (full adder).  (a) The middle row of gates are XNOR gates.  Show that B XNOR HIGH equals B, and that B XNOR LOW equals NOT B.  (b) Taking A and B data from the first time bin in Fig. \ref{fig:quiz1} (left), compute the $\Sigma$ outputs if $\bar{Add}/Subt$ is HIGH. (c) What would the outputs be if $\bar{Add}/Subt$ is LOW?
+\item (a) Assess the \textit{power consumption} of the component in Fig. \ref{fig:1} (left).  Assume that each XOR and AND gate consumes $\approx 100$ $\mu$W per gate.  Recall the gates that make a 1-bit comparator.  Perform the calculation for just the equality function, assuming the $A>B$ and $A<B$ functions are not connected.  (b) \textbf{Bonus point:} Try the calculation for $A>B$ and $A<B$, assuming 100 $\mu$W/gate.  \\ \vspace{3cm}
 \end{enumerate}
 
-\begin{figure}[hb]
-\centering
-\includegraphics[width=0.45\textwidth,trim=0cm 2cm 0cm 2cm,clip=true]{figures/quiz1.pdf}
-\caption{\label{fig:quiz2} A 4-bit FA with an additional feature.}
-\end{figure}
+\section{Functions of Combinational Logic: Decoders}
+
+\begin{enumerate}
+\item Consider Fig. \ref{fig:1} (right), in which the decoding function for 1011 is displayed.  Generate all gate diagrams for the BCD codes.  That is, for codes 0000, 0001, ... generate circuits that go HIGH to represent the digits 0-9. \\ \vspace{5cm}
+\end{enumerate}
 
 \end{document}
