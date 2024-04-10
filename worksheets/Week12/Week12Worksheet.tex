@@ -7,14 +7,14 @@
 
 \begin{document}
 
-\title{Synopsis - Week 12 Integrated Project: The Nyquist Frequency}
+\title{Synopsis - Week 11 and 12 Integrated Project: ADC, DAC, and The Nyquist Frequency}
 \author{Prof. Jordan C. Hanson}
 
 \maketitle
 
 \section{ADC and DAC Setup}
 
-Peripheral modules from Digilents are often called Pmods.  Pmods allow peripheral devices to connect and interact with the PYNQ-Z1 system and give it special abilities.  Recently in lecture we have learned how a flash ADC works.  There are several varieties of ADC, and we happened to cover the flash ADC.  A digital-to-analog converter (DAC) converts binary numbers in the form of high and low voltages to an analog voltage on the output.  \textit{In this lab activity, we will produce analog voltages via a DAC and feed them into an ADC.}
+Peripheral modules from Digilent are called Pmods.  Pmods allow peripheral devices to connect and interact with the PYNQ-Z1 system and give it special abilities.  In this lab, we will encounter analog-to-digital converters (ADCs) and digital-to-analog converters (DACs).  In lecture, we will cover the Flash ADC.  An ADC samples and digitizes analog voltages, and provides digital binary output representing the analog signal.  A DAC converts digital binary numbers to an analog voltage on the output.  \textit{In this lab activity, we will produce analog voltages via a DAC and feed them into an ADC.}  Figure \ref{fig:setup1} at the back of this document depicts the setup.
 
 \section{Create Code to Send and Plot a Sine Wave}
 
@@ -87,5 +87,11 @@ plot.show()
 \item What happens when the frequency of the sine wave is greater than half of the sampling frequency?  Create a plot that (a) sets the sine wave frequency equal to one-half of the sampling frequency.  (b) Create plots that push the sine wave frequency to values greater than one-half of the sampling frequency.  What do you observe? \\ \vspace{3cm}
 \item While respecting the Nyquist-Shannon limit ($f \leq f_s/2$), push the frequency of the sine wave into the MHz regime.  How high can you make the sine wave frequency before you start to notice changes in the sine wave amplitude?  What happens to the sine wave amplitude?
 \end{enumerate}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{pmod.png}
+\caption{\label{fig:setup1} The PYNQ-Z1 board, along with the AD2 and DA4 Pmods.  The blue objects are the Pmods: the lower one is the ADC and the upper is the DAC.  The ADC has 12-bits of resolution and a range of 0-2V.}
+\end{figure}
 
 \end{document}
