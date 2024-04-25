@@ -8,6 +8,15 @@
 \begin{document}
 \maketitle
 
+\section{Instructions}
+
+\begin{enumerate}
+\item Keep it simple: answers involving complex logic circuits may be given using block diagrams.  For example, Fig. \ref{fig:4bit_wDelay} depicts a 4-bit adder without showing individual XOR gates.  If the exercise calls for single gates, however, provide the design at that level of detail.
+\item Use WaveDROM whenever possible to create timing diagrams and gate designs.
+\item Write your answers in a separate document.
+\item This exam is open-book, open-note, to be completed individually.
+\end{enumerate}
+
 \section{Chapter 6 - Functions of Combinational Logic}
 \label{sec:comb2}
 
@@ -18,14 +27,14 @@
 \includegraphics[width=0.55\textwidth]{figures/4bitadder_withDelay.pdf}
 \caption{\label{fig:4bit_wDelay} A schematic of a 4-bit adder with delays marked in nanoseconds.}
 \end{figure}
-\item Using AND, OR, XNOR, and inverter gates, (a) create a 2-bit comparator that yields True if $A > B$, (b) True if $A = B$, and (c) True if $A < B$.  For each circuit, assume both $A$ and $B$ are 2-bit binary positive numbers. (d) Wrap this all into one circuit with three outputs and 4 inputs.  \textit{Hint: use Karnaugh maps for parts (a)-(c) to simplify the gates.} \\ \vspace{3.5cm}
-\item Generate the logic gates that convert 4-bit gray code to 4-bit binary code, and show that it works with a timing diagram. \\ \vspace{3cm}
+\item Using AND, OR, XNOR, and inverter gates, (a) create a 2-bit comparator that yields True if $A > B$, (b) True if $A = B$, and (c) True if $A < B$.  For each circuit, assume both $A$ and $B$ are 2-bit binary positive numbers. (d) Wrap this all into one circuit with three outputs and 4 inputs.  \textit{Hint: use Karnaugh maps for parts (a)-(c) to simplify the gates.}
+\item Generate the logic gates that convert 4-bit gray code to 4-bit binary code, and show that it works with a timing diagram.
 \item Consider Fig. \ref{fig:enc}, in which a decimal to binary conversion circuit is shown. (a) Add logic to the circuit such that it becomes a hexadecimal to binary converter. (b) Draw a logic symbol for this circuit with the correct number of inputs and outputs.  (c) Connect two hex-to-bin converters to a symbolic 2-to-1 multiplexer with the correct number of data select line(s) to form a system that can send two-digit hex numbers over one output line.
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.45\textwidth]{figures/encoder.pdf}
 \caption{\label{fig:enc} A decimal to binary encoder circuit.}
-\end{figure} \vspace{4cm}
+\end{figure}
 \end{enumerate}
 
 \section{Chapter 7 - Latches, Flip-flops, and Timers}
@@ -36,7 +45,7 @@
 \centering
 \includegraphics[width=0.55\textwidth]{figures/twoDFF.pdf}
 \caption{\label{fig:twoDFF} Two D flip-flops forming a frequency divider.}
-\end{figure} \vspace{3cm}
+\end{figure}
 \end{enumerate}
 
 \section{Chapters 8 and 9 - Shift Registers and Counters}
@@ -45,18 +54,12 @@
 \item Consider the timing diagram in Fig. \ref{fig:sr1}.  Using any combination of \textit{shift registers} and supporting gates, create a circuit with 8-outputs that produces this timing diagram.
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.5\textwidth]{figures/timingExample15.pdf}
-\caption{\label{fig:sr1} A waveform that repeats every 16 clock periods.}
-\end{figure} \vspace{4cm}
-\item Consider Fig. \ref{fig:SRG8}, in which 4 and 5-bit Johnson counters are depicted.  (a) Create a circuit based on Fig. \ref{fig:SRG8} called a \textit{combinatoric trigger.}  Imagine four digital channels A, B, C, and D, as inputs.  The output of the circuit should be True if \textit{any two} of the four channels is True \textit{within 100 ns of each other.}  Develop any necessary logic symbols, and use the appropriate clock frequency.  The Johnson counter(s) can have any number of bits.
-\begin{figure}[hb]
-\centering
-\includegraphics[width=0.8\textwidth]{figures/SRG8.pdf}
-\caption{\label{fig:SRG8} (Left) 4 and 5-bit Johnson counters. (Right) The timing diagram for the 4-bit case.}
+\includegraphics[width=0.4\textwidth]{figures/timingExample15.pdf} \hspace{0.5cm}
+\includegraphics[width=0.55\textwidth]{figures/SRG8.pdf}
+\caption{\label{fig:sr1} (Left) A waveform that repeats every 16 clock periods. (Right) Johnson counters (4 and 5-bits), and the timing diagram for the four-bit case.}
 \end{figure}
+\item Consider Fig. \ref{fig:sr1} (right), in which 4 and 5-bit Johnson counters are depicted.  (a) Create a circuit based on Fig. \ref{fig:sr1} (right) called a \textit{combinatoric trigger.}  Imagine four digital channels A, B, C, and D, as inputs.  The output of the circuit should be True if \textit{any two} of the four channels is True \textit{within 100 ns of each other.}  Develop any necessary logic symbols, and use the appropriate clock frequency.  The Johnson counter(s) can have any number of bits.
 \end{enumerate}
-
-\clearpage
 
 \section{Chapter 12 - Signal Conversion and Processing}
 
@@ -64,13 +67,13 @@
 \centering
 \includegraphics[width=0.455\textwidth]{figures/adc_1.jpg} \hspace{0.25cm}
 \includegraphics[width=0.455\textwidth]{figures/adc_2.jpg} \\ \vspace{0.25cm}
-\includegraphics[width=0.455\textwidth]{figures/adc_6.jpg} \hspace{0.25cm}
-\includegraphics[width=0.455\textwidth]{figures/adc_3.jpg}
+\includegraphics[width=0.5\textwidth,trim=5.8cm 0cm 0cm 0cm,clip=true]{figures/adc_6.jpg} \hspace{0.25cm}
+\includegraphics[width=0.35\textwidth,trim=0cm 0cm 12cm 0cm,clip=true]{figures/adc_3.jpg}
 \caption{\label{adc:1} (Top left) An input waveform for a 3-bit flash ADC with $V_{\rm CC} = 8$ Volts. (Top right) A second input waveform for a 3-bit flash ADC with $V_{\rm ref} = 8$ Volts. (Bottom left) The 3-bit flash ADC. (Bottom right) A 4-bit DAC with binary weighted inputs.}
 \end{figure}
 
 \begin{enumerate}
-\item Consider Fig. \ref{adc:1}. (a) Determine the binary output codes from the 3-bit flash ADC in Fig. \ref{adc:1} (bottom left), given the input waveform in Fig. \ref{adc:1} (top left).  (b) Repeat (a), but for the input waveform in Fig. \ref{adc:1} (top right). \\ \vspace{3cm}
+\item Consider Fig. \ref{adc:1}. (a) Determine the binary output codes from the 3-bit flash ADC in Fig. \ref{adc:1} (bottom left), given the input waveform in Fig. \ref{adc:1} (top left).  (b) Repeat (a), but for the input waveform in Fig. \ref{adc:1} (top right).
 \item Determine the output of the DAC in Fig. \ref{adc:1} (bottom right), if the sequence of 4-bit numbers is applied to the inputs.  The data inputs have a low value of 0V and a high value of 5.0V.
 \end{enumerate}
 
