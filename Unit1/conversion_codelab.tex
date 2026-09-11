@@ -1,0 +1,139 @@
+\documentclass{article}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+\setlist{nosep,leftmargin=*}
+
+\begin{document}
+\twocolumn
+
+\title{Number Systems Code-Lab: Binary and Hexadecimal Conversion}
+\author{Prof. Jordan C. Hanson}
+\date{}
+
+\maketitle
+
+\section{Code Lab: \texttt{int(x,base)}}
+
+\begin{enumerate}
+
+\item Python can convert a string representation of a number into
+decimal using
+
+\begin{verbatim}
+int(x, base)
+\end{verbatim}
+
+Try:
+
+\begin{verbatim}
+print(int("1010", 2))
+print(int("1111", 2))
+print(int("100000", 2))
+\end{verbatim}
+
+Record the decimal results: \\ \vspace{2cm}
+
+\item Now try hexadecimal input:
+
+\begin{verbatim}
+print(int("A", 16))
+print(int("1F", 16))
+print(int("2A", 16))
+\end{verbatim}
+
+Record the decimal results: \\ \vspace{2cm}
+
+\end{enumerate}
+
+
+\section{Code Lab: \texttt{bin()} and \texttt{hex()}}
+
+\begin{enumerate}
+
+\item Python converts a decimal integer to binary using \texttt{bin()}. Try:
+
+\begin{verbatim}
+print(bin(10))
+print(bin(15))
+print(bin(32))
+\end{verbatim}
+
+Python includes the prefix \texttt{0b} to indicate a binary value.
+
+\item Decimal integers can be converted to hexadecimal using \texttt{hex()}.  Try:
+
+\begin{verbatim}
+print(hex(10))
+print(hex(31))
+print(hex(42))
+\end{verbatim}
+
+Python includes the prefix \texttt{0x} to indicate hexadecimal.
+
+\end{enumerate}
+
+
+\section{Code Lab: Mixed Practice}
+
+\begin{enumerate}
+
+\item Before running the code, predict each result:
+
+\begin{verbatim}
+x = int("1101", 2)
+
+print(x)
+print(bin(x))
+print(hex(x))
+\end{verbatim}
+
+Decimal: \\ 
+Binary: \\ 
+Hexadecimal: \\ 
+
+\item Try the same sequence with hexadecimal input:
+
+\begin{verbatim}
+x = int("3C", 16)
+
+print(x)
+print(bin(x))
+print(hex(x))
+\end{verbatim}
+
+Decimal: \\ 
+Binary: \\ 
+Hexadecimal: \\ 
+
+\end{enumerate}
+
+\section{Challenge}
+
+\begin{enumerate}
+
+\item Use Python to complete the table.
+
+\begin{center}
+\begin{tabular}{c|c|c}
+Decimal & Binary & Hex \\ \hline
+18 & & \\
+& 101101 & \\
+& & 7F
+\end{tabular}
+\end{center}
+
+Use only
+
+\begin{verbatim}
+int(x, base)
+bin()
+hex()
+\end{verbatim}
+
+to check your answers.
+
+\end{enumerate}
+
+\end{document}
