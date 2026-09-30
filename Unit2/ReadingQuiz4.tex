@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 
 \begin{document}
+\twocolumn
 
 \title{Thursday Reading Assessment: Chapters 4-5}
 \author{Prof. Jordan C. Hanson}
@@ -19,8 +20,29 @@
 \section{Logic Circuits, Boolean Algebra, and Karnaugh Maps}
 
 \begin{enumerate}
-\item Consider the logic function in Fig. \ref{fig:1}.  (a) Based on Fig. \ref{fig:1}, write an S-POS expression for the output. (b) From the S-POS expression, create the Karnaugh map and the truth table. (c) Generate the simplified Boolean expression from the Karnaugh map.  \textit{Hint: remember that cells in the top row are adjacent to those in the bottom row.} \\ \vspace{4cm}
-\item Draw the simplified logic function diagram using basic gates.
+\item Consider the logic function in Fig. \ref{fig:1}.  (a) Based on Fig. \ref{fig:1}, write an S-POS expression for the output. (b) From the S-POS expression, create the Karnaugh map and the truth table. (c) Generate the simplified Boolean expression from the Karnaugh map.  \\ \vspace{4cm}
+\item Draw the simplified logic function diagram using basic gates. \\ \vspace{4cm}
+\item Consider the truth table below.  Create the logic circuit that represents the four inputs: A, B, C, and X, the parity bit.  The circuit should produce a 0 when ABC has the correct parity, and 1 when it does not, assuming even parity. \\ \vspace{5cm}
 \end{enumerate}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.20}
+\begin{tabular}{c c c | c | c}
+\hline
+\textbf{A} & \textbf{B} & \textbf{C} &
+\textbf{Even Parity Bit $P$} &
+\textbf{Parity Check $X$} \\
+\hline
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 1 & 0 \\
+0 & 1 & 0 & 1 & 0 \\
+0 & 1 & 1 & 0 & 0 \\
+1 & 0 & 0 & 1 & 0 \\
+1 & 0 & 1 & 0 & 0 \\
+1 & 1 & 0 & 0 & 0 \\
+1 & 1 & 1 & 1 & 0 \\
+\hline
+\end{tabular}
+\end{center}
 
 \end{document}
