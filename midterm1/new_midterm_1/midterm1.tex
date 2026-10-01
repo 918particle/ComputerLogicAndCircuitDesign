@@ -1,0 +1,190 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{svg}
+\pagestyle{empty}
+
+\setlength{\columnsep}{0.55cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.05cm}
+\setlist[enumerate]{itemsep=0.12cm,topsep=0.08cm,leftmargin=*}
+\setlist[enumerate,2]{itemsep=0.05cm,topsep=0.05cm}
+
+% Compile-safe WaveDROM inclusion.  Before rendering, a placeholder box is shown.
+\newcommand{\wavedromfig}[2][\linewidth]{%
+    \IfFileExists{#2.svg}{%
+        \includesvg[width=#1]{#2}%
+    }{%
+        \fbox{\parbox[c][2.0cm][c]{0.90\linewidth}{\centering
+        Render \texttt{\detokenize{#2.json}} with\\
+        \texttt{python3 render\_wavedrom.py}}}%
+    }%
+}
+
+\begin{document}
+\twocolumn
+
+\begin{center}
+{\Large\bfseries PHYS306/COSC330 Midterm 1}\\[0.25cm]
+{\normalsize Prof. Jordan C. Hanson}\\[0.10cm]
+\textbf{Name/Student ID:} \rule{5.4cm}{0.4pt}
+\end{center}
+
+\scriptsize
+\textbf{Instructions:} Show enough work to make your reasoning clear. The total score is 100 points.
+
+\section{Chapter 1: Introductory Concepts}
+
+\begin{enumerate}
+\item \textbf{[14 points]} The four traces below form a 4-bit parallel bus. Read each word as $D_3D_2D_1D_0$, with one word transferred per clock period.
+
+\begin{center}
+\wavedromfig[0.75\linewidth]{fig_1_bus}
+\end{center}
+
+The clock frequency is $f_{\mathrm{CLK}}=5.0\,\mathrm{MHz}$.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Determine the clock period.
+    \item How much time is represented by the eight clock periods shown?
+    \item Write the eight transmitted words as hexadecimal digits.
+    \item Determine the total parallel bit rate.
+    \item If the same data were sent serially at the same clock frequency, what would the bit rate be?
+    \item What is the duty cycle of $D_0$ over the interval shown?
+\end{enumerate}
+\end{enumerate}
+
+\vspace{3.5cm}
+
+\section{Chapter 2: Number Systems, \\ Operations, and Codes}
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+
+\item \textbf{[18 points]} Perform the following conversions and arithmetic.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Convert $45_{10}$ to binary and hexadecimal.
+    \item Convert $\mathrm{0x3C}$ to binary and decimal.
+    \item Represent $-18_{10}$ as an 8-bit two's-complement number.
+    \item Treat the following as 8-bit two's-complement numbers and add them:
+    \begin{equation*}
+        00101101 + 11110110.
+    \end{equation*}
+    Give the 8-bit result, its decimal value, and state whether signed overflow occurs.
+\end{enumerate}
+
+\vspace{5cm}
+
+\item \textbf{[10 points]} Work with Gray code, BCD, and parity.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Convert binary $1011$ to Gray code.
+    \item Convert Gray code $1110$ to binary.
+    \item Interpret the BCD word $0010\;0101$ as a decimal number.
+    \item A transmitted word uses one leading even-parity bit followed by two BCD digits. The receiver obtains \texttt{0 0010 0101}.  Has a parity error been detected? Explain using the number of HIGH bits.
+\end{enumerate}
+\end{enumerate}
+
+\vspace{3.5cm}
+
+\section{Chapter 3: Logic Gates}
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+
+\item \textbf{[12 points]} Consider the gate network below.
+
+\begin{center}
+\wavedromfig[0.6\linewidth]{fig_4_logic}
+\end{center}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Write the Boolean expression for $X$.
+    \item Construct the complete truth table.
+    \item Simplify the expression using Boolean algebra.
+    \item Which single basic logic gate performs the same function?
+\end{enumerate}
+
+\vspace{4cm}
+
+\item \textbf{[10 points]} The data below are inputs to the gate shown.
+
+\begin{center}
+\wavedromfig[0.6\linewidth]{fig_5_inputs}\\[0.10cm]
+\wavedromfig[0.5\linewidth]{fig_5_gate}
+\end{center}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Draw the output waveform for $X$.
+    \item If the bit interval is $20\,\mathrm{ns}$, give the width of the LOW pulse in $X$.
+\end{enumerate}
+
+\vspace{4cm}
+
+\item \textbf{[12 points]} NAND gates are universal logic elements.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Using only 2-input NAND gates, draw a circuit that implements a 2-input OR gate.
+    \item We apply $A=1$ and $B=0$ to a 2-input NAND gate, and the output is $X=0$.  Is that gate behaving correctly?  Why or why not?
+\end{enumerate}
+\end{enumerate}
+
+\vspace{4cm}
+
+\section{Chapter 4: Boolean Algebra and Logic Simplification}
+
+\begin{enumerate}
+\setcounter{enumi}{6}
+
+\item \textbf{[14 points]} Simplify the following logic functions.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Apply DeMorgan's theorems to
+    \begin{equation*}
+        Y=\overline{(A+\overline{B})(C+\overline{D})}.
+    \end{equation*}
+
+    \item Use Boolean algebra to reduce
+    \begin{equation*}
+        Z=A\overline{B}+AB+\overline{A}B
+    \end{equation*}
+    to its minimum form.
+
+    \item Use a 4-variable Karnaugh map to find the minimum SOP form of
+    \begin{align*}
+    X={}&\overline{A}\,\overline{B}\,\overline{C}D
+      +\overline{A}\,\overline{B}CD
+      +\overline{A}B\overline{C}D
+      +\overline{A}BCD\\
+      &+AB\overline{C}\,\overline{D}
+      +AB\overline{C}D
+      +ABC\overline{D}
+      +ABCD.
+    \end{align*}
+    Draw the minimum circuit using basic gates.
+\end{enumerate}
+\end{enumerate}
+
+\vspace{6cm}
+
+\section{Chapter 5: Combinational Logic \\ Analysis}
+
+\begin{enumerate}
+\setcounter{enumi}{7}
+
+\item \textbf{[10 points]} A receiver accepts three data bits $A,B,C$ and a received parity bit $P$. The transmitter uses \textbf{odd parity}. Define an error output $E$ so that $E=0$ when the received four-bit word has correct odd parity, and $E=1$ when the parity is incorrect.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Write a Boolean expression for $E$ using XOR/XNOR notation.
+    \item For $ABC=101$, determine the parity bit $P$ that should be transmitted.
+    \item If $ABC=101$ is received with $P=0$, determine $E$.
+    \item Draw the minimum gate-level circuit for the parity checker.
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

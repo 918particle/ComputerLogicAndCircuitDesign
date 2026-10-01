@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="754" height="328" viewBox="0 0 754 328">
+<rect x="0" y="0" width="100%" height="100%" fill="white"/>
+<g font-family="DejaVu Sans, Arial, sans-serif" fill="black">
+<text x="417.0" y="20" text-anchor="middle" font-size="15">4-bit parallel data bus</text>
+<line x1="105" y1="43" x2="105" y2="310" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="144.0" y="40" text-anchor="middle" font-size="12" fill="#555">0</text>
+<line x1="183" y1="43" x2="183" y2="310" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="222.0" y="40" text-anchor="middle" font-size="12" fill="#555">1</text>
+<line x1="261" y1="43" x2="261" y2="310" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="300.0" y="40" text-anchor="middle" font-size="12" fill="#555">2</text>
+<line x1="339" y1="43" x2="339" y2="310" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="378.0" y="40" text-anchor="middle" font-size="12" fill="#555">3</text>
+<line x1="417" y1="43" x2="417" y2="310" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="456.0" y="40" text-anchor="middle" font-size="12" fill="#555">4</text>
+<line x1="495" y1="43" x2="495" y2="310" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="534.0" y="40" text-anchor="middle" font-size="12" fill="#555">5</text>
+<line x1="573" y1="43" x2="573" y2="310" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="612.0" y="40" text-anchor="middle" font-size="12" fill="#555">6</text>
+<line x1="651" y1="43" x2="651" y2="310" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="690.0" y="40" text-anchor="middle" font-size="12" fill="#555">7</text>
+<line x1="729" y1="43" x2="729" y2="310" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="89" y="63" text-anchor="end" font-size="15">CLK</text>
+<path d="M 105 47 L 144.0 47 L 144.0 69 L 183 69 L 183 47 L 183 47 L 222.0 47 L 222.0 69 L 261 69 L 261 47 L 261 47 L 300.0 47 L 300.0 69 L 339 69 L 339 47 L 339 47 L 378.0 47 L 378.0 69 L 417 69 L 417 47 L 417 47 L 456.0 47 L 456.0 69 L 495 69 L 495 47 L 495 47 L 534.0 47 L 534.0 69 L 573 69 L 573 47 L 573 47 L 612.0 47 L 612.0 69 L 651 69 L 651 47 L 651 47 L 690.0 47 L 690.0 69 L 729 69" fill="none" stroke="black" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<text x="89" y="127" text-anchor="end" font-size="15">D3</text>
+<path d="M 105 133 L 183 133 L 261 133 L 339 133 L 339 111 L 417 111 L 495 111 L 573 111 L 651 111 L 651 133 L 729 133" fill="none" stroke="black" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<text x="89" y="173" text-anchor="end" font-size="15">D2</text>
+<path d="M 105 179 L 183 179 L 261 179 L 261 157 L 339 157 L 417 157 L 495 157 L 573 157 L 573 179 L 651 179 L 729 179" fill="none" stroke="black" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<text x="89" y="219" text-anchor="end" font-size="15">D1</text>
+<path d="M 105 225 L 183 225 L 183 203 L 261 203 L 339 203 L 417 203 L 495 203 L 495 225 L 573 225 L 651 225 L 729 225" fill="none" stroke="black" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<text x="89" y="265" text-anchor="end" font-size="15">D0</text>
+<path d="M 105 249 L 183 249 L 261 249 L 339 249 L 417 249 L 417 271 L 495 271 L 573 271 L 651 271 L 729 271" fill="none" stroke="black" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+</g></svg>

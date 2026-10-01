@@ -1,0 +1,10 @@
+{
+  "signal": [
+    {"name": "A", "wave": "00111100"},
+    {"name": "B", "wave": "00011110"},
+    {"name": "C", "wave": "01111000"},
+    {"name": "X", "wave": "xxxxxxxx"}
+  ],
+  "head": {"tick": 0},
+  "config": {"hscale": 1.20}
+}
