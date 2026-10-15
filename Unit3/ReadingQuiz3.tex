@@ -4,22 +4,38 @@
 \usepackage{amsmath}
 
 \begin{document}
+\twocolumn
 
 \title{Tuesday Reading Assessment: Chapters 6, 7}
 \author{Prof. Jordan C. Hanson}
 
 \maketitle
 
-\section{Functions of Combinational Logic: Multiplexer}
+\section{Logic Functions: Multiplexers}
 
 \begin{enumerate}
-\item (a) Draw a diagram of the gate logic describing the 4-to-1 multiplexer, using basic AND, OR, and inverter gates. The design should include the correct number of data-select lines, four inputs, and one output.  (b) Suppose that the data lines are called $D_i$, the data select lines are $S_i$, and the output line is $D_{out}$.  If the $S_i$ represent binary counting between 0-3, with 1 $\mu$s per clock step, how often can one send a bit of data to $D_{out}$ using the $D_0$ line? (c) How long would it take to send four bits of data, one on each $D_i$? \\ \vspace{4cm}
+\item Draw a diagram of the gate logic describing the 4-to-1 multiplexer, using basic AND, OR, and inverter gates. The design should include the correct number of data-select lines, four inputs, and one output. \\ \vspace{5cm}
+\item Suppose that the data lines are called $D_i$, the data select lines are $S_i$, and the output line is $D_{out}$.  If the $S_i$ represent binary counting between 0-3, with 1 $\mu$s per clock step, how often can one send a bit of data to $D_{out}$ using the $D_0$ line? \\ \vspace{2cm} 
+\item How long would it take to send four bits of data, one on each $D_i$? \\ \vspace{2cm}
 \end{enumerate}
 
-\section{Functions of Combinational Logic: Demultiplexer}
+\section{Logic Functions: Demultiplexers}
 
 \begin{enumerate}
-\item (a) Draw a diagram of the gate logic describing the 1-to-4 demultiplexer, using basic AND, OR, and inverter gates. The design should include the correct number of data-select lines, one input, and four outputs.  (b) Suppose that the data input line is called $D_{in}$, the data output lines are $D_i$ the data select lines are $S_i$.  The $S_i$ represent binary counting between 0-3, with 1 $\mu$s per clock step.  Create a timing diagram showing the behavior of $D_{in}$, $S_i$, and $D_i$.  \\ \vspace{4cm}
+\item Draw a diagram of the gate logic describing the 1-to-4 demultiplexer, using basic AND, OR, and inverter gates. The design should include the correct number of data-select lines, one input, and four outputs. \\ \vspace{5cm}
+\item Suppose that the data input line is called $D_{in}$, the data output lines are $D_i$ the data select lines are $S_i$.  The $S_i$ represent binary counting between 0-3, with 1 $\mu$s per clock step.  Create a timing diagram showing the behavior of $D_{in}$, $S_i$, and $D_i$.  \\ \vspace{4cm}
 \end{enumerate}
+
+\section{Latches, Flip-Flops, and Timers}
+
+\begin{enumerate}
+\item Consider \ref{fig:1}, in which the basic schematic of an SR-latch is shown.  Suppose, initially, $Q=0$, and the wire labeled $\bar{R}$ is HIGH.  If $\bar{S}$ momentarily goes LOW, what will happen to $Q$? To $\bar{Q}$? 
+\end{enumerate}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.25\textwidth]{figures/sr_latch.pdf}
+\caption{\label{fig:1} A schematic of an SR-latch.}
+\end{figure}
 
 \end{document}
