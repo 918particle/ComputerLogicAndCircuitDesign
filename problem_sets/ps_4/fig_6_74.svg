@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520">
+<style>text{font-family:serif;font-size:18px} .small{font-size:15px} .wire{stroke:#000;stroke-width:2;fill:none} .dash{stroke:#777;stroke-width:1;stroke-dasharray:6 6} .box{stroke:#000;stroke-width:2;fill:white}</style>
+<line class="dash" x1="115" y1="18" x2="115" y2="490"/>
+<line class="dash" x1="175" y1="18" x2="175" y2="490"/>
+<line class="dash" x1="235" y1="18" x2="235" y2="490"/>
+<line class="dash" x1="295" y1="18" x2="295" y2="490"/>
+<line class="dash" x1="355" y1="18" x2="355" y2="490"/>
+<line class="dash" x1="415" y1="18" x2="415" y2="490"/>
+<text x="12" y="50">A₀</text>
+<path class="wire" d="M115,30 L175,30 L235,30 L235,30 L235,58 L295,58 L355,58 L355,58 L355,30 L415,30"/>
+<text x="12" y="105">A₁</text>
+<path class="wire" d="M115,113 L175,113 L175,113 L175,85 L235,85 L295,85 L295,85 L295,113 L355,113 L415,113"/>
+<text x="12" y="160">A₂</text>
+<path class="wire" d="M115,168 L175,168 L175,168 L175,140 L235,140 L295,140 L355,140 L415,140"/>
+<text x="12" y="215">A₃</text>
+<path class="wire" d="M115,195 L175,195 L235,195 L295,195 L355,195 L355,195 L355,223 L415,223"/>
+<text x="12" y="270">B₀</text>
+<path class="wire" d="M115,278 L175,278 L175,278 L175,250 L235,250 L235,250 L235,278 L295,278 L295,278 L295,250 L355,250 L355,250 L355,278 L415,278"/>
+<text x="12" y="325">B₁</text>
+<path class="wire" d="M115,333 L175,333 L175,333 L175,305 L235,305 L295,305 L355,305 L355,305 L355,333 L415,333"/>
+<text x="12" y="380">B₂</text>
+<path class="wire" d="M115,360 L175,360 L235,360 L235,360 L235,388 L295,388 L355,388 L355,388 L355,360 L415,360"/>
+<text x="12" y="435">B₃</text>
+<path class="wire" d="M115,443 L175,443 L175,443 L175,415 L235,415 L235,415 L235,443 L295,443 L355,443 L355,443 L355,415 L415,415"/>
+<rect class="box" x="500" y="75" width="240" height="345"/>
+<text x="578" y="103">COMP</text>
+<text class="small" x="458" y="148">A0</text>
+<line class="wire" x1="485" y1="143" x2="500" y2="143"/>
+<text class="small" x="458" y="186">A1</text>
+<line class="wire" x1="485" y1="181" x2="500" y2="181"/>
+<text class="small" x="458" y="224">A2</text>
+<line class="wire" x1="485" y1="219" x2="500" y2="219"/>
+<text class="small" x="458" y="262">A3</text>
+<line class="wire" x1="485" y1="257" x2="500" y2="257"/>
+<text x="578" y="195">A</text>
+<text class="small" x="458" y="305">B0</text>
+<line class="wire" x1="485" y1="300" x2="500" y2="300"/>
+<text class="small" x="458" y="343">B1</text>
+<line class="wire" x1="485" y1="338" x2="500" y2="338"/>
+<text class="small" x="458" y="381">B2</text>
+<line class="wire" x1="485" y1="376" x2="500" y2="376"/>
+<text class="small" x="458" y="419">B3</text>
+<line class="wire" x1="485" y1="414" x2="500" y2="414"/>
+<text x="578" y="360">B</text>
+<text x="595" y="215">A &gt; B</text>
+<line class="wire" x1="740" y1="210" x2="825" y2="210"/>
+<text x="595" y="255">A = B</text>
+<line class="wire" x1="740" y1="250" x2="825" y2="250"/>
+<text x="595" y="295">A &lt; B</text>
+<line class="wire" x1="740" y1="290" x2="825" y2="290"/>
+</svg>

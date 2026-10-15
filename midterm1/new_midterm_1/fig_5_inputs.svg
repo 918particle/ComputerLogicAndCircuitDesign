@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="754" height="264" viewBox="0 0 754 264">
+<rect x="0" y="0" width="100%" height="100%" fill="white"/>
+<g font-family="DejaVu Sans, Arial, sans-serif" fill="black">
+<line x1="105" y1="43" x2="105" y2="246" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="144.0" y="40" text-anchor="middle" font-size="12" fill="#555">0</text>
+<line x1="183" y1="43" x2="183" y2="246" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="222.0" y="40" text-anchor="middle" font-size="12" fill="#555">1</text>
+<line x1="261" y1="43" x2="261" y2="246" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="300.0" y="40" text-anchor="middle" font-size="12" fill="#555">2</text>
+<line x1="339" y1="43" x2="339" y2="246" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="378.0" y="40" text-anchor="middle" font-size="12" fill="#555">3</text>
+<line x1="417" y1="43" x2="417" y2="246" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="456.0" y="40" text-anchor="middle" font-size="12" fill="#555">4</text>
+<line x1="495" y1="43" x2="495" y2="246" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="534.0" y="40" text-anchor="middle" font-size="12" fill="#555">5</text>
+<line x1="573" y1="43" x2="573" y2="246" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="612.0" y="40" text-anchor="middle" font-size="12" fill="#555">6</text>
+<line x1="651" y1="43" x2="651" y2="246" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="690.0" y="40" text-anchor="middle" font-size="12" fill="#555">7</text>
+<line x1="729" y1="43" x2="729" y2="246" stroke="#c8c8c8" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="89" y="63" text-anchor="end" font-size="15">A</text>
+<path d="M 105 69 L 183 69 L 261 69 L 261 47 L 339 47 L 417 47 L 495 47 L 573 47 L 573 69 L 651 69 L 729 69" fill="none" stroke="black" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<text x="89" y="109" text-anchor="end" font-size="15">B</text>
+<path d="M 105 115 L 183 115 L 261 115 L 339 115 L 339 93 L 417 93 L 495 93 L 573 93 L 651 93 L 651 115 L 729 115" fill="none" stroke="black" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<text x="89" y="155" text-anchor="end" font-size="15">C</text>
+<path d="M 105 161 L 183 161 L 183 139 L 261 139 L 339 139 L 417 139 L 495 139 L 495 161 L 573 161 L 651 161 L 729 161" fill="none" stroke="black" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<text x="89" y="201" text-anchor="end" font-size="15">X</text>
+<line x1="105" y1="196" x2="729" y2="196" stroke="#777" stroke-width="1.5" stroke-dasharray="5,5"/>
+</g></svg>

@@ -1,0 +1,230 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{svg}
+
+\begin{document}
+
+\twocolumn
+
+\title{Problem Set 3, COSC330/PHYS306\\
+Chapters 3 and 4}
+\author{Prof. Jordan C. Hanson}
+\maketitle
+
+%===========================================================
+% Chapter 3
+%===========================================================
+\section{Chapter 3}
+
+\begin{enumerate}
+
+\item \textbf{[Section 3-9, Exercise 39]}
+Examine the conditions indicated in Figure 3--92, and identify the faulty gates.
+
+\begin{center}
+\begin{tabular}{cc}
+\includesvg[width=0.43\linewidth]{fig_3_92a} &
+\includesvg[width=0.43\linewidth]{fig_3_92b} \\
+\textbf{(a)} & \textbf{(b)} \\[0.15cm]
+\includesvg[width=0.43\linewidth]{fig_3_92c} &
+\includesvg[width=0.43\linewidth]{fig_3_92d} \\
+\textbf{(c)} & \textbf{(d)} \\[0.15cm]
+\includesvg[width=0.43\linewidth]{fig_3_92e} &
+\includesvg[width=0.43\linewidth]{fig_3_92f} \\
+\textbf{(e)} & \textbf{(f)}
+\end{tabular}
+
+\vspace{0.08cm}
+\textbf{FIGURE 3--92}
+\end{center}
+
+\item \textbf{[Section 3-9, Exercise 40]}
+Determine the faulty gates in Figure 3--93 by analyzing the timing diagrams.
+
+\begin{center}
+\includesvg[width=0.58\linewidth]{fig_3_93a}
+\hfill
+\includesvg[width=0.36\linewidth]{fig_3_93a_gate}
+
+\textbf{(a)}
+
+\vspace{0.12cm}
+\includesvg[width=0.58\linewidth]{fig_3_93b}
+\hfill
+\includesvg[width=0.36\linewidth]{fig_3_93b_gate}
+
+\textbf{(b)}
+
+\vspace{0.12cm}
+\includesvg[width=0.58\linewidth]{fig_3_93c}
+\hfill
+\includesvg[width=0.36\linewidth]{fig_3_93c_gate}
+
+\textbf{(c)}
+
+\vspace{0.12cm}
+\includesvg[width=0.58\linewidth]{fig_3_93d}
+\hfill
+\includesvg[width=0.36\linewidth]{fig_3_93d_gate}
+
+\textbf{(d)}
+
+\vspace{0.08cm}
+\textbf{FIGURE 3--93}
+\end{center}
+
+\end{enumerate}
+
+%===========================================================
+% Chapter 4
+%===========================================================
+\section{Chapter 4}
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+
+\item \textbf{[Section 4-3, Exercise 9]}
+Apply DeMorgan's theorems to each expression:
+\begin{enumerate}[label=(\alph*)]
+    \item $\overline{A+B}$
+    \item $\overline{\overline{A}B}$
+    \item $\overline{A+B+C}$
+    \item $\overline{ABC}$
+    \item $\overline{A(B+C)}$
+    \item $\overline{AB+CD}$
+    \item $\overline{\overline{A}B+CD}$
+    \item $\overline{(A+\overline{B})(\overline{C}+D)}$
+\end{enumerate}
+
+\item \textbf{[Section 4-4, Exercise 13]}
+Write the Boolean expression for each of the logic circuits in Figure 4--57.
+
+\begin{center}
+\begin{tabular}{cc}
+\includesvg[width=0.43\linewidth]{fig_4_57a} &
+\includesvg[width=0.43\linewidth]{fig_4_57b} \\
+\textbf{(a)} & \textbf{(b)} \\[0.18cm]
+\includesvg[width=0.43\linewidth]{fig_4_57c} &
+\includesvg[width=0.43\linewidth]{fig_4_57d} \\
+\textbf{(c)} & \textbf{(d)}
+\end{tabular}
+
+\vspace{0.08cm}
+\textbf{FIGURE 4--57}
+\end{center}
+
+\item \textbf{[Section 4-4, Exercise 15]}
+Draw the logic circuit represented by each expression:
+\begin{enumerate}[label=(\alph*)]
+    \item $A(B+C)$
+    \item $AB+ABC$
+    \item $\overline{ABC}+D$
+    \item $A+B(C+DB+\overline{C})$
+\end{enumerate}
+
+\item \textbf{[Section 4-4, Exercise 18]}
+Construct a truth table for each of the following Boolean expressions:
+\begin{enumerate}[label=(\alph*)]
+    \item $A+B$
+    \item $AB$
+    \item $A+B(C+D)$
+    \item $A+B+C$
+    \item $AB+BC$
+\end{enumerate}
+
+\item \textbf{[Section 4-4, Exercise 22]}
+Determine which of the logic circuits in Figure 4--59 are equivalent.
+
+\begin{center}
+\begin{tabular}{cc}
+\includesvg[width=0.43\linewidth]{fig_4_59a} &
+\includesvg[width=0.43\linewidth]{fig_4_59b} \\
+\textbf{(a)} & \textbf{(b)} \\[0.18cm]
+\includesvg[width=0.43\linewidth]{fig_4_59c} &
+\includesvg[width=0.43\linewidth]{fig_4_59d} \\
+\textbf{(c)} & \textbf{(d)}
+\end{tabular}
+
+\vspace{0.08cm}
+\textbf{FIGURE 4--59}
+\end{center}
+
+\item \textbf{[Section 4-7, Exercise 31]}
+Develop a truth table for each of the following standard SOP expressions:
+\begin{enumerate}[label=(\alph*)]
+    \item $ABC+\overline{A}BC+AB\overline{C}$
+    \item $XYZ+X\overline{Y}Z+\overline{X}YZ+\overline{X}Y\overline{Z}
+          +X\overline{Y}\overline{Z}$
+\end{enumerate}
+
+\item \textbf{[Section 4-7, Exercise 36]}
+For each truth table in Table 4--15, derive a standard SOP and a standard POS expression.
+
+\begin{center}
+\scriptsize
+\renewcommand{\arraystretch}{1.10}
+
+\begin{tabular}{c c c|c}
+\multicolumn{3}{c|}{$ABC$} & $X$\\ \hline
+0&0&0&0\\0&0&1&1\\0&1&0&0\\0&1&1&0\\
+1&0&0&1\\1&0&1&1\\1&1&0&0\\1&1&1&1
+\end{tabular}
+\hspace{0.25cm}
+\begin{tabular}{c c c|c}
+\multicolumn{3}{c|}{$ABC$} & $X$\\ \hline
+0&0&0&0\\0&0&1&0\\0&1&0&0\\0&1&1&0\\
+1&0&0&0\\1&0&1&1\\1&1&0&1\\1&1&1&1
+\end{tabular}
+
+\vspace{0.05cm}
+\textbf{(a)}\hspace{2.15cm}\textbf{(b)}
+
+\vspace{0.18cm}
+
+\begin{tabular}{c c c c|c}
+\multicolumn{4}{c|}{$ABCD$} & $X$\\ \hline
+0&0&0&0&1\\0&0&0&1&1\\0&0&1&0&0\\0&0&1&1&1\\
+0&1&0&0&0\\0&1&0&1&1\\0&1&1&0&1\\0&1&1&1&0\\
+1&0&0&0&0\\1&0&0&1&1\\1&0&1&0&0\\1&0&1&1&0\\
+1&1&0&0&1\\1&1&0&1&0\\1&1&1&0&0\\1&1&1&1&0
+\end{tabular}
+\hspace{0.12cm}
+\begin{tabular}{c c c c|c}
+\multicolumn{4}{c|}{$ABCD$} & $X$\\ \hline
+0&0&0&0&0\\0&0&0&1&0\\0&0&1&0&1\\0&0&1&1&0\\
+0&1&0&0&1\\0&1&0&1&1\\0&1&1&0&0\\0&1&1&1&1\\
+1&0&0&0&0\\1&0&0&1&0\\1&0&1&0&0\\1&0&1&1&1\\
+1&1&0&0&1\\1&1&0&1&0\\1&1&1&0&0\\1&1&1&1&1
+\end{tabular}
+
+\vspace{0.05cm}
+\textbf{(c)}\hspace{2.30cm}\textbf{(d)}
+
+\vspace{0.06cm}
+\textbf{TABLE 4--15}
+\end{center}
+
+\item \textbf{[Section 4-9, Exercise 40]}
+Use a Karnaugh map to find the minimum SOP form for each expression:
+\begin{enumerate}[label=(\alph*)]
+    \item $\overline{A}\,\overline{B}C
+          +A\overline{B}C
+          +\overline{A}B\overline{C}$
+    \item $AC(\overline{B}+C)$
+    \item $\overline{A}(BC+B\overline{C})
+          +A(BC+B\overline{C})$
+    \item $\overline{A}\,\overline{B}C
+          +A\overline{B}\,\overline{C}
+          +\overline{A}B\overline{C}
+          +AB\overline{C}$
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

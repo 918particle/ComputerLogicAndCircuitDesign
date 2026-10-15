@@ -1,0 +1,12 @@
+{
+  "signal": [
+    {"name": "CLK", "wave": "p......."},
+    {},
+    {"name": "D3", "wave": "00011110"},
+    {"name": "D2", "wave": "00111100"},
+    {"name": "D1", "wave": "01111000"},
+    {"name": "D0", "wave": "11110000"}
+  ],
+  "head": {"text": "4-bit parallel data bus", "tick": 0},
+  "config": {"hscale": 1.15}
+}
