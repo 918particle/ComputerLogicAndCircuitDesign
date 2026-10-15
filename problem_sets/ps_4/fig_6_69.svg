@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300">
+<style>text{font-family:serif;font-size:18px} .small{font-size:15px} .wire{stroke:#000;stroke-width:2;fill:none} .dash{stroke:#777;stroke-width:1;stroke-dasharray:6 6} .box{stroke:#000;stroke-width:2;fill:white}</style>
+<rect class="box" x="95" y="90" width="130" height="105"/>
+<text class="small" x="115" y="115">A</text>
+<text class="small" x="153" y="115">B</text>
+<text class="small" x="187" y="115">Cᵢₙ</text>
+<text class="small" x="109" y="180">Cₒᵤₜ</text>
+<text class="small" x="193" y="180">Σ</text>
+<line class="wire" x1="123" y1="20" x2="123" y2="90"/>
+<line class="wire" x1="161" y1="20" x2="161" y2="90"/>
+<text x="118" y="16">1</text>
+<text x="156" y="16">1</text>
+<line class="wire" x1="200" y1="195" x2="200" y2="255"/>
+<text x="186" y="280">Σ₃</text>
+<rect class="box" x="300" y="90" width="130" height="105"/>
+<text class="small" x="320" y="115">A</text>
+<text class="small" x="358" y="115">B</text>
+<text class="small" x="392" y="115">Cᵢₙ</text>
+<text class="small" x="314" y="180">Cₒᵤₜ</text>
+<text class="small" x="398" y="180">Σ</text>
+<line class="wire" x1="328" y1="20" x2="328" y2="90"/>
+<line class="wire" x1="366" y1="20" x2="366" y2="90"/>
+<text x="323" y="16">1</text>
+<text x="361" y="16">0</text>
+<line class="wire" x1="405" y1="195" x2="405" y2="255"/>
+<text x="391" y="280">Σ₂</text>
+<rect class="box" x="505" y="90" width="130" height="105"/>
+<text class="small" x="525" y="115">A</text>
+<text class="small" x="563" y="115">B</text>
+<text class="small" x="597" y="115">Cᵢₙ</text>
+<text class="small" x="519" y="180">Cₒᵤₜ</text>
+<text class="small" x="603" y="180">Σ</text>
+<line class="wire" x1="533" y1="20" x2="533" y2="90"/>
+<line class="wire" x1="571" y1="20" x2="571" y2="90"/>
+<text x="528" y="16">1</text>
+<text x="566" y="16">1</text>
+<line class="wire" x1="610" y1="195" x2="610" y2="255"/>
+<text x="596" y="280">Σ₁</text>
+<line class="wire" x1="610" y1="90" x2="610" y2="58"/>
+<line class="wire" x1="610" y1="58" x2="658" y2="58"/>
+<text x="665" y="64">0</text>
+<path class="wire" d="M523,172 L523,235 L467.5,235 L467.5,55 L405,55 L405,90"/>
+<path class="wire" d="M318,172 L318,235 L262.5,235 L262.5,55 L200,55 L200,90"/>
+<line class="wire" x1="113" y1="195" x2="113" y2="255"/>
+<text x="99" y="280">Σ₄</text>
+</svg>

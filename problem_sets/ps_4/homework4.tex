@@ -1,0 +1,204 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{svg}
+\svgsetup{inkscapelatex=false}
+
+\setlength{\columnsep}{0.55cm}
+\setlength{\parindent}{0pt}
+
+\newcommand{\hwsvg}[2]{%
+  \IfFileExists{#1.svg}%
+    {\includesvg[width=#2]{#1}}%
+    {\fbox{\parbox[c][2.0cm][c]{#2}{\centering\scriptsize
+      Run \texttt{python3 render\_homework4.py}\\to generate this figure.}}}%
+}
+
+\begin{document}
+
+\twocolumn
+
+\title{Homework 4, COSC330/PHYS306\\Chapters 5 and 6}
+\author{Prof. Jordan C. Hanson}
+\date{}
+\maketitle
+
+\section{Chapter 5}
+
+\begin{enumerate}
+
+\item \textbf{[Section 5-1, Exercise 6]}\\
+Develop the truth table for each circuit in Figure 5--56.
+
+\begin{center}
+\hwsvg{fig_5_56a}{0.5\linewidth}\\[-0.05cm]
+\textbf{(a)}
+
+\vspace{0.12cm}
+\hwsvg{fig_5_56b}{0.5\linewidth}\\[-0.05cm]
+\textbf{(b)}
+
+\vspace{0.12cm}
+\hwsvg{fig_5_56c}{0.6\linewidth}\\[-0.05cm]
+\textbf{(c)}
+
+\vspace{0.12cm}
+\hwsvg{fig_5_56d}{0.6\linewidth}\\[-0.05cm]
+\textbf{(d)}
+
+\vspace{0.12cm}
+\hwsvg{fig_5_56e}{0.6\linewidth}\\[-0.05cm]
+\textbf{(e)}
+
+\vspace{0.12cm}
+\hwsvg{fig_5_56f}{0.6\linewidth}\\[-0.05cm]
+\textbf{(f)}
+
+\vspace{0.10cm}
+\textbf{FIGURE 5--56}
+\end{center}
+
+\item \textbf{[Section 5-2, Exercise 13]}\\
+Implement a logic circuit for the truth table in Table 5--8.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.10}
+\begin{tabular}{c c c | c}
+\hline
+\multicolumn{3}{c|}{\textbf{Inputs}} & \textbf{Output} \\
+$A$ & $B$ & $C$ & $X$ \\
+\hline
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 1 \\
+0 & 1 & 1 & 0 \\
+1 & 0 & 0 & 1 \\
+1 & 0 & 1 & 0 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 1 \\
+\hline
+\end{tabular}
+
+\vspace{0.10cm}
+\textbf{TABLE 5--8}
+\end{center}
+
+\item \textbf{[Section 5-3, Exercise 20]}\\
+Implement the logic circuits in Figure 5--54 using only NAND gates.
+
+\begin{center}
+\begin{minipage}{0.48\linewidth}
+\centering
+\hwsvg{fig_5_54a}{0.99\linewidth}\\[-0.05cm]
+\textbf{(a)}
+\end{minipage}\hfill
+\begin{minipage}{0.48\linewidth}
+\centering
+\hwsvg{fig_5_54b}{0.99\linewidth}\\[-0.05cm]
+\textbf{(b)}
+\end{minipage}
+
+\vspace{0.10cm}
+\textbf{FIGURE 5--54}
+\end{center}
+
+\end{enumerate}
+
+\section{Chapter 6}
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+
+\item \textbf{[Section 6-2, Exercise 4]}\\
+For the parallel adder in Figure 6--69, determine the complete sum by
+analysis of the logical operation of the circuit. Verify your result by
+longhand addition of the two input numbers.
+
+\begin{center}
+\hwsvg{fig_6_69}{0.96\linewidth}
+
+\vspace{0.08cm}
+\textbf{FIGURE 6--69}
+\end{center}
+
+\item \textbf{[Section 6-2, Exercise 8]}\\
+The input waveforms in Figure 6--72 are applied to a 2-bit adder.
+Determine the waveforms for the sum and the output carry in relation to
+the inputs by constructing a timing diagram.
+
+\begin{center}
+\hwsvg{fig_6_72}{0.98\linewidth}
+
+\vspace{0.08cm}
+\textbf{FIGURE 6--72}
+\end{center}
+
+\item \textbf{[Section 6-4, Exercise 14]}\\
+For the 4-bit comparator in Figure 6--74, plot each output waveform for
+the inputs shown. The outputs are active-HIGH.
+
+\begin{center}
+\hwsvg{fig_6_74}{0.98\linewidth}
+
+\vspace{0.08cm}
+\textbf{FIGURE 6--74}
+\end{center}
+
+\item \textbf{[Section 6-5, Exercise 16]}\\
+When a HIGH is on the output of each of the decoding gates in Figure
+6--75, what is the binary code appearing on the inputs? The MSB is
+$A_3$.
+
+\begin{center}
+\begin{minipage}{0.48\linewidth}
+\centering
+\hwsvg{fig_6_75a}{0.95\linewidth}\\[-0.05cm]
+\textbf{(a)}
+\end{minipage}\hfill
+\begin{minipage}{0.48\linewidth}
+\centering
+\hwsvg{fig_6_75b}{0.95\linewidth}\\[-0.05cm]
+\textbf{(b)}
+\end{minipage}
+
+\vspace{0.15cm}
+\begin{minipage}{0.48\linewidth}
+\centering
+\hwsvg{fig_6_75c}{0.95\linewidth}\\[-0.05cm]
+\textbf{(c)}
+\end{minipage}\hfill
+\begin{minipage}{0.48\linewidth}
+\centering
+\hwsvg{fig_6_75d}{0.95\linewidth}\\[-0.05cm]
+\textbf{(d)}
+\end{minipage}
+
+\vspace{0.10cm}
+\textbf{FIGURE 6--75}
+\end{center}
+
+\item \textbf{[Section 6-8, Exercise 28]}\\
+For the multiplexer in Figure 6--79, determine the output for the
+following input states:
+\begin{equation*}
+D_0=0,\quad D_1=1,\quad D_2=1,\quad D_3=0,
+\end{equation*}
+\begin{equation*}
+S_0=1,\quad S_1=0.
+\end{equation*}
+
+\begin{center}
+\hwsvg{fig_6_79}{0.88\linewidth}
+
+\vspace{0.08cm}
+\textbf{FIGURE 6--79}
+\end{center}
+
+\end{enumerate}
+
+\end{document}

@@ -4,29 +4,42 @@
 \usepackage{amsmath}
 
 \begin{document}
+\twocolumn
 
-\title{Thursday Reading Assessment: Chapter 6}
+\title{Thursday Warm Up: Comparators, Decoders and Encoders}
 \author{Prof. Jordan C. Hanson}
 
 \maketitle
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.33\textwidth]{figures/comparator3.pdf} \hspace{0.5cm}
-\includegraphics[width=0.33\textwidth]{figures/decoder2.pdf}
-\caption{\label{fig:1} (Left): A comparator for two 4-bit numbers. (Right) A decoding function for the code 1011.}
+\includegraphics[width=0.4\textwidth]{figures/comparator3.pdf} \hspace{0.5cm}
+\caption{\label{fig:1}  A comparator for two 4-bit numbers.}
 \end{figure}
 
 \section{Functions of Combinational Logic: Comparators}
 
 \begin{enumerate}
-\item (a) Assess the \textit{power consumption} of the component in Fig. \ref{fig:1} (left).  Assume that each XOR and AND gate consumes $\approx 100$ $\mu$W per gate.  Recall the gates that make a 1-bit comparator.  Perform the calculation for just the equality function, assuming the $A>B$ and $A<B$ functions are not connected.  (b) \textbf{Bonus point:} Try the calculation for $A>B$ and $A<B$, assuming 100 $\mu$W/gate.  \\ \vspace{3cm}
+\item (a) Draw a set of gates that yields the equality output of the comparator in Fig. \ref{fig:1}. (b) Consider the $A>B$ output.  Generate the truth table for the 2-bit case, in which we are comparing two 2-bit binary numbers.  Develop the AND-OR logic for $A>B$ from the truth table.  (c) Repeat, for the $A<B$ case.  \\ \vspace{5cm}
 \end{enumerate}
 
-\section{Functions of Combinational Logic: Decoders}
+\section{Functions of Combinational Logic: Decoders and Encoders}
 
 \begin{enumerate}
-\item Consider Fig. \ref{fig:1} (right), in which the decoding function for 1011 is displayed.  Generate all gate diagrams for the BCD codes.  That is, for codes 0000, 0001, ... generate circuits that go HIGH to represent the digits 0-9. \\ \vspace{5cm}
+\item Consider Fig. \ref{fig:2}, in which the decoding function for 1011 is displayed.  Generate all gate diagrams for the BCD codes.  That is, for codes 0000, 0001, ... generate circuits that go HIGH to represent the digits 0-9. \\ \vspace{6cm}
+\item Consider Fig. \ref{fig:3}.  Explain why a HIGH on the 9-wire will generate $A_3A_2A_1A_0 = 1001$.  What happens if each of the other wires have a HIGH? \\ \vspace{8cm}
 \end{enumerate}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.33\textwidth]{figures/decoder2.pdf}
+\caption{\label{fig:2} The decoding function for 1011.}
+\end{figure}
+
+\begin{figure}[hb]
+\centering
+\includegraphics[width=0.33\textwidth]{figures/encoder_example.pdf}
+\caption{\label{fig:3} A decimal to BCD encoder.}
+\end{figure}
 
 \end{document}

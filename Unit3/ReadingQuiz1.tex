@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 
 \begin{document}
+\twocolumn
 
 \title{Tuesday Reading Assessment: Chapters 6-1 through 6-6}
 \author{Prof. Jordan C. Hanson}
@@ -13,22 +14,27 @@
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.45\textwidth]{figures/adder1.pdf} \hspace{0.5cm}
-\includegraphics[width=0.25\textwidth]{figures/adder2.pdf}
-\caption{\label{fig:1} (Left) Symbol for a \textit{half-adder}, that adds two bits and produces the sum and carry bits. (Right) The truth table for the sum and carry bits in terms of the input bits A and B.}
+\includegraphics[width=0.25\textwidth,trim=0cm 3cm 0cm 0cm,clip=true]{figures/adder2.pdf}
+\caption{\label{fig:1} (Top) Symbol for a \textit{half-adder}, that adds two bits and produces the sum and carry bits. (Bottom) The truth table for the sum and carry bits.}
 \end{figure}
 
-\section{Functions of Combinatorial Logic: Adders}
+\section{Functions of Combinatorial Logic: Half-Adders}
 
 \begin{enumerate}
-\item Examine the $\Sigma$ (sum) output in the truth table in Fig. \ref{fig:1} (right).  What gate accurately describes $\Sigma$ in terms of the inputs A and B? \\ \vspace{0.5cm}
-\item Examine the $C_{\rm out}$ (carry) output in the truth table in Fig. \ref{fig:1} (right).  What gate accurately describes $C_{\rm out}$ in terms of the inputs A and B? \\ \vspace{0.5cm}
-\item Create a logic circuit schematic in the space below that functions like the component in Fig. \ref{fig:1} (left), producing the truth table in Fig. \ref{fig:1} (right). \\ \vspace{2.0cm}
+\item Examine the $\Sigma$ (sum) output in the truth table in Fig. \ref{fig:1} (right).  What gate accurately describes $\Sigma$ in terms of the inputs A and B? \\ \vspace{1cm}
+\item Examine the $C_{\rm out}$ (carry) output in the truth table in Fig. \ref{fig:1} (right).  What gate accurately describes $C_{\rm out}$ in terms of the inputs A and B? \\ \vspace{1cm}
+\item Create a logic circuit schematic in the space below that functions like the component in Fig. \ref{fig:1} (left), producing the truth table in Fig. \ref{fig:1} (right). \\ \vspace{3.0cm}
 \end{enumerate}
 
-\section{Functions of Combinatorial Logic: Comparators}
+\section{Functions of Combinatorial Logic: Full-Adders}
 
 \begin{enumerate}
-\item (a) Write down the truth table for an XOR gate, but inverted (XNOR). (b) Use this truth table to create a circuit that is HIGH if two 2-bit binary numbers are equal.
+\item Based on Sec. 1, we will now design a \textit{full-adder} circuit, that includes the possibility of a carry-in bit.  A carry-in occurs when a previous addition generates a carry-out bit, and that bit need to be added to the current calculation.
+\begin{itemize}
+\item Write down your circuit for the half-adder below. \\ \vspace{4cm}
+\item Now include gates and connections so that a new input, $C_{\rm in}$, is added to the sum output. \\ \vspace{4cm}
+\item Now include gates and connections so that the original output, $C_{\rm out}$, accounts for $C_{\rm in}$.
+\end{itemize}
 \end{enumerate}
 
 \end{document}

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="360" viewBox="0 0 580 360">
+<style>text{font-family:serif;font-size:18px} .small{font-size:15px} .wire{stroke:#000;stroke-width:2;fill:none} .dash{stroke:#777;stroke-width:1;stroke-dasharray:6 6} .box{stroke:#000;stroke-width:2;fill:white}</style>
+<rect class="box" x="240" y="55" width="190" height="245"/>
+<text x="310" y="83">MUX</text>
+<text x="55" y="125">S₀</text>
+<line class="wire" x1="95" y1="120" x2="240" y2="120"/>
+<text x="55" y="158">S₁</text>
+<line class="wire" x1="95" y1="153" x2="240" y2="153"/>
+<text x="55" y="198">D₀</text>
+<line class="wire" x1="95" y1="193" x2="240" y2="193"/>
+<text x="55" y="228">D₁</text>
+<line class="wire" x1="95" y1="223" x2="240" y2="223"/>
+<text x="55" y="258">D₂</text>
+<line class="wire" x1="95" y1="253" x2="240" y2="253"/>
+<text x="55" y="288">D₃</text>
+<line class="wire" x1="95" y1="283" x2="240" y2="283"/>
+<text class="small" x="258" y="198">0</text>
+<text class="small" x="258" y="228">1</text>
+<text class="small" x="258" y="258">2</text>
+<text class="small" x="258" y="288">3</text>
+<line class="wire" x1="430" y1="200" x2="525" y2="200"/>
+<text x="538" y="206">Y</text>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="360" viewBox="0 0 620 360">
+<style>text{font-family:serif;font-size:18px} .small{font-size:15px} .wire{stroke:#000;stroke-width:2;fill:none} .dash{stroke:#777;stroke-width:1;stroke-dasharray:6 6} .box{stroke:#000;stroke-width:2;fill:white}</style>
+<line class="dash" x1="110" y1="18" x2="110" y2="330"/>
+<line class="dash" x1="165" y1="18" x2="165" y2="330"/>
+<line class="dash" x1="220" y1="18" x2="220" y2="330"/>
+<line class="dash" x1="275" y1="18" x2="275" y2="330"/>
+<line class="dash" x1="330" y1="18" x2="330" y2="330"/>
+<line class="dash" x1="385" y1="18" x2="385" y2="330"/>
+<line class="dash" x1="440" y1="18" x2="440" y2="330"/>
+<line class="dash" x1="495" y1="18" x2="495" y2="330"/>
+<line class="dash" x1="550" y1="18" x2="550" y2="330"/>
+<text x="12" y="55">A₁</text>
+<path class="wire" d="M110,35 L165,35 L220,35 L220,35 L220,63 L275,63 L330,63 L385,63 L385,63 L385,35 L440,35 L495,35 L550,35"/>
+<text x="12" y="113">A₂</text>
+<path class="wire" d="M110,121 L165,121 L165,121 L165,93 L220,93 L275,93 L275,93 L275,121 L330,121 L330,121 L330,93 L385,93 L440,93 L495,93 L495,93 L495,121 L550,121"/>
+<text x="12" y="171">B₁</text>
+<path class="wire" d="M110,151 L165,151 L220,151 L220,151 L220,179 L275,179 L330,179 L385,179 L440,179 L440,179 L440,151 L495,151 L550,151"/>
+<text x="12" y="229">B₂</text>
+<path class="wire" d="M110,237 L165,237 L165,237 L165,209 L220,209 L220,209 L220,237 L275,237 L275,237 L275,209 L330,209 L330,209 L330,237 L385,237 L385,237 L385,209 L440,209 L440,209 L440,237 L495,237 L495,237 L495,209 L550,209"/>
+<text x="12" y="287">Cᵢₙ</text>
+<path class="wire" d="M110,295 L165,295 L220,295 L275,295 L330,295 L330,295 L330,267 L385,267 L440,267 L495,267 L550,267"/>
+</svg>
