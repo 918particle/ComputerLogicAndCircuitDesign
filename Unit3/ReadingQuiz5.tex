@@ -5,7 +5,7 @@
 
 \begin{document}
 
-\title{Tuesday Reading Assessment: Chapter 8-1 through 8-4}
+\title{Tuesday Reading Assessment: Chapter 8-1 through 8-5}
 \author{Prof. Jordan C. Hanson}
 
 \maketitle
@@ -19,14 +19,15 @@
 \section{Shift Registers from D Flip-Flops}
 
 \begin{enumerate}
-\item (a) Consider Fig. \ref{fig:1} (a), the 4-bit serial-in/serial-out shift register.  If the initial input is a 1, followed by 0's only, how many clock cycles before the 1 reaches the output?  Assume all flip-flops are initially reset. (b) If the clock frequency is 5 MHz, how long before the initial 1 reaches the output? (c) Consider Fig. \ref{fig:1} (c), the 4-bit parallel in/serial out shift register.  If 4 1's are on the inputs initially, how many clock cycles will pass before a 1 appears one the output? (d) If the clock frequency is 2 MHz, how long before the first 1 appears on the output? \\ \vspace{2cm}
-\item (a) Consider Fig. \ref{fig:2}.  Will the data bits $D_i$ be loaded into the register when the SHIFT signal is LOW, or HIGH? (b) To shift data to the right, which two signals have to be activated, and with what values? \\ \vspace{1cm}
+\item (a) Consider Fig. \ref{fig:1} (a), the 4-bit serial-in/serial-out shift register.  If the initial input is a 1, followed by 0's only, how many clock cycles before the 1 reaches the output?  Assume all flip-flops are initially reset. (b) If the clock frequency is 5 MHz, how long before the initial 1 reaches the output? (c) Consider Fig. \ref{fig:1} (c), the 4-bit parallel in/serial out shift register.  If 4 1's are on the inputs initially, how many clock cycles will pass before a 1 appears one the output? (d) If the clock frequency is 2 MHz, how long before the first 1 appears on the output? \\ \vspace{1.5cm}
+\item (a) Consider Fig. \ref{fig:2} (left).  Will the $D_i$ be loaded when the SHIFT signal is LOW, or HIGH? (b) To shift data to the right, which two signals have to be activated, and with what values? (c) Consider Fig. \ref{fig:2} (right).  If Serial in is $\lbrace 0,1,0,0 \rbrace$ for four clock cycles, and RIGHT is HIGH, what are the states of $Q_i$ for the four clock cycles? \\ \vspace{2cm}
 \end{enumerate}
 
 \begin{figure}[hb]
 \centering
-\includegraphics[width=0.6\textwidth,trim=0cm 5cm 0cm 0cm,clip=true]{figures/shift_2.jpg}
-\caption{\label{fig:2} A 4-bit parallel-in/serial out shift register.}
+\includegraphics[width=0.49\textwidth,trim=0cm 5cm 0cm 0cm,clip=true]{figures/shift_2.jpg}
+\includegraphics[width=0.49\textwidth]{figures/lr_shift_reg.pdf}
+\caption{\label{fig:2} (Left) A 4-bit parallel-in/serial-out SRG. (Right) A left-right serial-in/parallel-out SRG.}
 \end{figure}
 
 \end{document}
