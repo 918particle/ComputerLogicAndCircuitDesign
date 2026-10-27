@@ -1,0 +1,182 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{graphicx}
+
+\setlength{\columnsep}{0.55cm}
+\setlength{\parindent}{0pt}
+
+\newcommand{\psfig}[2]{%
+  \begin{center}
+  \includegraphics[width=#2]{#1}
+  \end{center}
+}
+
+\begin{document}
+
+\twocolumn
+
+\title{Problem Set 5, COSC330/PHYS306\\Chapters 6--9}
+\author{Prof. Jordan C. Hanson}
+\date{}
+\maketitle
+
+\section{Chapter 6}
+
+\begin{enumerate}
+
+\item \textbf{[Section 6-4, Exercise 13]}\\
+The waveforms in Figure 6--73 are applied to the comparator as shown.
+Determine the $(A=B)$ waveform.
+
+\psfig{fig_6_73.png}{0.98\linewidth}
+\begin{center}\textbf{FIGURE 6--73}\end{center}
+
+\item \textbf{[Section 6-4, Exercise 14]}\\
+For the 4-bit comparator in Figure 6--74, plot each output waveform for
+the inputs shown. The outputs are active-HIGH.
+
+\psfig{fig_6_74.png}{0.98\linewidth}
+\begin{center}\textbf{FIGURE 6--74}\end{center}
+
+\item \textbf{[Section 6-5, Exercise 20]}\\
+If the input waveforms are applied to the decoding logic as indicated in
+Figure 6--76, sketch the output waveform in proper relation to the inputs.
+
+\psfig{fig_6_76.png}{0.98\linewidth}
+\begin{center}\textbf{FIGURE 6--76}\end{center}
+
+\item \textbf{[Section 6-8, Exercise 28]}\\
+For the multiplexer in Figure 6--79, determine the output for the following
+input states:
+\begin{equation*}
+D_0=0,\quad D_1=1,\quad D_2=1,\quad D_3=0,
+\end{equation*}
+\begin{equation*}
+S_0=1,\quad S_1=0.
+\end{equation*}
+
+\psfig{fig_6_79.png}{0.78\linewidth}
+\begin{center}\textbf{FIGURE 6--79}\end{center}
+
+\item \textbf{[Section 6-8, Exercise 30]}\\
+The waveforms in Figure 6--81 are observed on the inputs of a 74HC151
+8-input multiplexer. Sketch the $Y$ output waveform.
+
+\psfig{fig_6_81.png}{0.91\linewidth}
+\begin{center}\textbf{FIGURE 6--81}\end{center}
+
+\item \textbf{[Special Design Problems, Exercise 46]}\\
+Implement the logic function specified in Table 6--14 by using a 74HC151
+data selector.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{c c c c | c}
+\hline
+\multicolumn{4}{c|}{\textbf{Inputs}} & \textbf{Output} \\
+$A_3$ & $A_2$ & $A_1$ & $A_0$ & $Y$ \\
+\hline
+0&0&0&0&0\\
+0&0&0&1&0\\
+0&0&1&0&1\\
+0&0&1&1&1\\
+0&1&0&0&0\\
+0&1&0&1&0\\
+0&1&1&0&1\\
+0&1&1&1&1\\
+1&0&0&0&1\\
+1&0&0&1&0\\
+1&0&1&0&1\\
+1&0&1&1&1\\
+1&1&0&0&0\\
+1&1&0&1&1\\
+1&1&1&0&0\\
+1&1&1&1&1\\
+\hline
+\end{tabular}
+
+\vspace{0.10cm}
+\textbf{TABLE 6--14}
+\end{center}
+
+\end{enumerate}
+
+\section{Chapter 7}
+
+\begin{enumerate}
+\setcounter{enumi}{6}
+
+\item \textbf{[Section 7-1, Exercise 7]}\\
+For a gated D latch, the waveforms shown in Figure 7--76 are observed on
+its inputs. Draw the timing diagram showing the output waveform you would
+expect to see at $Q$ if the latch is initially RESET.
+
+\psfig{fig_7_76.png}{0.96\linewidth}
+\begin{center}\textbf{FIGURE 7--76}\end{center}
+
+\item \textbf{[Section 7-2, Exercise 8]}\\
+Two edge-triggered J-K flip-flops are shown in Figure 7--77. If the inputs
+are as shown, draw the $Q$ output of each flip-flop relative to the clock,
+and explain the difference between the two. The flip-flops are initially
+RESET.
+
+\psfig{fig_7_77.png}{0.98\linewidth}
+\begin{center}\textbf{FIGURE 7--77}\end{center}
+
+\item \textbf{[Section 7-2, Exercise 14]}\\
+Determine the $Q$ waveform relative to the clock if the signals shown in
+Figure 7--83 are applied to the inputs of the J-K flip-flop. Assume that
+$Q$ is initially LOW.
+
+\psfig{fig_7_83.png}{0.98\linewidth}
+\begin{center}\textbf{FIGURE 7--83}\end{center}
+
+\item \textbf{[Section 7-7, Exercise 33]}\\
+A 74HC00 quad NAND gate IC is used to construct a gated S-R latch on a
+protoboard in the lab as shown in Figure 7--93. The schematic in part (a)
+is used to connect the circuit in part (b). When you try to operate the
+latch, you find that the $Q$ output stays HIGH no matter what the inputs
+are. Determine the problem.
+
+\psfig{fig_7_93.png}{0.98\linewidth}
+\begin{center}\textbf{FIGURE 7--93}\end{center}
+
+\end{enumerate}
+
+\section{Chapter 8}
+
+\begin{enumerate}
+\setcounter{enumi}{10}
+
+\item \textbf{[Section 8-2, Exercise 14]}\\
+The shift register in Figure 8--54(a) has \(\overline{\mathrm{SHIFT/LOAD}}\)
+and CLK inputs as shown in part (b). The serial data input (SER) is a 0.
+The parallel data inputs are $D_0=1$, $D_1=0$, $D_2=1$, and $D_3=0$ as
+shown. Develop the data-output waveform in relation to the inputs.
+
+\psfig{fig_8_54.png}{0.98\linewidth}
+\begin{center}\textbf{FIGURE 8--54}\end{center}
+
+\end{enumerate}
+
+\section{Chapter 9}
+
+\begin{enumerate}
+\setcounter{enumi}{11}
+
+\item \textbf{[Section 9-2, Exercise 3]}\\
+For the ripple counter shown in Figure 9--65, show the complete timing
+diagram for eight clock pulses, showing the clock, $Q_0$, and $Q_1$
+waveforms.
+
+\psfig{fig_9_65.png}{0.98\linewidth}
+\begin{center}\textbf{FIGURE 9--65}\end{center}
+
+\end{enumerate}
+
+\end{document}

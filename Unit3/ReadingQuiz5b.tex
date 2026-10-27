@@ -1,0 +1,255 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+\begin{document}
+\twocolumn
+
+\title{Tuesday Review Document: Chapters 6--9}
+\author{Prof. Jordan C. Hanson}
+\date{}
+
+\maketitle
+
+\section*{Short Review Exercises}
+
+\begin{enumerate}
+
+\item \textbf{Adders and Arithmetic Logic}
+
+A full-adder has inputs $A$, $B$, and $C_{\mathrm{in}}$, and outputs
+$\Sigma$ and $C_{\mathrm{out}}$.
+
+\begin{enumerate}
+\item If $A=1$, $B=0$, and $C_{\mathrm{in}}=1$, determine
+$\Sigma$ and $C_{\mathrm{out}}$.
+
+\vspace{0.8cm}
+
+\item Write the Boolean expression for the sum output $\Sigma$ in
+terms of $A$, $B$, and $C_{\mathrm{in}}$.
+
+\vspace{0.8cm}
+
+\item Explain why several full-adders can be connected together to
+add two multi-bit binary numbers.
+
+\vspace{1.0cm}
+\end{enumerate}
+
+\item \textbf{Comparators, Decoders, and Encoders}
+
+\begin{enumerate}
+\item A 4-bit comparator receives
+\[
+A=1010, \qquad B=0111.
+\]
+Which comparator output is HIGH: $A>B$, $A=B$, or $A<B$?
+
+\vspace{0.7cm}
+
+\item A 4-to-16 decoder has input
+\[
+A_3A_2A_1A_0=1001.
+\]
+Which decimal output line should go HIGH?
+
+\vspace{0.7cm}
+
+\item A decimal-to-BCD encoder has the input line corresponding to
+ decimal 6 HIGH. What 4-bit BCD code should appear at its output?
+
+\vspace{0.7cm}
+\end{enumerate}
+
+\item \textbf{Multiplexers and Demultiplexers}
+
+A 4-to-1 multiplexer has data inputs $D_0$ through $D_3$, select
+inputs $S_1S_0$, and output $Y$.
+
+\begin{enumerate}
+\item Which data input is connected to $Y$ when
+\[
+S_1S_0=10?
+\]
+
+\vspace{0.6cm}
+
+\item If
+\[
+D_0=0,\quad D_1=1,\quad D_2=1,\quad D_3=0,
+\]
+what is $Y$ when $S_1S_0=10$?
+
+\vspace{0.6cm}
+
+\item A 1-to-4 demultiplexer performs the reverse routing operation.
+If $D_{\mathrm{in}}=1$ and $S_1S_0=01$, which output receives the
+input bit?
+
+\vspace{0.7cm}
+\end{enumerate}
+
+\item \textbf{Latches and Flip-Flops}
+
+\begin{enumerate}
+\item An SR latch initially has $Q=0$. If the SET input is asserted
+momentarily and then released, what is the new value of $Q$?
+
+\vspace{0.6cm}
+
+\item A D flip-flop has $D=1$ immediately before its active clock
+edge. What value is stored at $Q$ immediately after the edge?
+
+\vspace{0.6cm}
+
+\item A JK flip-flop has $J=1$ and $K=1$. If $Q=1$ before the active
+clock edge, what is $Q$ afterward?
+
+\vspace{0.7cm}
+\end{enumerate}
+
+\item \textbf{Shift Registers}
+
+Consider a 4-bit serial-in/serial-out shift register whose flip-flops
+are initially reset to 0.
+
+\begin{enumerate}
+\item A single 1 is shifted into the register, followed only by 0s.
+How many active clock edges are required before the 1 reaches the
+serial output?
+
+\vspace{0.7cm}
+
+\item If the clock frequency is $5\,\mathrm{MHz}$, how much time
+passes before that bit reaches the output?
+
+\vspace{0.8cm}
+
+\item Briefly state the difference between \textit{serial loading}
+and \textit{parallel loading} of a register.
+
+\vspace{1.0cm}
+\end{enumerate}
+
+\item \textbf{Counters}
+
+\begin{enumerate}
+\item A 4-bit binary counter starts at $0000$. Write the next four
+states after four active clock edges.
+
+\vspace{0.8cm}
+
+\item A 4-bit asynchronous counter is driven by a $100\,\mathrm{kHz}$
+clock. How many clock cycles are required to count from $0000$ to
+$1111$? How much time does this require?
+
+\vspace{1.0cm}
+
+\item What is the main difference between a synchronous counter and
+an asynchronous (ripple) counter?
+
+\vspace{1.0cm}
+\end{enumerate}
+
+\section*{Design Problem}
+
+\item \textbf{Build a 4-bit Accumulator}
+
+An \textbf{accumulator} is a digital system that repeatedly adds a new
+binary value to a previously stored result. You will design a 4-bit
+accumulator using components studied in class.
+
+\begin{enumerate}
+
+\item Begin with a \textbf{4-bit register} whose output is
+\[
+Q = Q_3Q_2Q_1Q_0.
+\]
+Draw the register and label the four data inputs, the four outputs, the
+clock input \texttt{CLK}, and a reset input \texttt{RESET}. What value
+should be stored in the register immediately after \texttt{RESET} is
+activated?
+
+\vspace{3.5cm}
+
+\item Add a \textbf{4-bit parallel adder} to the system. One 4-bit
+input to the adder is an external binary number
+\[
+X = X_3X_2X_1X_0.
+\]
+
+Connect the output of the register to the second 4-bit input of the
+adder. Draw these connections and label the four sum outputs
+\[
+S = S_3S_2S_1S_0.
+\]
+
+Write an arithmetic expression relating $S$, $X$, and the current
+register value $Q$.
+
+\vspace{3.0cm}
+
+\item Connect the four sum outputs of the adder to the four data
+inputs of the register. Explain what happens on the next active clock
+edge.
+
+Write an expression for the next register value:
+\[
+Q_{\mathrm{next}} =
+\]
+
+\vspace{2.5cm}
+
+\item Complete the feedback path so that the system can repeatedly
+accumulate values. Explain why feeding the register output back into
+the adder causes the system to remember the sum of all previous inputs.
+
+\vspace{3.0cm}
+
+\item Assume the accumulator is initially reset so that
+\[
+Q = 0000.
+\]
+
+The following values are presented to the input $X$, one value per
+clock cycle:
+\[
+0011,\qquad 0010,\qquad 0100.
+\]
+
+Determine the value stored in the register after each clock edge.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{c|c|c}
+\hline
+\textbf{Clock} & $\boldsymbol{X}$ & $\boldsymbol{Q}$ \textbf{ after edge} \\
+\hline
+0 & RESET & 0000 \\
+1 & 0011 & \\
+2 & 0010 & \\
+3 & 0100 & \\
+\hline
+\end{tabular}
+\end{center}
+
+\item Suppose one additional input is
+\[
+X = 1000.
+\]
+
+Determine the new 4-bit register value. What happens if the numerical
+result is larger than the largest value that can be stored in four
+bits?
+
+\vspace{2.5cm}
+
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
