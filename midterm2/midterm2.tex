@@ -1,80 +1,163 @@
-\title{Midterm 2 for COSC330/PHYS306}
-\author{Dr. Jordan Hanson - Whittier College Dept. of Physics and Astronomy}
-\date{\today}
 \documentclass[10pt]{article}
-\usepackage[a4paper, total={18cm, 27cm}]{geometry}
-\usepackage{outlines}
+
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{enumitem}
 \usepackage{graphicx}
+
 \begin{document}
+
+\twocolumn
+
+\title{Midterm 2, COSC330/PHYS306}
+\author{Prof. Jordan C. Hanson}
+\date{\today}
 \maketitle
 
-\section{Instructions}
+\section{Adders}
+
+[12 points]. A 4-bit ripple-carry adder adds $A=1011$ and $B=0110$ with an initial carry-in of $C_{\mathrm{in}}=0$.
 
 \begin{enumerate}
-\item Keep it simple: answers involving complex logic circuits may be given using block diagrams.  For example, Fig. \ref{fig:4bit_wDelay} depicts a 4-bit adder without showing individual XOR gates.  If the exercise calls for single gates, however, provide the design at that level of detail.
-\item Use WaveDROM whenever possible to create timing diagrams and gate designs.
-\item Write your answers in a separate document.
-\item This exam is open-book, open-note, to be completed individually.
+\item Determine the 4-bit sum and the final carry-out. \\ \vspace{1.5cm}
+\item Verify the result using ordinary binary addition. \\ \vspace{0.5cm}
+\item Suppose the worst-case carry propagation delay through each full-adder stage is $7$ ns. Estimate the worst-case total carry delay for the 4-bit adder. \\ \vspace{1.5cm}
+\item If the addition must finish within one clock period, estimate the maximum clock frequency. \\ \vspace{1.5cm}
 \end{enumerate}
 
-\section{Chapter 6 - Functions of Combinational Logic}
-\label{sec:comb2}
+\section{Comparators, Decoders, \\ and Encoders}
+
+[12 points]. Answer the following questions about comparators, decoders, and encoders.
 
 \begin{enumerate}
-\item Consider Fig. \ref{fig:4bit_wDelay}, in which a 4-bit adder is depicted.  Assuming a uniform worst-case delay of 8 ns from carry-in to carry-out for each stage, the total delay is 32 ns.  (a) At what maximum frequency can this circuit perform additions, if the delay must be less than a clock period? (b) What would the result in (a) be if the adder was extended to 8 bits? (c) Create a timing diagram showing the addition of the numbers in Fig. \ref{fig:4bit_wDelay}. \textbf{Bonus:} include the timing delays, and indicate the clock period.
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.55\textwidth]{figures/4bitadder_withDelay.pdf}
-\caption{\label{fig:4bit_wDelay} A schematic of a 4-bit adder with delays marked in nanoseconds.}
-\end{figure}
-\item Using AND, OR, XNOR, and inverter gates, (a) create a 2-bit comparator that yields True if $A > B$, (b) True if $A = B$, and (c) True if $A < B$.  For each circuit, assume both $A$ and $B$ are 2-bit binary positive numbers. (d) Wrap this all into one circuit with three outputs and 4 inputs.  \textit{Hint: use Karnaugh maps for parts (a)-(c) to simplify the gates.}
-\item Generate the logic gates that convert 4-bit gray code to 4-bit binary code, and show that it works with a timing diagram.
-\item Consider Fig. \ref{fig:enc}, in which a decimal to binary conversion circuit is shown. (a) Add logic to the circuit such that it becomes a hexadecimal to binary converter. (b) Draw a logic symbol for this circuit with the correct number of inputs and outputs.  (c) Connect two hex-to-bin converters to a symbolic 2-to-1 multiplexer with the correct number of data select line(s) to form a system that can send two-digit hex numbers over one output line.
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.45\textwidth]{figures/encoder.pdf}
-\caption{\label{fig:enc} A decimal to binary encoder circuit.}
-\end{figure}
+\item A 4-bit comparator receives $A=1101$ and $B=1011$.  Which output is HIGH: $A>B$, $A=B$, or $A<B$? \\ \vspace{0.5cm}
+\item Explain how four XNOR gates can be used as part of a 4-bit equality comparator. What additional gate is required? Draw the comparator using basic gates.  \\ \vspace{1.5cm}
+\item A 4-to-16 decoder receives $A_3A_2A_1A_0=1010$.  Which output line should be asserted? \\ \vspace{0.5cm}
+\item A decimal-to-BCD encoder has only the decimal input line $7$ asserted. What 4-bit output should appear? Draw the gates and connections that represent that segment of the encoder.  \\ \vspace{2cm}
 \end{enumerate}
 
-\section{Chapter 7 - Latches, Flip-flops, and Timers}
-\label{sec:latch}
-\begin{enumerate}
-\item Consider Fig. \ref{fig:twoDFF}, in which a divide-by-four frequency divider is depicted with D flip-flops and a CLK signal. (a) Elaborate on this circuit to create a circuit that can divide the clock frequency by 2, 4, or 8. Show the flip-flops explicitly.  (b) Develop a symbol for the 2-4-8-16 divider, with CLK signal input and four ouputs (one each for $f/2$, $f/4$, $f/8$, and $f/8$, where $f$ is the clock frequency). (c) Connect the symbol for the new part to a symbolic 4-to-1 multiplexer with the appropriate number of data select lines to form a clock division system.  (d) Show with a timing diagram the output if the user changes the data select lines at least once.  For parts (b)-(d), it is only necessary to show symbols rather than individual flip-flops.
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.55\textwidth]{figures/twoDFF.pdf}
-\caption{\label{fig:twoDFF} Two D flip-flops forming a frequency divider.}
-\end{figure}
-\end{enumerate}
+\section{Multiplexers as Logic Functions}
 
-\section{Chapters 8 and 9 - Shift Registers and Counters}
+[12 points]. A logic function $Y(A,B,C)$ is specified by
+
+\[
+\begin{array}{ccc|c}
+A&B&C&Y\\ \hline
+0&0&0&0\\
+0&0&1&1\\
+0&1&0&1\\
+0&1&1&1\\
+1&0&0&0\\
+1&0&1&0\\
+1&1&0&1\\
+1&1&1&0
+\end{array}
+\]
+
+Use a 8-to-1 multiplexer to implement this function.
 
 \begin{enumerate}
-\item Consider the timing diagram in Fig. \ref{fig:sr1}.  Using any combination of \textit{shift registers} and supporting gates, create a circuit with 8-outputs that produces this timing diagram.
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.4\textwidth]{figures/timingExample15.pdf} \hspace{0.5cm}
-\includegraphics[width=0.55\textwidth]{figures/SRG8.pdf}
-\caption{\label{fig:sr1} (Left) A waveform that repeats every 16 clock periods. (Right) Johnson counters (4 and 5-bits), and the timing diagram for the four-bit case.}
-\end{figure}
-\item Consider Fig. \ref{fig:sr1} (right), in which 4 and 5-bit Johnson counters are depicted.  (a) Create a circuit based on Fig. \ref{fig:sr1} (right) called a \textit{combinatoric trigger.}  Imagine four digital channels A, B, C, and D, as inputs.  The output of the circuit should be True if \textit{any two} of the four channels is True \textit{within 100 ns of each other.}  Develop any necessary logic symbols, and use the appropriate clock frequency.  The Johnson counter(s) can have any number of bits.
+\item Treat $A$, $B$, and $C$ as the data-select inputs, and for each combination, determine whether a HIGH or LOW signal must be connected to the corresponding data input.  Draw the completed multiplexer block diagram, including the eight data-input connections, the three select inputs, and the output $Y$. \\ \vspace{5cm}
 \end{enumerate}
 
-\section{Chapter 12 - Signal Conversion and Processing}
+\section{Latches and Flip-Flops}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.455\textwidth]{figures/adc_1.jpg} \hspace{0.25cm}
-\includegraphics[width=0.455\textwidth]{figures/adc_2.jpg} \\ \vspace{0.25cm}
-\includegraphics[width=0.5\textwidth,trim=5.8cm 0cm 0cm 0cm,clip=true]{figures/adc_6.jpg} \hspace{0.25cm}
-\includegraphics[width=0.35\textwidth,trim=0cm 0cm 12cm 0cm,clip=true]{figures/adc_3.jpg}
-\caption{\label{adc:1} (Top left) An input waveform for a 3-bit flash ADC with $V_{\rm CC} = 8$ Volts. (Top right) A second input waveform for a 3-bit flash ADC with $V_{\rm ref} = 8$ Volts. (Bottom left) The 3-bit flash ADC. (Bottom right) A 4-bit DAC with binary weighted inputs.}
-\end{figure}
+[14 points]. Answer the following questions about level-sensitive latches and edge-triggered flip-flops.
 
 \begin{enumerate}
-\item Consider Fig. \ref{adc:1}. (a) Determine the binary output codes from the 3-bit flash ADC in Fig. \ref{adc:1} (bottom left), given the input waveform in Fig. \ref{adc:1} (top left).  (b) Repeat (a), but for the input waveform in Fig. \ref{adc:1} (top right).
-\item Determine the output of the DAC in Fig. \ref{adc:1} (bottom right), if the sequence of 4-bit numbers is applied to the inputs.  The data inputs have a low value of 0V and a high value of 5.0V.
+\item A gated D latch initially has $Q=0$. While $EN=1$, the input $D$ changes according to
+\[
+0,\;1,\;0,\;1.
+\]
+List the values of $Q$ while the latch is enabled. \\ \vspace{0.5cm}
+\item A positive-edge-triggered D flip-flop initially has $Q=0$. Immediately before four successive active clock edges, the values of $D$ are
+\[
+1,\;1,\;0,\;1.
+\]
+List the value of $Q$ immediately after each edge. \\ \vspace{0.5cm}
+\item A JK flip-flop initially has $Q=1$. At three successive active clock edges the inputs are
+\[
+(J,K)=(0,1),\quad(1,0),\quad(1,1).
+\]
+Determine $Q$ after each clock edge. \\ \vspace{1cm}
+\item Briefly explain the difference between a latch and an edge-triggered flip-flop. \\ \vspace{1.5cm}
 \end{enumerate}
+
+\section{Shift Registers}
+
+[12 points]. A 4-bit serial-in/serial-out shift register is initially $Q_3Q_2Q_1Q_0=0000$.  On each active clock edge, a new bit enters $Q_3$, and the existing bits shift one position toward $Q_0$.  The serial input sequence is 10110.
+\begin{enumerate}
+\item Complete the register state after each clock edge:
+\[
+\begin{array}{c|c|c}
+\text{Clock edge} & \text{Serial input} & Q_3Q_2Q_1Q_0\\ \hline
+0 & - & 0000\\
+1 & 1 & \\
+2 & 0 & \\
+3 & 1 & \\
+4 & 1 & \\
+5 & 0 &
+\end{array}
+\]
+\item At what clock edge does the first input bit reach $Q_0$? \\ \vspace{0.5cm}
+\item If the clock frequency is $2\,\mathrm{MHz}$, how much time passes before that first bit reaches $Q_0$? \\ \vspace{0.5cm}
+\end{enumerate}
+
+\section{Counters}
+
+[12 points]. Answer the following questions about counters.
+
+\begin{enumerate}
+\item A 4-bit binary up-counter starts at $0000$. What state does it contain after 11 clock pulses? \\ \vspace{0.5cm}
+\item A 4-bit ripple counter is driven by a $200\,\mathrm{kHz}$ clock. How much time is required to count from $0000$ to $1111$? \\ \vspace{1.0cm}
+\item Explain why a ripple counter is called \emph{asynchronous}. \\ \vspace{1.0cm}
+\item State one advantage of a synchronous counter over an asynchronous counter. \\ \vspace{1.0cm}
+\end{enumerate}
+
+\section{ADC, Sampling, and DAC Errors}
+
+[14 points]. Answer the following questions about sampling, quantization, and conversion errors.
+
+\begin{enumerate}
+\item An ADC samples once every
+\[
+\Delta t=50\,\mu\mathrm{s}.
+\]
+Determine the sampling frequency $f_s$ and the Nyquist frequency $f_N$. \\ \vspace{0.5cm}
+\item A 12-bit ADC covers a nominal range of $0$ to $2.0$ V. Estimate the voltage resolution.  That is, what is the change in input voltage if the ADC output increases by one count? \\ \vspace{1.5cm}
+\item A sinusoid of frequency $7.5\,\mathrm{kHz}$ is sampled at $20\,\mathrm{kHz}$.  How many samples per period will the ADC capture? \\ \vspace{2cm}
+\item Characterize the following conversion errors as constant one of the following: voltage offsets, incorrect gain, or non-linear calibration:
+\begin{enumerate}
+\item every output is shifted up by the same voltage
+\item the slope is consistently too small
+\item the transfer curve bends away from a straight line
+\item the slope is consistently too large
+\end{enumerate}
+\end{enumerate}
+
+\section{Design Problem: Digital Sawtooth Synthesizer}
+
+[12 points]. A simple digital synthesizer can produce a sawtooth waveform by connecting the output of a binary counter to a digital-to-analog converter (DAC). Consider a 4-bit binary up-counter whose outputs $Q_3Q_2Q_1Q_0$ are connected directly to the inputs of an ideal 4-bit DAC. The DAC produces $0$ V for input $0000$ and $3.0$ V for input $1111$, with equally spaced voltage levels between them.
+
+\begin{enumerate}
+\item Draw a block diagram showing the clock driving the 4-bit counter, the four counter outputs connected to the DAC, and the analog output voltage $V_{\mathrm{out}}$. \\ \vspace{2cm}
+
+\item Starting from $0000$, list the sequence of DAC input codes for one complete counter cycle. Explain why the DAC output forms a staircase approximation to a sawtooth waveform, including what happens when the counter rolls over from $1111$ to $0000$. \\ \vspace{2cm}
+
+\item Determine the DAC voltage step, $\Delta V$, corresponding to an increase of one binary count. Then determine $V_{\mathrm{out}}$ for the counter states $0101$ and $1100$. \\ \vspace{2cm}
+
+\item Suppose the counter is driven by an $8.0\,\mathrm{kHz}$ clock.
+\begin{enumerate}
+\item What is the period of one complete sawtooth waveform?
+\item What is the fundamental repetition frequency of the sawtooth?
+\item What clock frequency would be required to produce a sawtooth with fundamental frequency $440\,\mathrm{Hz}$?
+\end{enumerate}
+\vspace{2cm}
+\end{enumerate}
+
+\begin{center}
+\end{center}
 
 \end{document}
